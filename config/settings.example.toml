@@ -1,0 +1,14 @@
+# Copy this file to the app data directory or edit it from Settings.
+# API keys belong in environment variables, never in this file.
+
+model = ""
+model_provider = ""
+
+# Example provider:
+# [model_providers.local_gateway]
+# name = "Local OpenAI-compatible gateway"
+# base_url = "http://127.0.0.1:3000/v1"
+# wire_api = "responses" # responses or chat_completions
+# env_key = "OPENAI_API_KEY"
+# models_path = "/models"
+# timeout_seconds = 15

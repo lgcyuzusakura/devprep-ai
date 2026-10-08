@@ -1,0 +1,272 @@
+[
+  {
+    "id": "frontend-mdn",
+    "track": "前端",
+    "title": "MDN Web 文档",
+    "kind": "官方文档",
+    "description": "JavaScript、浏览器 API、CSS、HTTP 和 Web 平台的参考文档。",
+    "url": "https://developer.mozilla.org/zh-CN/",
+    "license": "页面内容与代码示例按 MDN 各自许可说明使用",
+    "source": "MDN Web Docs"
+  },
+  {
+    "id": "frontend-react",
+    "track": "前端",
+    "title": "React 官方文档",
+    "kind": "官方文档",
+    "description": "组件、状态、Hooks、渲染和现代 React 应用开发指南。",
+    "url": "https://zh-hans.react.dev/",
+    "license": "按 React 项目与文档页面许可说明使用",
+    "source": "React"
+  },
+  {
+    "id": "frontend-vue",
+    "track": "前端",
+    "title": "Vue.js 官方文档",
+    "kind": "官方文档",
+    "description": "响应式基础、组件、组合式 API、路由与工程化实践。",
+    "url": "https://cn.vuejs.org/",
+    "license": "按 Vue 项目与文档页面许可说明使用",
+    "source": "Vue.js"
+  },
+  {
+    "id": "java-guides",
+    "track": "Java",
+    "title": "JavaGuide",
+    "kind": "开源学习项目",
+    "description": "Java 基础、集合、并发、JVM、数据库和面试复习索引。",
+    "url": "https://github.com/Snailclimb/JavaGuide",
+    "license": "以仓库 LICENSE 文件为准",
+    "source": "Snailclimb/JavaGuide"
+  },
+  {
+    "id": "java-oracle-docs",
+    "track": "Java",
+    "title": "Oracle Java 文档",
+    "kind": "官方文档",
+    "description": "Java 语言、标准库、工具和平台版本的官方参考入口。",
+    "url": "https://docs.oracle.com/en/java/",
+    "license": "按 Oracle 文档页面许可和使用条款执行",
+    "source": "Oracle"
+  },
+  {
+    "id": "java-openjdk",
+    "track": "Java",
+    "title": "OpenJDK",
+    "kind": "官方项目",
+    "description": "JDK 规范、项目、JEP 和 OpenJDK 开发资料。",
+    "url": "https://openjdk.org/",
+    "license": "各子项目按仓库 LICENSE 说明使用",
+    "source": "OpenJDK"
+  },
+  {
+    "id": "backend-system-design",
+    "track": "后端",
+    "title": "System Design Primer",
+    "kind": "开源学习项目",
+    "description": "可扩展服务、缓存、队列、数据库和系统设计面试主题索引。",
+    "url": "https://github.com/donnemartin/system-design-primer",
+    "license": "MIT（以仓库 LICENSE 为准）",
+    "source": "donnemartin/system-design-primer"
+  },
+  {
+    "id": "backend-postgresql",
+    "track": "后端",
+    "title": "PostgreSQL 官方文档",
+    "kind": "官方文档",
+    "description": "SQL、事务、索引、执行计划、并发控制和数据库运维参考。",
+    "url": "https://www.postgresql.org/docs/",
+    "license": "按 PostgreSQL 文档许可说明使用",
+    "source": "PostgreSQL"
+  },
+  {
+    "id": "backend-redis",
+    "track": "后端",
+    "title": "Redis 官方文档",
+    "kind": "官方文档",
+    "description": "数据结构、持久化、集群、缓存模式和命令参考。",
+    "url": "https://redis.io/docs/",
+    "license": "按 Redis 文档页面许可说明使用",
+    "source": "Redis"
+  },
+  {
+    "id": "go-tour",
+    "track": "Go",
+    "title": "A Tour of Go",
+    "kind": "官方教程",
+    "description": "Go 语法、方法、接口、并发和标准库的交互式入门教程。",
+    "url": "https://go.dev/tour/",
+    "license": "按 Go 项目与页面许可说明使用",
+    "source": "The Go Authors"
+  },
+  {
+    "id": "go-docs",
+    "track": "Go",
+    "title": "Go 官方文档",
+    "kind": "官方文档",
+    "description": "语言规范、标准库、模块、工具链和编写有效 Go 代码的参考。",
+    "url": "https://go.dev/doc/",
+    "license": "按 Go 项目与页面许可说明使用",
+    "source": "The Go Authors"
+  },
+  {
+    "id": "go-uber-guide",
+    "track": "Go",
+    "title": "Uber Go Style Guide",
+    "kind": "开源工程指南",
+    "description": "面向生产代码的 Go 风格、错误处理、并发和 API 设计建议。",
+    "url": "https://github.com/uber-go/guide",
+    "license": "以仓库 LICENSE 文件为准",
+    "source": "uber-go/guide"
+  },
+  {
+    "id": "python-docs",
+    "track": "Python",
+    "title": "Python 中文官方文档",
+    "kind": "官方文档",
+    "description": "语言教程、标准库、数据模型、异步编程和工具参考。",
+    "url": "https://docs.python.org/zh-cn/3/",
+    "license": "按 Python 文档许可说明使用",
+    "source": "Python Software Foundation"
+  },
+  {
+    "id": "python-pep",
+    "track": "Python",
+    "title": "Python Enhancement Proposals",
+    "kind": "规范文档",
+    "description": "Python 语言演进、语法提案、类型标注和工程约定的原始资料。",
+    "url": "https://peps.python.org/",
+    "license": "按 PEP 页面许可说明使用",
+    "source": "Python Steering Council"
+  },
+  {
+    "id": "python-real-world",
+    "track": "Python",
+    "title": "Full Stack Python",
+    "kind": "公开教程",
+    "description": "Python Web、部署、数据处理、测试和生产实践的主题索引。",
+    "url": "https://www.fullstackpython.com/",
+    "license": "按站点版权与许可说明使用",
+    "source": "Full Stack Python"
+  },
+  {
+    "id": "ai-huggingface-course",
+    "track": "AI",
+    "title": "Hugging Face NLP Course",
+    "kind": "公开课程",
+    "description": "Transformer、Datasets、Tokenizers、微调和大模型应用基础。",
+    "url": "https://huggingface.co/learn/nlp-course/chapter1/1",
+    "license": "按课程仓库与页面许可说明使用",
+    "source": "Hugging Face"
+  },
+  {
+    "id": "ai-deep-learning-book",
+    "track": "AI",
+    "title": "Deep Learning",
+    "kind": "开放教材",
+    "description": "深度学习、优化、卷积网络、序列模型和表示学习的系统教材。",
+    "url": "https://www.deeplearningbook.org/",
+    "license": "按教材网站版权与许可说明使用",
+    "source": "Goodfellow, Bengio, Courville"
+  },
+  {
+    "id": "ai-cs231n",
+    "track": "AI",
+    "title": "Stanford CS231n",
+    "kind": "公开课程",
+    "description": "视觉识别、卷积网络、训练技巧和作业讲义。",
+    "url": "https://cs231n.github.io/",
+    "license": "按课程页面版权与使用说明执行",
+    "source": "Stanford University"
+  },
+  {
+    "id": "agent-anthropic",
+    "track": "Agent",
+    "title": "Building Effective Agents",
+    "kind": "工程文章",
+    "description": "工作流、工具调用、编排模式和 Agent 系统边界的工程讨论。",
+    "url": "https://www.anthropic.com/research/building-effective-agents",
+    "license": "按 Anthropic 页面版权与使用条款执行",
+    "source": "Anthropic"
+  },
+  {
+    "id": "agent-openai-sdk",
+    "track": "Agent",
+    "title": "OpenAI Agents SDK",
+    "kind": "官方文档",
+    "description": "Agent、工具、交接、会话状态和可观测性的 Python SDK 参考。",
+    "url": "https://openai.github.io/openai-agents-python/",
+    "license": "按 SDK 仓库 LICENSE 与文档许可说明使用",
+    "source": "OpenAI"
+  },
+  {
+    "id": "agent-langgraph",
+    "track": "Agent",
+    "title": "LangGraph 文档",
+    "kind": "开源框架文档",
+    "description": "有状态 Agent、图编排、持久化、人工介入和检查点。",
+    "url": "https://langchain-ai.github.io/langgraph/",
+    "license": "按项目仓库 LICENSE 与文档许可说明使用",
+    "source": "LangChain"
+  },
+  {
+    "id": "exam-408-csdiy",
+    "track": "计算机考研 408",
+    "title": "CS 自学指南",
+    "kind": "公开学习路线",
+    "description": "数据结构、组成原理、操作系统和网络等计算机基础学习路径。",
+    "url": "https://csdiy.wiki/",
+    "license": "按网站与各引用材料的许可说明使用",
+    "source": "CS 自学指南社区"
+  },
+  {
+    "id": "exam-408-notes",
+    "track": "计算机考研 408",
+    "title": "CS-Notes",
+    "kind": "开源学习项目",
+    "description": "计算机网络、操作系统、数据库和数据结构的复习笔记索引。",
+    "url": "https://github.com/CyC2018/CS-Notes",
+    "license": "以仓库 LICENSE 文件为准",
+    "source": "CyC2018/CS-Notes"
+  },
+  {
+    "id": "exam-408-neea",
+    "track": "计算机考研 408",
+    "title": "中国教育考试网",
+    "kind": "官方考试入口",
+    "description": "查询全国硕士研究生招生考试相关公告、报名和考试信息。",
+    "url": "https://www.neea.edu.cn/",
+    "license": "按网站公告、版权和使用条款执行",
+    "source": "教育部教育考试院"
+  },
+  {
+    "id": "exam-soft-test",
+    "track": "软考",
+    "title": "中国计算机技术职业资格网",
+    "kind": "官方考试入口",
+    "description": "软考报名、考试安排、成绩与证书相关的官方信息。",
+    "url": "https://www.ruankao.org.cn/",
+    "license": "按网站公告、版权和使用条款执行",
+    "source": "中国计算机技术职业资格网"
+  },
+  {
+    "id": "exam-soft-cpta",
+    "track": "软考",
+    "title": "中国人事考试网",
+    "kind": "官方考试入口",
+    "description": "国家级专业技术人员资格考试公告、报名和证书服务入口。",
+    "url": "https://www.cpta.com.cn/",
+    "license": "按网站公告、版权和使用条款执行",
+    "source": "中国人事考试网"
+  },
+  {
+    "id": "exam-soft-github",
+    "track": "软考",
+    "title": "软考公开资料检索入口",
+    "kind": "开源搜索入口",
+    "description": "用于检索社区整理的软考项目管理、架构和系统分析资料；使用前核对原始出处。",
+    "url": "https://github.com/search?q=%E8%BD%AF%E8%80%83&type=repositories",
+    "license": "各仓库按其 LICENSE 文件执行",
+    "source": "GitHub 公共仓库搜索"
+  }
+]

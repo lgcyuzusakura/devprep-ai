@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frontend dependencies
+        run: npm ci
+      - name: Build the frontend
+        run: npm run build
+      - name: Run backend tests
+        run: python -m unittest discover -s tests -v
+      - name: Check the cross-platform launcher
+        run: python scripts/start.py --help
+      - name: Install Chromium for end-to-end tests
+        if: runner.os == 'Linux'
+        run: npx playwright install --with-deps chromium
+      - name: Run end-to-end tests
+        if: runner.os == 'Linux'
+        run: npm run test:e2e

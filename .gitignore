@@ -1,0 +1,24 @@
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+# Runtime settings and local Codex files may contain private provider URLs.
+settings.toml
+settings.local.toml
+.codex/
+auth.json
+.idea/
+.vscode/
+Thumbs.db
+desktop.ini
+test-results/
+playwright-report/
