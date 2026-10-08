@@ -20,14 +20,17 @@ export default defineConfig({
     channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
   },
   webServer: {
-    command: "python backend/devprep_server.py",
+    command: `node scripts/start.mjs${process.env.DEVPREP_E2E_SKIP_BUILD === "1" ? " --skip-build" : ""}`,
     url: "http://127.0.0.1:8875/api/health",
     reuseExistingServer: false,
+    timeout: 180_000,
     env: {
+      DEVPREP_HOST: "127.0.0.1",
       DEVPREP_PORT: "8875",
       DEVPREP_DATA_DIR: testData,
-      DEVPREP_DB_FILE: join(testData, "test.sqlite3"),
+      DEVPREP_DB_FILE: join(testData, "devprep"),
       DEVPREP_CONFIG_FILE: join(testData, "settings.toml"),
+      DEVPREP_LOCAL_LEARNING_FILE: "",
     },
   },
 });

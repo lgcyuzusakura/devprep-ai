@@ -15,7 +15,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            wrapper: sh ./mvnw
+          - os: windows-latest
+            wrapper: .\mvnw.cmd
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
@@ -24,21 +28,33 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - name: Set up Python
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+          cache-dependency-path: backend-java/pom.xml
+      - name: Set up Python for content importer tests
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
+      - name: Verify local content parsers with synthetic fixtures
+        run: npm run test:imports
       - name: Install frontend dependencies
         run: npm ci
       - name: Build the frontend
         run: npm run build
-      - name: Run backend tests
-        run: python -m unittest discover -s tests -v
+      - name: Test and package the Spring Boot backend
+        working-directory: backend-java
+        run: ${{ matrix.wrapper }} -B verify
       - name: Check the cross-platform launcher
-        run: python scripts/start.py --help
+        run: node scripts/start.mjs --help
       - name: Install Chromium for end-to-end tests
         if: runner.os == 'Linux'
         run: npx playwright install --with-deps chromium
       - name: Run end-to-end tests
         if: runner.os == 'Linux'
+        env:
+          DEVPREP_E2E_SKIP_BUILD: '1'
         run: npm run test:e2e

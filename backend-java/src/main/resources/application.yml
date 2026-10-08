@@ -1,0 +1,32 @@
+server:
+  address: ${DEVPREP_HOST:127.0.0.1}
+  port: ${DEVPREP_PORT:8765}
+  max-http-request-header-size: 16KB
+spring:
+  application:
+    name: devprep-backend
+  datasource:
+    url: jdbc:h2:file:${DEVPREP_DB_FILE:${DEVPREP_DATA_DIR:${user.home}/.devprep-ai}/devprep};MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+    hikari:
+      maximum-pool-size: 8
+      connection-timeout: 10000
+  flyway:
+    locations: classpath:db/migration
+  web:
+    resources:
+      static-locations: file:${devprep.root}/dist/,classpath:/static/
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+devprep:
+  root: ${DEVPREP_ROOT:..}
+  seed-file: ${DEVPREP_SEED_FILE:classpath:seed/java-foundations.md}
+  learning-file: ${DEVPREP_LEARNING_FILE:classpath:seed/learning.json}
+  local-learning-file: ${DEVPREP_LOCAL_LEARNING_FILE:}
+  resources-file: ${DEVPREP_RESOURCES_FILE:classpath:seed/resources.json}
+  config-file: ${DEVPREP_CONFIG_FILE:${DEVPREP_DATA_DIR:${user.home}/.devprep-ai}/settings.toml}
+  max-body-bytes: 1000000
+  model-cache-seconds: 300

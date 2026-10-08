@@ -7,15 +7,22 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "start": "python backend/devprep_server.py",
-    "test": "python -m unittest discover -s tests -v",
+    "start": "node scripts/start.mjs",
+    "test": "node scripts/start.mjs --test",
+    "test:imports": "python -m unittest discover -s tests/content_import -v",
+    "test:legacy": "python -m unittest discover -s tests -v",
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "hast-util-from-html": "^2.0.3",
+    "katex": "^0.19.0",
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^10.1.0",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
     "smol-toml": "^1.3.1"
   },
   "devDependencies": {

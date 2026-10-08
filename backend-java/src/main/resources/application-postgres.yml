@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: ${DEVPREP_DATABASE_URL:jdbc:postgresql://127.0.0.1:5432/devprep}
+    driver-class-name: org.postgresql.Driver
+    username: ${DEVPREP_DATABASE_USER:devprep}
+    password: ${DEVPREP_DATABASE_PASSWORD:}
+    hikari:
+      maximum-pool-size: 16

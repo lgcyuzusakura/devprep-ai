@@ -1,14 +1,8 @@
 @echo off
-where py >nul 2>&1
-if errorlevel 1 goto use_python
-py -3 "%~dp0start.py" %*
-exit /b %errorlevel%
-
-:use_python
-where python >nul 2>&1
+where node >nul 2>&1
 if errorlevel 1 (
-    echo Python 3.11+ is required. Install Python and add it to PATH.
+    echo Node.js 20+ and JDK 17+ are required. Install Node.js and add it to PATH.
     exit /b 1
 )
-python "%~dp0start.py" %*
+node "%~dp0start.mjs" %*
 exit /b %errorlevel%

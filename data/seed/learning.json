@@ -1,0 +1,1756 @@
+{
+  "topics": [
+    {
+      "id": "java-equals",
+      "domain": "Java 基础",
+      "title": "equals 与 hashCode",
+      "summary": "理解对象相等性与哈希容器的约定。",
+      "prerequisites": []
+    },
+    {
+      "id": "java-string",
+      "domain": "Java 基础",
+      "title": "String 不可变性",
+      "summary": "区分字符串不可变性、拼接与可变构建器。",
+      "prerequisites": []
+    },
+    {
+      "id": "java-overload",
+      "domain": "Java 基础",
+      "title": "重载与重写",
+      "summary": "分辨编译期重载选择和运行时动态分派。",
+      "prerequisites": []
+    },
+    {
+      "id": "java-volatile",
+      "domain": "并发与 JVM",
+      "title": "volatile 与可见性",
+      "summary": "掌握可见性、happens-before 与复合原子性。",
+      "prerequisites": []
+    },
+    {
+      "id": "java-synchronized",
+      "domain": "并发与 JVM",
+      "title": "synchronized",
+      "summary": "理解监视器互斥和锁同步关系。",
+      "prerequisites": [
+        "java-volatile"
+      ]
+    },
+    {
+      "id": "java-hashmap",
+      "domain": "集合与数据结构",
+      "title": "HashMap 哈希与冲突",
+      "summary": "理解桶定位、相等性判断与并发边界。",
+      "prerequisites": [
+        "java-equals"
+      ]
+    },
+    {
+      "id": "java-arraylist",
+      "domain": "集合与数据结构",
+      "title": "ArrayList 与 LinkedList",
+      "summary": "按访问模式比较数组与链表。",
+      "prerequisites": []
+    },
+    {
+      "id": "java-jvm-memory",
+      "domain": "并发与 JVM",
+      "title": "JVM 运行时数据区",
+      "summary": "区分线程私有区与线程共享区。",
+      "prerequisites": []
+    },
+    {
+      "id": "java-gc",
+      "domain": "并发与 JVM",
+      "title": "垃圾回收与可达性",
+      "summary": "理解从 GC Roots 出发的可达性分析。",
+      "prerequisites": [
+        "java-jvm-memory"
+      ]
+    },
+    {
+      "id": "tcp-handshake",
+      "domain": "计算机网络",
+      "title": "TCP 三次握手",
+      "summary": "理解 SYN、SYN-ACK、ACK 与连接状态。",
+      "prerequisites": []
+    },
+    {
+      "id": "http-https",
+      "domain": "计算机网络",
+      "title": "HTTP 与 HTTPS",
+      "summary": "区分应用协议与 TLS 提供的传输保护。",
+      "prerequisites": [
+        "tcp-handshake"
+      ]
+    },
+    {
+      "id": "db-index",
+      "domain": "数据库",
+      "title": "数据库索引",
+      "summary": "理解索引收益、写入代价与多列前缀。",
+      "prerequisites": []
+    },
+    {
+      "id": "db-acid",
+      "domain": "数据库",
+      "title": "事务 ACID",
+      "summary": "解释事务属性及隔离级别的作用。",
+      "prerequisites": []
+    },
+    {
+      "id": "spring-di",
+      "domain": "Spring Boot",
+      "title": "IoC 与依赖注入",
+      "summary": "理解容器生命周期、构造器注入和职责边界。",
+      "prerequisites": []
+    },
+    {
+      "id": "spring-transaction",
+      "domain": "Spring Boot",
+      "title": "事务代理与传播",
+      "summary": "辨识事务边界、代理调用和异常回滚。",
+      "prerequisites": [
+        "db-acid"
+      ]
+    },
+    {
+      "id": "spring-mvc",
+      "domain": "Spring Boot",
+      "title": "Controller 与分层设计",
+      "summary": "明确接口、业务规则与持久化的分工。",
+      "prerequisites": [
+        "spring-di"
+      ]
+    },
+    {
+      "id": "fe-event-loop",
+      "domain": "前端",
+      "title": "JavaScript 事件循环",
+      "summary": "按任务和微任务顺序解释异步执行。",
+      "prerequisites": []
+    },
+    {
+      "id": "fe-cache",
+      "domain": "前端",
+      "title": "浏览器缓存",
+      "summary": "区分强缓存、协商缓存和资源版本化。",
+      "prerequisites": [
+        "http-https"
+      ]
+    },
+    {
+      "id": "fe-layout",
+      "domain": "前端",
+      "title": "Flex、Grid 与渲染",
+      "summary": "理解布局选择和强制同步布局。",
+      "prerequisites": []
+    },
+    {
+      "id": "backend-idempotency",
+      "domain": "后端",
+      "title": "幂等与重试",
+      "summary": "设计超时重试时的重复处理边界。",
+      "prerequisites": []
+    },
+    {
+      "id": "backend-cache",
+      "domain": "后端",
+      "title": "缓存一致性",
+      "summary": "辨识过期、穿透、击穿和补偿策略。",
+      "prerequisites": [
+        "db-acid"
+      ]
+    },
+    {
+      "id": "backend-mq",
+      "domain": "后端",
+      "title": "消息队列语义",
+      "summary": "理解至少一次投递和消费幂等。",
+      "prerequisites": [
+        "backend-idempotency"
+      ]
+    },
+    {
+      "id": "go-channel",
+      "domain": "Go",
+      "title": "Goroutine 与 channel",
+      "summary": "理解发送、接收、关闭和同步。",
+      "prerequisites": []
+    },
+    {
+      "id": "go-context",
+      "domain": "Go",
+      "title": "Context 取消传播",
+      "summary": "正确处理截止时间和资源释放。",
+      "prerequisites": [
+        "go-channel"
+      ]
+    },
+    {
+      "id": "go-errors",
+      "domain": "Go",
+      "title": "接口与错误链",
+      "summary": "通过语义保留错误原因。",
+      "prerequisites": []
+    },
+    {
+      "id": "py-binding",
+      "domain": "Python",
+      "title": "名称绑定与可变对象",
+      "summary": "理解引用共享与可变默认参数。",
+      "prerequisites": []
+    },
+    {
+      "id": "py-concurrency",
+      "domain": "Python",
+      "title": "GIL 与并发模型",
+      "summary": "按解释器版本和任务类型选择并发。",
+      "prerequisites": []
+    },
+    {
+      "id": "py-generator",
+      "domain": "Python",
+      "title": "生成器与异步",
+      "summary": "理解惰性迭代与事件循环阻塞。",
+      "prerequisites": []
+    },
+    {
+      "id": "ai-evaluation",
+      "domain": "AI",
+      "title": "过拟合与评估",
+      "summary": "保持训练、验证、测试职责分离。",
+      "prerequisites": []
+    },
+    {
+      "id": "ai-attention",
+      "domain": "AI",
+      "title": "Transformer 注意力",
+      "summary": "理解 Q/K/V、位置编码和成本。",
+      "prerequisites": []
+    },
+    {
+      "id": "ai-rag",
+      "domain": "AI",
+      "title": "RAG 检索增强",
+      "summary": "辨识切分、召回、引用和评估。",
+      "prerequisites": [
+        "ai-evaluation"
+      ]
+    },
+    {
+      "id": "agent-tools",
+      "domain": "Agent",
+      "title": "工具调用闭环",
+      "summary": "设计有界执行和工具结果反馈。",
+      "prerequisites": []
+    },
+    {
+      "id": "agent-memory",
+      "domain": "Agent",
+      "title": "记忆与状态",
+      "summary": "区分短期上下文、长期事实和推断。",
+      "prerequisites": [
+        "ai-rag"
+      ]
+    },
+    {
+      "id": "agent-injection",
+      "domain": "Agent",
+      "title": "提示注入与权限",
+      "summary": "将不可信资料与执行权限分离。",
+      "prerequisites": [
+        "agent-tools"
+      ]
+    },
+    {
+      "id": "exam-complexity",
+      "domain": "考研 408",
+      "title": "数据结构与复杂度",
+      "summary": "说明复杂度结论所需的不变量。",
+      "prerequisites": []
+    },
+    {
+      "id": "exam-os",
+      "domain": "考研 408",
+      "title": "进程线程与死锁",
+      "summary": "理解资源边界和死锁必要条件。",
+      "prerequisites": []
+    },
+    {
+      "id": "exam-network",
+      "domain": "考研 408",
+      "title": "计算机网络分层",
+      "summary": "按寻址、传输与应用职责定位协议。",
+      "prerequisites": [
+        "tcp-handshake"
+      ]
+    },
+    {
+      "id": "soft-architecture",
+      "domain": "软考",
+      "title": "需求与架构权衡",
+      "summary": "用质量属性和约束解释架构决策。",
+      "prerequisites": [
+        "spring-mvc"
+      ]
+    },
+    {
+      "id": "soft-risk",
+      "domain": "软考",
+      "title": "项目管理与风险",
+      "summary": "建立可执行的风险登记与应对。",
+      "prerequisites": []
+    },
+    {
+      "id": "soft-quality",
+      "domain": "软考",
+      "title": "软件质量与测试",
+      "summary": "将测试层次和需求验收关联。",
+      "prerequisites": []
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-equals-01",
+      "point": "java-equals",
+      "type": "single_choice",
+      "stem": "两个对象通过 equals 判断相等时，hashCode 必须满足什么约定？",
+      "options": [
+        "hashCode 必须相同",
+        "hashCode 必须不同",
+        "两个对象的类型必须完全相同",
+        "JVM 会自动合并这两个对象"
+      ],
+      "answer": "hashCode 必须相同",
+      "explanation": "equals 相等蕴含 hashCode 相同；hashCode 相同并不蕴含 equals 相等。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-equals-02",
+      "point": "java-equals",
+      "type": "short_answer",
+      "stem": "为什么重写 equals 时通常也要重写 hashCode？",
+      "options": [],
+      "answer": "相等对象必须有相同哈希值；否则哈希集合可能按哈希桶找不到逻辑上相等的键。",
+      "explanation": "HashMap、HashSet 等哈希容器先用哈希值定位，再用相等性比较。",
+      "rubric": [
+        "提到 equals 相等时 hashCode 必须相同",
+        "说明哈希集合依赖哈希值定位",
+        "说明违背约定会导致查找或去重异常"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-string-01",
+      "point": "java-string",
+      "type": "single_choice",
+      "stem": "在大量循环拼接字符串时，通常优先考虑哪种方式？",
+      "options": [
+        "每次都新建 String",
+        "使用 StringBuilder",
+        "把 String 转成数组后直接改字符",
+        "依赖 String 的对象池"
+      ],
+      "answer": "使用 StringBuilder",
+      "explanation": "String 不可变，循环拼接会产生新的字符串结果；StringBuilder 可在缓冲区中累积内容。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-string-02",
+      "point": "java-string",
+      "type": "short_answer",
+      "stem": "String 不可变带来什么好处？大量拼接时要注意什么？",
+      "options": [],
+      "answer": "不可变值可以安全共享，也适合作为哈希键；大量循环拼接可使用 StringBuilder。",
+      "explanation": "把对象共享与重复创建新字符串这两个方面分开回答。",
+      "rubric": [
+        "提到对象创建后字符序列不能原地修改",
+        "提到可安全共享或作为哈希键",
+        "提到大量循环拼接适合 StringBuilder"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-overload-01",
+      "point": "java-overload",
+      "type": "single_choice",
+      "stem": "Java 重载方法的选择主要依据什么？",
+      "options": [
+        "运行时实际对象的类型",
+        "编译期可见的参数类型",
+        "方法体执行耗时",
+        "方法返回值的内容"
+      ],
+      "answer": "编译期可见的参数类型",
+      "explanation": "重载根据方法名及参数列表区分，编译器基于调用点的参数类型选择匹配的方法。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-volatile-01",
+      "point": "java-volatile",
+      "type": "single_choice",
+      "stem": "仅使用 volatile 保护共享变量 count 时，count++ 一定是原子操作吗？",
+      "options": [
+        "是，volatile 会锁住变量",
+        "不是，它仍是读、改、写的复合操作",
+        "只有在单核 CPU 上是",
+        "只有使用 long 类型时是"
+      ],
+      "answer": "不是，它仍是读、改、写的复合操作",
+      "explanation": "volatile 保证该变量读写的可见性和相关顺序约束，但不会把复合读改写变成一个原子步骤。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-volatile-02",
+      "point": "java-volatile",
+      "type": "short_answer",
+      "stem": "简述 volatile 能解决的问题，以及它不能解决的问题。",
+      "options": [],
+      "answer": "它保证对同一 volatile 变量的可见性并提供相应的 happens-before 关系，但不保证 count++ 这类复合操作的原子性。",
+      "explanation": "把可见性/顺序约束与原子性区别开。",
+      "rubric": [
+        "说明 volatile 写与后续读取的可见性",
+        "提到 happens-before 或顺序约束",
+        "说明复合读改写仍不原子"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-sync-01",
+      "point": "java-synchronized",
+      "type": "single_choice",
+      "stem": "同一监视器上的 synchronized 解锁与后续加锁之间有什么关系？",
+      "options": [
+        "建立 happens-before 关系",
+        "只保证线程优先级",
+        "使两个线程运行在同一 CPU 核",
+        "把所有对象字段都变成 volatile"
+      ],
+      "answer": "建立 happens-before 关系",
+      "explanation": "对同一监视器的解锁 happens-before 后续加锁，synchronized 还提供互斥。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-hashmap-01",
+      "point": "java-hashmap",
+      "type": "single_choice",
+      "stem": "HashMap 遇到哈希冲突时，最终如何区分落入同一桶的不同键？",
+      "options": [
+        "只比较对象地址",
+        "使用键的相等性判断",
+        "丢弃后插入的键",
+        "对每个键建立独立线程"
+      ],
+      "answer": "使用键的相等性判断",
+      "explanation": "哈希值用于桶定位；桶内还需要通过键的相等性比较确定具体映射。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-arraylist-01",
+      "point": "java-arraylist",
+      "type": "single_choice",
+      "stem": "ArrayList 按索引读取通常较快，主要因为它基于什么结构？",
+      "options": [
+        "红黑树",
+        "可增长数组",
+        "双向链表",
+        "哈希桶"
+      ],
+      "answer": "可增长数组",
+      "explanation": "数组支持按下标定位；中间插入或删除时则需要移动后续元素。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-jvm-01",
+      "point": "java-jvm-memory",
+      "type": "single_choice",
+      "stem": "以下哪一项属于 JVM 的线程私有运行时数据区？",
+      "options": [
+        "Java 堆",
+        "方法区",
+        "程序计数器",
+        "所有对象字段"
+      ],
+      "answer": "程序计数器",
+      "explanation": "程序计数器、Java 虚拟机栈和本地方法栈是线程私有；堆与方法区为共享区。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-gc-01",
+      "point": "java-gc",
+      "type": "single_choice",
+      "stem": "可达性分析判断对象存活时，通常从哪里开始遍历引用关系？",
+      "options": [
+        "GC Roots",
+        "磁盘临时目录",
+        "所有类名的字典序",
+        "已结束的线程列表"
+      ],
+      "answer": "GC Roots",
+      "explanation": "从 GC Roots 出发遍历可达对象；与局部变量离开源码作用域不是同一概念。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-tcp-01",
+      "point": "tcp-handshake",
+      "type": "single_choice",
+      "stem": "TCP 三次握手中服务端的第二条消息通常是什么？",
+      "options": [
+        "FIN",
+        "SYN-ACK",
+        "RST",
+        "仅 ACK"
+      ],
+      "answer": "SYN-ACK",
+      "explanation": "典型流程是客户端 SYN、服务端 SYN-ACK、客户端 ACK。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-https-01",
+      "point": "http-https",
+      "type": "single_choice",
+      "stem": "HTTPS 在 HTTP 通信基础上主要增加了哪一层保护？",
+      "options": [
+        "TLS 传输保护",
+        "数据库事务",
+        "应用的角色权限",
+        "请求参数自动校验"
+      ],
+      "answer": "TLS 传输保护",
+      "explanation": "HTTPS 使用 TLS 提供传输机密性、完整性和服务端身份验证；它不替代应用授权。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-index-01",
+      "point": "db-index",
+      "type": "single_choice",
+      "stem": "数据库索引常见的代价是什么？",
+      "options": [
+        "占用存储，并增加写入维护成本",
+        "自动保证所有查询都更快",
+        "免除事务隔离",
+        "阻止数据更新"
+      ],
+      "answer": "占用存储，并增加写入维护成本",
+      "explanation": "索引可减少候选数据范围，但需要额外存储，并在写入时维护结构。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-acid-01",
+      "point": "db-acid",
+      "type": "short_answer",
+      "stem": "ACID 四个字母分别代表什么？它们描述的是哪类对象？",
+      "options": [],
+      "answer": "原子性、一致性、隔离性、持久性；它们描述数据库事务的性质。",
+      "explanation": "逐一写出 Atomicity、Consistency、Isolation、Durability 的含义。",
+      "rubric": [
+        "写出原子性",
+        "写出一致性",
+        "写出隔离性",
+        "写出持久性"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-spring-di-01",
+      "point": "spring-di",
+      "type": "single_choice",
+      "stem": "Spring 组件有必需依赖时，通常推荐怎样注入？",
+      "options": [
+        "在方法内反复 new 依赖",
+        "通过构造器声明依赖",
+        "把所有依赖放进 static 字段",
+        "使用字符串反射代替类型"
+      ],
+      "answer": "通过构造器声明依赖",
+      "explanation": "构造器明确必需依赖，便于测试；容器负责组装对象，而业务类保持单一职责。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-spring-di-02",
+      "point": "spring-di",
+      "type": "short_answer",
+      "stem": "解释 IoC 与依赖注入，并说明构造器注入的好处。",
+      "options": [],
+      "answer": "IoC 把对象组装和生命周期交给容器；依赖注入是提供依赖的方式。构造器让依赖显式且可验证，便于使用测试替身。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明容器管理对象组装或生命周期",
+        "说明依赖从外部提供",
+        "说明构造器使必需依赖显式并便于测试"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-spring-transaction-01",
+      "point": "spring-transaction",
+      "type": "single_choice",
+      "stem": "默认代理模式下，同一实例中直接调用标注 @Transactional 的方法会怎样？",
+      "options": [
+        "总会创建一个独立事务",
+        "会自动传播到异步线程",
+        "可能绕过代理，注解不会在该调用点生效",
+        "必然抛出编译错误"
+      ],
+      "answer": "可能绕过代理，注解不会在该调用点生效",
+      "explanation": "Spring 默认事务拦截依赖经过代理的调用；自调用绕过代理。已有事务的存在与注解是否被拦截应分别分析。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-spring-transaction-02",
+      "point": "spring-transaction",
+      "type": "short_answer",
+      "stem": "设计一次答题的事务边界时，哪些写入应一起提交？为什么？",
+      "options": [],
+      "answer": "答题记录和知识点下一次复习时间应在同一个事务中完成。并发更新要通过锁或版本控制串行化同一知识点的状态；外部模型调用不应长期持有数据库事务。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明答题记录和复习时间原子提交",
+        "说明并发状态需要锁或版本控制",
+        "说明避免在长事务中等待模型网络请求"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-spring-mvc-01",
+      "point": "spring-mvc",
+      "type": "single_choice",
+      "stem": "以下哪项适合放在 Service 层？",
+      "options": [
+        "解析 HTTP 请求头",
+        "生成 CSS 样式",
+        "选择浏览器图标",
+        "评分规则与复习排期的事务编排"
+      ],
+      "answer": "评分规则与复习排期的事务编排",
+      "explanation": "Controller 处理协议和输入，Service 执行业务规则，Repository 负责数据访问。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-spring-mvc-02",
+      "point": "spring-mvc",
+      "type": "short_answer",
+      "stem": "解释 Controller、Service、Repository 的职责，并举一次答题提交的调用过程。",
+      "options": [],
+      "answer": "Controller 校验请求形状并转交 Service；Service 校验题目、评分并计算复习时间；Repository 在事务中读取与写入数据。错误被统一转换为 API 响应。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "区分 HTTP 协议和业务逻辑",
+        "说明 Service 组织评分与事务",
+        "说明 Repository 封装持久化"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-fe-event-loop-01",
+      "point": "fe-event-loop",
+      "type": "single_choice",
+      "stem": "浏览器中当前脚本结束后，一般先执行哪类已排队回调？",
+      "options": [
+        "Promise 微任务",
+        "下一次 setTimeout 回调",
+        "必定先绘制一帧",
+        "随机选择任务"
+      ],
+      "answer": "Promise 微任务",
+      "explanation": "在常规浏览器任务执行模型中，当前任务结束后会清空微任务队列；具体分析需说明运行环境。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-fe-event-loop-02",
+      "point": "fe-event-loop",
+      "type": "short_answer",
+      "stem": "说明 Promise 回调与 setTimeout 回调的执行顺序，以及为什么不能用延时数值决定全部顺序。",
+      "options": [],
+      "answer": "同步调用栈先执行；当前任务结束后执行已入队微任务；定时器回调属于后续任务。延时只是允许入队的最早条件，还受事件循环和任务执行时间影响。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明同步调用栈先完成",
+        "区分微任务与后续任务",
+        "说明延时不保证精确执行时间"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-fe-cache-01",
+      "point": "fe-cache",
+      "type": "single_choice",
+      "stem": "协商缓存验证资源版本时可以使用哪组信息？",
+      "options": [
+        "TCP 源端口与目的端口",
+        "ETag 与 If-None-Match",
+        "CSS 选择器与优先级",
+        "页面标题与语言"
+      ],
+      "answer": "ETag 与 If-None-Match",
+      "explanation": "ETag 是资源验证器，客户端发送 If-None-Match；未变化时服务端可返回 304。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-fe-cache-02",
+      "point": "fe-cache",
+      "type": "short_answer",
+      "stem": "强缓存与协商缓存有什么区别？静态资源和用户私有数据如何选择策略？",
+      "options": [],
+      "answer": "强缓存可在资源新鲜时直接复用；协商缓存需要联系服务端验证版本。版本化静态资源可使用较长缓存，用户私有数据需按敏感性使用 private 或 no-store 等策略。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "区分直接复用与请求验证",
+        "提到 ETag 或 Last-Modified",
+        "说明静态资源和私有数据不能统一长缓存"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-fe-layout-01",
+      "point": "fe-layout",
+      "type": "single_choice",
+      "stem": "哪种操作最容易导致反复强制同步布局？",
+      "options": [
+        "批量改变样式后统一测量",
+        "只改变不会影响布局的样式",
+        "循环中交替写样式并读取 offsetWidth",
+        "使用一个固定宽度容器"
+      ],
+      "answer": "循环中交替写样式并读取 offsetWidth",
+      "explanation": "布局失效后读取几何信息可能迫使浏览器立刻重新计算；批量读写能减少来回触发。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-fe-layout-02",
+      "point": "fe-layout",
+      "type": "short_answer",
+      "stem": "说明 Flex 与 Grid 的适用场景，并解释怎样减少布局抖动。",
+      "options": [],
+      "answer": "Flex 适合一维排列，Grid 适合二维区域。将布局读取和样式写入分批进行，避免循环中交替读写几何信息；动画优先考虑合成相关属性但仍需测量效果。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "区分一维 Flex 和二维 Grid",
+        "说明读写交错可能触发布局重算",
+        "说明批量读取与写入"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-backend-idempotency-01",
+      "point": "backend-idempotency",
+      "type": "single_choice",
+      "stem": "创建订单请求超时后，怎样降低重试产生重复订单的风险？",
+      "options": [
+        "每次重试生成不同订单号",
+        "无限重试直到成功",
+        "只缩短超时时间",
+        "使用幂等键并保存同一请求的处理结果"
+      ],
+      "answer": "使用幂等键并保存同一请求的处理结果",
+      "explanation": "请求超时不能证明服务端未提交；幂等键需要唯一约束、请求内容校验和明确有效期。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-backend-idempotency-02",
+      "point": "backend-idempotency",
+      "type": "short_answer",
+      "stem": "为什么网络超时不能直接重试所有写接口？怎样设计可控重试？",
+      "options": [],
+      "answer": "服务端可能已经提交而响应丢失，重复请求会再次产生副作用。使用幂等键和原子状态记录；对瞬时错误设次数上限、指数退避与抖动，并区分业务错误。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明超时后结果不确定",
+        "说明幂等键与原子去重",
+        "说明有界退避并区分错误类型"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-backend-cache-01",
+      "point": "backend-cache",
+      "type": "single_choice",
+      "stem": "热门缓存键到期引发大量并发回源时，常用的缓解方式是什么？",
+      "options": [
+        "互斥或单次合并重建",
+        "删除所有数据库索引",
+        "把缓存永久关闭",
+        "重复执行全部查询"
+      ],
+      "answer": "互斥或单次合并重建",
+      "explanation": "击穿针对热点键失效；互斥重建减少同时回源，仍要处理锁超时和失败回退。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-backend-cache-02",
+      "point": "backend-cache",
+      "type": "short_answer",
+      "stem": "缓存穿透、击穿与雪崩有什么区别？分别举一个应对方法。",
+      "options": [],
+      "answer": "穿透是查询持续访问不存在的数据，可用短时空值缓存或布隆过滤器；击穿是热点键失效，可合并重建；雪崩是大量键或缓存服务同时失效，可用随机 TTL、限流和降级。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "区分不存在的数据与热点键失效",
+        "说明大批缓存同时失效",
+        "给出与三种场景对应的方法"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-backend-mq-01",
+      "point": "backend-mq",
+      "type": "single_choice",
+      "stem": "至少一次投递语义要求消费者特别考虑什么？",
+      "options": [
+        "消息永远只到达一次",
+        "重复消息与业务处理幂等",
+        "无需确认或重试",
+        "每条消息都全局严格有序"
+      ],
+      "answer": "重复消息与业务处理幂等",
+      "explanation": "故障恢复和确认丢失可能导致重投递；消费端应原子记录处理结果，避免重复副作用。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-backend-mq-02",
+      "point": "backend-mq",
+      "type": "short_answer",
+      "stem": "解释至少一次投递下的消费幂等，并说明确认时机和死信队列的作用。",
+      "options": [],
+      "answer": "业务操作和处理标记需在可保证一致性的边界内提交，成功后确认；重试需上限，不可处理消息进入死信并记录原因。死信不会自动修复业务逻辑。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明可能重复投递",
+        "说明操作与去重标记一致性及确认时机",
+        "说明重试上限和死信的人工处置"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-go-channel-01",
+      "point": "go-channel",
+      "type": "single_choice",
+      "stem": "关闭 channel 后，接收方如何判断缓冲数据已耗尽？",
+      "options": [
+        "再向 channel 发送一个空值",
+        "调用 close 两次",
+        "使用 value, ok := <-ch 并检查 ok",
+        "把 channel 设为 nil 后读取"
+      ],
+      "answer": "使用 value, ok := <-ch 并检查 ok",
+      "explanation": "关闭后已有缓冲值仍可读取；耗尽时返回元素零值与 ok=false，向已关闭 channel 发送会 panic。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-go-channel-02",
+      "point": "go-channel",
+      "type": "short_answer",
+      "stem": "无缓冲 channel、关闭 channel 与任务取消分别表示什么？",
+      "options": [],
+      "answer": "无缓冲发送和接收需要配对；关闭表示不再发送，已缓冲数据仍能读取；取消通常通过 context 或独立信号传播，不能混为一谈。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明无缓冲发送接收需配对",
+        "说明关闭后缓冲数据仍可读",
+        "区分结束发送与任务取消"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-go-context-01",
+      "point": "go-context",
+      "type": "single_choice",
+      "stem": "context.WithTimeout 返回的 cancel 通常应怎样处理？",
+      "options": [
+        "仅超时后调用",
+        "保存在全局变量供所有请求共享",
+        "从不调用",
+        "在所属操作结束时调用，常用 defer cancel()"
+      ],
+      "answer": "在所属操作结束时调用，常用 defer cancel()",
+      "explanation": "调用 cancel 及时释放定时器和相关资源；父级取消会传播到派生 context。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-go-context-02",
+      "point": "go-context",
+      "type": "short_answer",
+      "stem": "设计会调用多个服务的 Go 请求时，怎样传播超时和取消？",
+      "options": [],
+      "answer": "以请求 context 派生截止时间，向下游传递；HTTP/DB 使用支持 context 的接口，循环监听 Done；结束后调用 cancel，避免把 context 用作通用可变配置容器。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明父级 context 传递与派生截止时间",
+        "说明任务和下游需响应 Done",
+        "说明 cancel 释放资源"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-go-errors-01",
+      "point": "go-errors",
+      "type": "single_choice",
+      "stem": "检查包装后的错误是否来自指定原因，应该用什么？",
+      "options": [
+        "errors.Is 或 errors.As",
+        "仅比较 Error() 字符串",
+        "比较所有对象的内存地址",
+        "丢弃原始错误并返回 nil"
+      ],
+      "answer": "errors.Is 或 errors.As",
+      "explanation": "fmt.Errorf 的 %w 可保留错误链，errors.Is 判断原因，errors.As 提取具体错误类型。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-go-errors-02",
+      "point": "go-errors",
+      "type": "short_answer",
+      "stem": "为什么错误处理不应只拼接字符串？Go 的小接口设计有什么价值？",
+      "options": [],
+      "answer": "字符串易变化且丢失类型与错误链；%w、errors.Is/As 保留可判断语义。接口由方法集合隐式实现，按使用方定义小接口可减少耦合并方便测试替身。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明保留结构化原因和错误链",
+        "说明 Is/As 的语义",
+        "说明小接口利于组合或测试"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-py-binding-01",
+      "point": "py-binding",
+      "type": "single_choice",
+      "stem": "函数默认参数 items=[] 的常见风险是什么？",
+      "options": [
+        "每次调用都得到不可变元组",
+        "多个调用复用同一个列表对象",
+        "列表无法添加元素",
+        "默认参数仅在调用时创建"
+      ],
+      "answer": "多个调用复用同一个列表对象",
+      "explanation": "默认值在函数定义时求值；通常用 None 默认值在函数内部创建新列表。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-py-binding-02",
+      "point": "py-binding",
+      "type": "short_answer",
+      "stem": "解释 Python 名称绑定，并说明怎样修复可变默认参数问题。",
+      "options": [],
+      "answer": "变量名引用对象，多个名称可指向同一可变对象。默认值只在定义时求值，改用 None 并在每次调用需要时构造新容器，避免共享状态。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明名称绑定到对象",
+        "说明默认值在定义时求值",
+        "给出 None 加内部构造的修复"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-py-concurrency-01",
+      "point": "py-concurrency",
+      "type": "single_choice",
+      "stem": "常规启用 GIL 的 CPython 中，纯 Python CPU 密集任务通常优先考虑什么？",
+      "options": [
+        "无限增加线程",
+        "使用 async 自动并行字节码",
+        "多进程或释放 GIL 的扩展",
+        "把所有循环加 sleep"
+      ],
+      "answer": "多进程或释放 GIL 的扩展",
+      "explanation": "GIL 限制同一进程内线程同时执行字节码；I/O 与原生扩展行为不同，部分新解释器构建也支持禁用 GIL，应明确环境。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-py-concurrency-02",
+      "point": "py-concurrency",
+      "type": "short_answer",
+      "stem": "线程、多进程和 asyncio 如何按任务类型选择？回答时为什么要说明解释器环境？",
+      "options": [],
+      "answer": "I/O 等待可用线程或 asyncio；CPU 密集任务可用多进程或能释放 GIL 的扩展。asyncio 是协作调度，不自动并行同步 CPU 代码；GIL 结论依赖解释器与构建方式。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "区分 I/O 与 CPU 密集任务",
+        "说明 asyncio 不自动并行 CPU 计算",
+        "说明 GIL 行为依赖解释器环境"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-py-generator-01",
+      "point": "py-generator",
+      "type": "single_choice",
+      "stem": "async def 中直接执行耗时同步阻塞 I/O 会怎样？",
+      "options": [
+        "自动变成异步网络调用",
+        "自动使用独立进程",
+        "保证其他协程立即执行",
+        "可能阻塞事件循环中的其他协程"
+      ],
+      "answer": "可能阻塞事件循环中的其他协程",
+      "explanation": "async 定义并不会让任意函数成为非阻塞操作；应使用异步库或 asyncio.to_thread 等隔离阻塞操作。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-py-generator-02",
+      "point": "py-generator",
+      "type": "short_answer",
+      "stem": "说明生成器如何节省内存，并举例说明 async/await 的边界。",
+      "options": [],
+      "answer": "生成器按需 yield 数据，避免一次性构造全部结果；协程由事件循环推进，在可等待的非阻塞操作处让出执行权，普通阻塞调用仍需隔离。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明按需生成而非预先保存全部结果",
+        "说明事件循环与让出执行权",
+        "说明阻塞调用需异步库或隔离"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-ai-evaluation-01",
+      "point": "ai-evaluation",
+      "type": "single_choice",
+      "stem": "用同一测试集反复调整模型参数的主要问题是什么？",
+      "options": [
+        "模型会自动获得正确标签",
+        "测试集可以替代训练集",
+        "评估受到选择偏差，泛化估计失真",
+        "必然导致 GPU 损坏"
+      ],
+      "answer": "评估受到选择偏差，泛化估计失真",
+      "explanation": "测试集用于最终独立评估；反复据其调参会隐性过拟合，应使用验证集并管理数据泄漏。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-ai-evaluation-02",
+      "point": "ai-evaluation",
+      "type": "short_answer",
+      "stem": "不平衡分类任务为什么不应只看准确率？怎样组织数据划分和指标？",
+      "options": [],
+      "answer": "多数类预测可能获得高准确率而漏掉关键少数类；训练用于拟合、验证用于调参、测试用于独立评估。按误报漏报代价选择 precision、recall、F1，并防止泄漏。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明多数类掩盖少数类错误",
+        "区分训练验证测试用途",
+        "说明按误报漏报代价选择指标"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-ai-attention-01",
+      "point": "ai-attention",
+      "type": "single_choice",
+      "stem": "自注意力机制中 Q、K、V 的典型作用是什么？",
+      "options": [
+        "只保存文件路径",
+        "随机删除输入字符",
+        "替代所有激活函数",
+        "由查询与键计算权重，对值做加权组合"
+      ],
+      "answer": "由查询与键计算权重，对值做加权组合",
+      "explanation": "缩放点积注意力计算 softmax(QKᵀ/√d)V；因果掩码限制可访问位置，位置编码补充顺序信息。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-ai-attention-02",
+      "point": "ai-attention",
+      "type": "short_answer",
+      "stem": "说明自注意力如何建模序列关系，以及上下文增长为何影响成本。",
+      "options": [],
+      "answer": "查询和键的相似度形成权重，再组合值；多头使用多个投影空间，位置编码补充顺序。标准全注意力的两两交互矩阵随序列长度平方增长，具体内存受实现优化影响。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明 QK 权重与 V 加权",
+        "说明多头或位置编码作用",
+        "说明标准全注意力两两交互的平方增长"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-ai-rag-01",
+      "point": "ai-rag",
+      "type": "single_choice",
+      "stem": "RAG 检索命中相关文档后，是否保证生成答案正确？",
+      "options": [
+        "不保证，还需检查内容支持与生成忠实性",
+        "保证，模型不能再出错",
+        "保证，只要文档标题相似",
+        "不需要评估或来源引用"
+      ],
+      "answer": "不保证，还需检查内容支持与生成忠实性",
+      "explanation": "检索可能召回不完整或过时片段，模型也可能误解；引用编号合法只是格式检查，不能证明来源支持结论。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-ai-rag-02",
+      "point": "ai-rag",
+      "type": "short_answer",
+      "stem": "设计课程笔记 RAG 时应评估哪些环节？",
+      "options": [],
+      "answer": "检查分段是否保持语义、检索是否召回正确资料、重排与上下文预算是否合适、生成是否忠于来源，并验证引用支持结论；资料不足时允许明确拒答。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明切分与召回质量",
+        "说明上下文预算或重排",
+        "说明引用支持和资料不足拒答"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-agent-tools-01",
+      "point": "agent-tools",
+      "type": "single_choice",
+      "stem": "防止 Agent 无限制反复调用工具，应该设置什么？",
+      "options": [
+        "只设置更长的提示词",
+        "步骤、时间或费用预算与结束条件",
+        "允许工具自行扩大权限",
+        "不断重试所有失败"
+      ],
+      "answer": "步骤、时间或费用预算与结束条件",
+      "explanation": "模型决策之外还需确定性执行控制：参数校验、超时、预算和停止条件。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-agent-tools-02",
+      "point": "agent-tools",
+      "type": "short_answer",
+      "stem": "描述 Agent 的工具执行闭环，并说明怎样保证失败可控。",
+      "options": [],
+      "answer": "理解任务后选择工具，校验参数并执行，观察结果更新状态，判断是否继续。工具要有权限、超时、重试边界和审计，达到预算或不可恢复错误时终止。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明决策执行观察更新闭环",
+        "说明权限参数超时校验",
+        "说明预算及终止条件"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-agent-memory-01",
+      "point": "agent-memory",
+      "type": "single_choice",
+      "stem": "把所有历史内容无限追加到 Agent 上下文的常见代价是什么？",
+      "options": [
+        "上下文长度始终不变",
+        "所有内容都自动可信",
+        "成本上升并可能引入过期或矛盾信息",
+        "完全无需检索"
+      ],
+      "answer": "成本上升并可能引入过期或矛盾信息",
+      "explanation": "记忆需要写入条件、来源、版本、保留期和删除策略；用户事实、工具结果与模型推断应区分。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-agent-memory-02",
+      "point": "agent-memory",
+      "type": "short_answer",
+      "stem": "长期记忆如何避免把模型猜测误当成用户事实？",
+      "options": [],
+      "answer": "记录来源和类型，对持久化设置验证与写入条件；检索限定任务范围，保存时间和版本，提供更正及删除机制；不把未经确认的模型推断当作可靠事实。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明事实工具结果推断分类型",
+        "说明来源验证和写入条件",
+        "说明更正删除或过期管理"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-agent-injection-01",
+      "point": "agent-injection",
+      "type": "single_choice",
+      "stem": "外部网页含有要求 Agent 泄露密钥的指令，执行系统应怎样处理？",
+      "options": [
+        "以网页文本覆盖系统规则",
+        "向网页提供全部权限",
+        "让模型自行决定所有授权",
+        "将网页视为不可信数据并执行工具侧权限校验"
+      ],
+      "answer": "将网页视为不可信数据并执行工具侧权限校验",
+      "explanation": "提示词可帮助区分资料，但工具最小权限和参数校验才是确定性控制，敏感动作需要清晰授权。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-agent-injection-02",
+      "point": "agent-injection",
+      "type": "short_answer",
+      "stem": "为什么只在系统提示中写禁止越权不够？怎样防护工具执行？",
+      "options": [],
+      "answer": "外部内容可能诱导模型误判，提示并不能改变真实权限；工具端采用最小授权、参数白名单、敏感动作授权、输出脱敏及审计，并把来源文本保留为数据。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明提示词不等于权限控制",
+        "说明工具端最小授权和参数校验",
+        "说明敏感动作授权或审计"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-exam-complexity-01",
+      "point": "exam-complexity",
+      "type": "single_choice",
+      "stem": "平衡二叉搜索树能让查找达到 O(log n) 的关键条件是什么？",
+      "options": [
+        "树高维持在对数数量级",
+        "每个节点保存所有记录",
+        "树退化为链表",
+        "每次查找先遍历所有节点"
+      ],
+      "answer": "树高维持在对数数量级",
+      "explanation": "按比较结果下降路径，访问次数与树高相关；普通未平衡 BST 的最坏高度可达 n。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-exam-complexity-02",
+      "point": "exam-complexity",
+      "type": "short_answer",
+      "stem": "比较数组、链表与平衡搜索树的查找及更新成本，说明分析条件。",
+      "options": [],
+      "answer": "数组下标访问 O(1)，中间插删需移动元素；链表按索引 O(n)，持有节点后局部调整可 O(1)；平衡树保持高度 O(log n)，按键查找与插删通常 O(log n)。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "区分数组访问与中间插删",
+        "说明链表访问和节点已知的条件",
+        "说明平衡树高度不变量"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-exam-os-01",
+      "point": "exam-os",
+      "type": "single_choice",
+      "stem": "进程内线程通常共享什么，又各自保留什么？",
+      "options": [
+        "各有独立完整地址空间",
+        "共享地址空间，各自保留栈和执行上下文",
+        "共享同一栈且没有寄存器状态",
+        "彼此不能通信"
+      ],
+      "answer": "共享地址空间，各自保留栈和执行上下文",
+      "explanation": "线程共享进程的大部分地址空间和资源，仍有独立的栈、寄存器和调度上下文。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-exam-os-02",
+      "point": "exam-os",
+      "type": "short_answer",
+      "stem": "死锁四个必要条件是什么？举例说明一种预防方法。",
+      "options": [],
+      "answer": "互斥、占有且等待、不可剥夺、循环等待。统一锁获取顺序可破坏循环等待；实际设计还要考虑可重试、超时与资源回收。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "写出互斥与占有且等待",
+        "写出不可剥夺与循环等待",
+        "给出破坏至少一个条件的预防方法"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-exam-network-01",
+      "point": "exam-network",
+      "type": "single_choice",
+      "stem": "IP、TCP、HTTP 分别主要对应哪类职责？",
+      "options": [
+        "样式布局、字符编码、数据库锁",
+        "文件复制、GPU 调度、线程栈",
+        "网络寻址路由、端到端传输、应用请求响应",
+        "都只负责物理比特传输"
+      ],
+      "answer": "网络寻址路由、端到端传输、应用请求响应",
+      "explanation": "IP 提供网络层寻址路由，TCP 提供有序可靠字节流等传输语义，HTTP 定义应用语义。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-exam-network-02",
+      "point": "exam-network",
+      "type": "short_answer",
+      "stem": "TCP 可靠传输与 HTTP 业务成功为什么不是同一概念？",
+      "options": [],
+      "answer": "TCP 保证连接内有序字节流等传输语义，不能确认业务事务成功。HTTP 状态和业务结果仍需应用定义，断连或超时可能发生在服务端提交之后，因此写入需考虑幂等。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "区分传输可靠性与业务语义",
+        "说明超时或断连后结果可能不确定",
+        "说明业务状态确认或写入幂等"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-soft-architecture-01",
+      "point": "soft-architecture",
+      "type": "single_choice",
+      "stem": "选择微服务架构前，最应该先明确什么？",
+      "options": [
+        "框架的流行程度",
+        "服务数量越多越好",
+        "只考虑项目名字",
+        "业务边界、质量属性和团队运维能力"
+      ],
+      "answer": "业务边界、质量属性和团队运维能力",
+      "explanation": "微服务增加部署、数据一致性和运维成本，决策应由需求与约束支持。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-soft-architecture-02",
+      "point": "soft-architecture",
+      "type": "short_answer",
+      "stem": "架构决策记录应包含什么？为何高可用与一致性需要结合故障场景分析？",
+      "options": [],
+      "answer": "记录上下文、质量目标、候选方案、权衡和后果；故障场景下可用性、延迟、数据一致性与成本存在取舍，应说明容错、恢复和验收标准。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明上下文目标约束",
+        "说明候选方案与权衡后果",
+        "说明结合故障场景制定质量验收"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-soft-risk-01",
+      "point": "soft-risk",
+      "type": "single_choice",
+      "stem": "一条可执行的项目风险登记应至少包含什么？",
+      "options": [
+        "概率影响、责任人、应对策略和触发条件",
+        "仅一句可能延期",
+        "所有团队成员姓名",
+        "只记录已经关闭的缺陷"
+      ],
+      "answer": "概率影响、责任人、应对策略和触发条件",
+      "explanation": "风险登记关注尚未发生的不确定事件，需持续跟踪；风险发生后应按问题处理流程处置。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-soft-risk-02",
+      "point": "soft-risk",
+      "type": "short_answer",
+      "stem": "项目范围扩大而工期不变时，如何处理变更与风险？",
+      "options": [],
+      "answer": "先评估进度、成本、质量和资源影响，按变更流程与相关方明确优先级和验收范围；登记风险及责任、应对和触发条件，不能隐性削减质量后宣称全部完成。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "说明范围变更影响分析",
+        "说明明确优先级和验收范围",
+        "说明风险责任和应对措施"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-soft-quality-01",
+      "point": "soft-quality",
+      "type": "single_choice",
+      "stem": "单元测试通过后，还需要什么才能判断完整业务流程可用？",
+      "options": [
+        "直接宣布所有功能完成",
+        "集成、系统或验收测试验证边界和流程",
+        "删除缺陷记录",
+        "只检查源码行数"
+      ],
+      "answer": "集成、系统或验收测试验证边界和流程",
+      "explanation": "单元测试隔离局部逻辑；数据库、HTTP 协议、浏览器和部署配置的集成需要其他层次验证。",
+      "rubric": [],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    },
+    {
+      "id": "q-soft-quality-02",
+      "point": "soft-quality",
+      "type": "short_answer",
+      "stem": "比较单元、集成、系统和验收测试，并说明需求可追踪性。",
+      "options": [],
+      "answer": "单元测试验证局部规则，集成测试验证组件协作，系统测试验证整体流程，验收测试对应用户目标。用需求与测试映射说明覆盖和未验证边界，CI 与评审辅助持续质量控制。",
+      "explanation": "按参考要点检查概念、边界和应用条件，允许准确的等价表述。",
+      "rubric": [
+        "区分局部规则与组件协作",
+        "区分完整系统和用户验收",
+        "说明需求测试映射和未验证边界"
+      ],
+      "source_name": "DevPrep 原创示例（AI 辅助整理）",
+      "source_url": "https://github.com/lgcyuzusakura/devprep-ai",
+      "source_license": "MIT",
+      "source_attribution": "DevPrep contributors / AI-assisted",
+      "source_revision": "seed-v0.2.0",
+      "source_locale": "zh-CN"
+    }
+  ]
+}

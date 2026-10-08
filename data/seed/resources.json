@@ -30,13 +30,33 @@
     "source": "Vue.js"
   },
   {
+    "id": "frontend-typescript",
+    "track": "前端",
+    "title": "TypeScript 官方文档",
+    "kind": "官方文档",
+    "description": "类型系统、泛型、模块、编译配置和工程实践的官方参考。",
+    "url": "https://www.typescriptlang.org/docs/",
+    "license": "按 TypeScript 项目与文档页面许可说明使用",
+    "source": "TypeScript"
+  },
+  {
+    "id": "frontend-javascript-info",
+    "track": "前端",
+    "title": "现代 JavaScript 教程",
+    "kind": "公开教程",
+    "description": "从语言基础到浏览器 API 的系统 JavaScript 教程，可补充前端面试知识点。",
+    "url": "https://javascript.info/",
+    "license": "按站点版权与许可说明使用",
+    "source": "javascript.info"
+  },
+  {
     "id": "java-guides",
     "track": "Java",
     "title": "JavaGuide",
     "kind": "开源学习项目",
     "description": "Java 基础、集合、并发、JVM、数据库和面试复习索引。",
     "url": "https://github.com/Snailclimb/JavaGuide",
-    "license": "以仓库 LICENSE 文件为准",
+    "license": "Apache-2.0（GitHub LICENSE）",
     "source": "Snailclimb/JavaGuide"
   },
   {
@@ -60,13 +80,33 @@
     "source": "OpenJDK"
   },
   {
+    "id": "java-dev-learn",
+    "track": "Java",
+    "title": "dev.java 学习入口",
+    "kind": "官方教程",
+    "description": "Java 官方学习路径，覆盖语言、集合、并发、JVM 和现代 Java 特性。",
+    "url": "https://dev.java/learn/",
+    "license": "按 Java 文档页面许可说明使用",
+    "source": "dev.java"
+  },
+  {
+    "id": "java-spring-guides",
+    "track": "Java",
+    "title": "Spring Guides",
+    "kind": "官方教程",
+    "description": "Spring 官方短教程集合，覆盖 Web、数据访问、安全和测试等后端实践。",
+    "url": "https://spring.io/guides",
+    "license": "按 Spring 文档页面许可说明使用",
+    "source": "Spring"
+  },
+  {
     "id": "backend-system-design",
     "track": "后端",
     "title": "System Design Primer",
     "kind": "开源学习项目",
     "description": "可扩展服务、缓存、队列、数据库和系统设计面试主题索引。",
     "url": "https://github.com/donnemartin/system-design-primer",
-    "license": "MIT（以仓库 LICENSE 为准）",
+    "license": "NOASSERTION（GitHub API；LICENSE.txt 标注 CC-BY-4.0）",
     "source": "donnemartin/system-design-primer"
   },
   {
@@ -88,6 +128,26 @@
     "url": "https://redis.io/docs/",
     "license": "按 Redis 文档页面许可说明使用",
     "source": "Redis"
+  },
+  {
+    "id": "backend-http-mdn",
+    "track": "后端",
+    "title": "MDN HTTP 概览",
+    "kind": "官方文档",
+    "description": "HTTP 请求响应、缓存、连接、安全和协议语义的参考资料。",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview",
+    "license": "页面内容与代码示例按 MDN 各自许可说明使用",
+    "source": "MDN Web Docs"
+  },
+  {
+    "id": "backend-owasp-cheatsheets",
+    "track": "后端",
+    "title": "OWASP Cheat Sheet Series",
+    "kind": "安全知识库",
+    "description": "认证、会话、输入校验、API 和应用安全的公开实践清单。",
+    "url": "https://cheatsheetseries.owasp.org/",
+    "license": "CC-BY-SA-4.0（GitHub LICENSE.md）",
+    "source": "OWASP"
   },
   {
     "id": "go-tour",
@@ -116,8 +176,28 @@
     "kind": "开源工程指南",
     "description": "面向生产代码的 Go 风格、错误处理、并发和 API 设计建议。",
     "url": "https://github.com/uber-go/guide",
-    "license": "以仓库 LICENSE 文件为准",
+    "license": "Apache-2.0（GitHub LICENSE）",
     "source": "uber-go/guide"
+  },
+  {
+    "id": "go-effective",
+    "track": "Go",
+    "title": "Effective Go",
+    "kind": "官方工程指南",
+    "description": "面向 Go 语言惯用写法、接口、并发、错误处理和代码组织的官方指南。",
+    "url": "https://go.dev/doc/effective_go",
+    "license": "按 Go 项目与页面许可说明使用",
+    "source": "The Go Authors"
+  },
+  {
+    "id": "go-by-example",
+    "track": "Go",
+    "title": "Go by Example",
+    "kind": "公开教程",
+    "description": "通过短小可运行示例学习 Go 语法、并发、网络和标准库用法。",
+    "url": "https://gobyexample.com/",
+    "license": "按站点版权与许可说明使用",
+    "source": "Go by Example"
   },
   {
     "id": "python-docs",
@@ -150,6 +230,26 @@
     "source": "Full Stack Python"
   },
   {
+    "id": "python-packaging",
+    "track": "Python",
+    "title": "Python Packaging User Guide",
+    "kind": "公开工程指南",
+    "description": "Python 打包、依赖管理、发布和虚拟环境的社区维护指南。",
+    "url": "https://packaging.python.org/en/latest/",
+    "license": "按 Python Packaging User Guide 页面许可说明使用",
+    "source": "Python Packaging Authority"
+  },
+  {
+    "id": "python-fastapi",
+    "track": "Python",
+    "title": "FastAPI 官方文档",
+    "kind": "开源框架文档",
+    "description": "基于 Python 类型标注构建 API，覆盖请求校验、依赖注入、异步和 OpenAPI。",
+    "url": "https://fastapi.tiangolo.com/",
+    "license": "按 FastAPI 项目 LICENSE 与文档许可说明使用",
+    "source": "FastAPI"
+  },
+  {
     "id": "ai-huggingface-course",
     "track": "AI",
     "title": "Hugging Face NLP Course",
@@ -178,6 +278,26 @@
     "url": "https://cs231n.github.io/",
     "license": "按课程页面版权与使用说明执行",
     "source": "Stanford University"
+  },
+  {
+    "id": "ai-pytorch-tutorials",
+    "track": "AI",
+    "title": "PyTorch Tutorials",
+    "kind": "官方教程",
+    "description": "覆盖张量、自动微分、模型训练、计算机视觉和自然语言处理的 PyTorch 教程。",
+    "url": "https://pytorch.org/tutorials/",
+    "license": "BSD-3-Clause（GitHub LICENSE）",
+    "source": "pytorch/tutorials"
+  },
+  {
+    "id": "ai-scikit-learn-guide",
+    "track": "AI",
+    "title": "scikit-learn User Guide",
+    "kind": "官方文档",
+    "description": "机器学习模型、预处理、模型选择、评估和常用算法的系统参考。",
+    "url": "https://scikit-learn.org/stable/user_guide.html",
+    "license": "BSD-3-Clause（GitHub LICENSE）",
+    "source": "scikit-learn/scikit-learn"
   },
   {
     "id": "agent-anthropic",
@@ -210,6 +330,26 @@
     "source": "LangChain"
   },
   {
+    "id": "agent-autogen",
+    "track": "Agent",
+    "title": "Microsoft AutoGen",
+    "kind": "开源 Agent 框架",
+    "description": "多智能体对话、工具调用和任务协作框架，可用于研究和构建 Agent 工作流。",
+    "url": "https://github.com/microsoft/autogen",
+    "license": "CC-BY-4.0（GitHub LICENSE）",
+    "source": "microsoft/autogen"
+  },
+  {
+    "id": "agent-langgraph-repo",
+    "track": "Agent",
+    "title": "LangGraph 开源仓库",
+    "kind": "开源 Agent 框架",
+    "description": "LangGraph 的源码、示例和工程实现，适合配合官方文档了解图式 Agent 编排。",
+    "url": "https://github.com/langchain-ai/langgraph",
+    "license": "MIT（GitHub LICENSE）",
+    "source": "langchain-ai/langgraph"
+  },
+  {
     "id": "exam-408-csdiy",
     "track": "计算机考研 408",
     "title": "CS 自学指南",
@@ -240,6 +380,26 @@
     "source": "教育部教育考试院"
   },
   {
+    "id": "exam-408-chsi",
+    "track": "计算机考研 408",
+    "title": "中国研究生招生信息网",
+    "kind": "官方招生入口",
+    "description": "提供硕士研究生招生政策、招生单位信息、报名和调剂等官方服务入口。",
+    "url": "https://yz.chsi.com.cn/",
+    "license": "按网站公告、版权和使用条款执行",
+    "source": "中国研究生招生信息网"
+  },
+  {
+    "id": "exam-408-yankao",
+    "track": "计算机考研 408",
+    "title": "硕士研究生考试大纲栏目",
+    "kind": "官方考试大纲",
+    "description": "中国教育考试网公布的全国硕士研究生招生考试大纲栏目；具体科目和年份需以页面标注为准。",
+    "url": "https://yankao.neea.edu.cn/html1/category/1509/6235-1.htm",
+    "license": "按网站公告、版权和使用条款执行",
+    "source": "中国教育考试网"
+  },
+  {
     "id": "exam-soft-test",
     "track": "软考",
     "title": "中国计算机技术职业资格网",
@@ -262,11 +422,31 @@
   {
     "id": "exam-soft-github",
     "track": "软考",
-    "title": "软考公开资料检索入口",
-    "kind": "开源搜索入口",
-    "description": "用于检索社区整理的软考项目管理、架构和系统分析资料；使用前核对原始出处。",
-    "url": "https://github.com/search?q=%E8%BD%AF%E8%80%83&type=repositories",
-    "license": "各仓库按其 LICENSE 文件执行",
-    "source": "GitHub 公共仓库搜索"
+    "title": "软考公开资料与社区入口",
+    "kind": "第三方学习社区",
+    "description": "提供软考报名动态、教材大纲、历年试题和学习资料索引；内容为第三方整理，使用时核对官方出处和年份。",
+    "url": "https://www.educity.cn/rk/",
+    "license": "按希赛网页面版权与使用条款执行",
+    "source": "希赛网"
+  },
+  {
+    "id": "exam-soft-plan",
+    "track": "软考",
+    "title": "软考考试安排",
+    "kind": "官方考试安排",
+    "description": "按年度发布软考考试安排、报名时间和考试科目；引用具体信息时核对对应年度公告。",
+    "url": "https://www.ruankao.org.cn/exam/plan.html",
+    "license": "按网站公告、版权和使用条款执行",
+    "source": "中国计算机技术职业资格网"
+  },
+  {
+    "id": "exam-soft-books",
+    "track": "软考",
+    "title": "软考考试用书",
+    "kind": "官方考试用书",
+    "description": "提供软考大纲、教程和辅导用书目录及出版社购买链接，不等同于免费大纲全文。",
+    "url": "https://www.ruankao.org.cn/book/main.html",
+    "license": "按网站公告、版权和使用条款执行",
+    "source": "中国计算机技术职业资格网"
   }
 ]

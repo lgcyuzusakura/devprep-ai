@@ -64,7 +64,7 @@ export default function App() {
     <div className="workspace">
       <header className="topbar"><div className="breadcrumb"><span className="mobile-menu"><IconButton icon={Menu} label="打开导航" onClick={() => setMenuOpen(true)} /></span><PanelLeftClose size={17} className="desktop-nav-icon" /><span className="breadcrumb-root">工作区</span><span className="breadcrumb-divider">/</span><span>{section}</span></div><button className="model-status" onClick={() => navigate("settings")} title="打开模型设置"><span className={`status-dot ${settings?.model ? "" : "status-dot-muted"}`} /><span>{settings?.model || "模型未配置"}</span><ArrowUpRight size={14} /></button></header>
       <main className="main-content">{page}</main>
-      <footer className="app-footer"><span>DevPrep <Badge>v0.1</Badge></span><span>Java 基础 · 个人复习</span></footer>
+      <footer className="app-footer"><span>DevPrep <Badge>v0.1</Badge></span><span>计算机学习 · 考试与面试</span></footer>
     </div>
   </div>;
 }
