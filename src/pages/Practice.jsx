@@ -17,6 +17,14 @@ function safeSourceLink(value, base) {
   } catch { return ""; }
 }
 
+function localeLabel(value) {
+  if (typeof value !== "string" || !value.trim()) return "";
+  const locale = value.trim().toLowerCase();
+  if (locale === "en" || locale.startsWith("en-")) return "英文";
+  if (locale === "zh" || locale.startsWith("zh-")) return "中文";
+  return value;
+}
+
 function PracticeContent({ value, format, sourceUrl, className = "" }) {
   const text = typeof value === "string" ? value : String(value ?? "");
   if (!isMarkdownContent(format)) return <div className={"practice-plain " + className}>{text}</div>;
@@ -41,11 +49,12 @@ function QuestionSource({ question }) {
     <Badge>{question.source_type || "本地题库"}</Badge>
     {question.source_name && <strong className="source-name">{question.source_name}</strong>}
     {url && <a className="source-link" href={url} target="_blank" rel="noopener noreferrer">查看题目原文 <ExternalLink size={13} /></a>}
-    {(question.source_path || question.source_license || question.license || question.source_attribution || question.attribution || question.source_locale || question.locale) && <dl className="source-details">
+    {(question.source_path || question.source_license || question.license || question.source_attribution || question.attribution || question.source_locale || question.locale || question.content_locale) && <dl className="source-details">
       {question.source_path && <><dt>原文文件</dt><dd>{question.source_path}</dd></>}
       {(question.source_license || question.license) && <><dt>许可证</dt><dd>{question.source_license || question.license}</dd></>}
       {(question.source_attribution || question.attribution) && <><dt>署名</dt><dd>{question.source_attribution || question.attribution}</dd></>}
-      {(question.source_locale || question.locale) && <><dt>原文语言</dt><dd>{(question.source_locale || question.locale) === "en" ? "英文" : (question.source_locale || question.locale) === "zh" || (question.source_locale || question.locale) === "zh-CN" ? "中文" : (question.source_locale || question.locale)}</dd></>}
+      {(question.source_locale || question.locale) && <><dt>原文语言</dt><dd>{localeLabel(question.source_locale || question.locale)}</dd></>}
+      {question.content_locale && <><dt>题目语言</dt><dd>{localeLabel(question.content_locale)}</dd></>}
     </dl>}
     {(question.source_revision || question.revision || question.source_sha256) && <details className="source-version"><summary>版本与校验信息</summary><dl className="source-details">
       {(question.source_revision || question.revision) && <><dt>来源版本</dt><dd><code>{question.source_revision || question.revision}</code></dd></>}
@@ -107,7 +116,7 @@ export default function Practice({ params, target, changed }) {
     <ErrorNotice message={error} retry={!question ? load : undefined} />
     {!question ? (!error && <Loading />) : <div className="practice-layout">
       <section className="question-surface" aria-busy={busy}>
-        <div className="question-topline"><span>{question.domain}</span><Badge>{question.question_type === "single_choice" ? "单选题" : referenceMode ? "原文问答" : "简答题"}</Badge></div>
+        <div className="question-topline"><span>{question.domain}</span><Badge>{question.question_type === "single_choice" ? "单选题" : referenceMode ? "问答题" : "简答题"}</Badge></div>
         {isMarkdownContent(question.content_format) && hasSourceFormatting(question.stem) ? <><h2 className="sr-only">{sourcePlainText(question.stem) || "题目"}</h2><PracticeContent className="question-stem" value={question.stem} format={question.content_format} sourceUrl={question.source_url} /></> : <h2 className="question-stem">{isMarkdownContent(question.content_format) ? sourcePlainText(question.stem) : question.stem}</h2>}
         <div className="question-topic"><BookOpen size={14} />{question.topic_title}</div>
         {question.question_type === "single_choice" ? <fieldset className="answer-options" disabled={!!feedback || busy}>
@@ -132,7 +141,7 @@ export default function Practice({ params, target, changed }) {
           </fieldset> : <><h3>回答要点</h3><div className="rubric-list">{(reference.rubric || []).map((item, index) => <label key={item}><input type="checkbox" checked={hits[index]} disabled={busy} onChange={(event) => setHits((previous) => previous.map((hit, i) => i === index ? event.target.checked : hit))} /><span>{item}</span></label>)}</div></>}
         </div>}
         {feedback && <div className={"feedback-panel " + (feedbackPassed ? "feedback-success" : "feedback-review")} role="status">
-          <div className="feedback-heading"><CheckCircle2 size={20} /><strong>{referenceMode ? feedbackPassed ? "自评：已掌握" : "自评：需复习" : feedback.correct ? "回答正确" : "还需要巩固"}</strong><span>{referenceMode ? "对照原文自评" : Math.round(feedback.score * 100) + " 分"}</span></div>
+          <div className="feedback-heading"><CheckCircle2 size={20} /><strong>{referenceMode ? feedbackPassed ? "自评：已掌握" : "自评：需复习" : feedback.correct ? "回答正确" : "还需要巩固"}</strong><span>{referenceMode ? "对照答案自评" : Math.round(feedback.score * 100) + " 分"}</span></div>
           <h3>参考答案</h3><PracticeContent value={feedback.answer} format={feedback.content_format || question.content_format} sourceUrl={question.source_url} />
           {feedback.explanation && <><h3>{referenceMode ? "复习提示" : "解析"}</h3><PracticeContent value={feedback.explanation} format={feedback.content_format || question.content_format} sourceUrl={question.source_url} /></>}
           <div className="feedback-next">下次复习 <strong>{dateLabel(feedback.review_at)}</strong></div>

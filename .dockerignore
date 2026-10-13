@@ -1,0 +1,12 @@
+**
+!Dockerfile
+!Dockerfile.runtime
+!package.json
+!package-lock.json
+!index.html
+!vite.config.js
+!src/**
+!backend-java/pom.xml
+!backend-java/src/**
+!backend-java/target/devprep-backend-0.2.0-SNAPSHOT.jar
+!data/seed/**

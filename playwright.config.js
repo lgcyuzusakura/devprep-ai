@@ -31,6 +31,7 @@ export default defineConfig({
       DEVPREP_DB_FILE: join(testData, "devprep"),
       DEVPREP_CONFIG_FILE: join(testData, "settings.toml"),
       DEVPREP_LOCAL_LEARNING_FILE: "",
+      DEVPREP_AGENT_MIN_INTERVAL_MILLIS: "0", // Providers in browser tests are local fixtures only.
     },
   },
 });

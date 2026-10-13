@@ -96,6 +96,7 @@ class SeedImportIntegrationTest {
         assertEquals("fixture-revision", next.source_revision());
         assertEquals("a".repeat(64), next.source_sha256());
         assertEquals("en", next.source_locale());
+        assertEquals("zh-CN", next.content_locale());
         assertEquals("reference", next.assessment_mode());
         assertEquals("imported", next.status());
         assertEquals("verbatim-html-markdown", next.content_format());
@@ -112,6 +113,7 @@ class SeedImportIntegrationTest {
         assertEquals("对照原始答案，我的回答覆盖了主要内容", reference.self_assessment_prompt());
         assertEquals(next.source_url(), reference.source_url());
         assertEquals(next.source_license(), reference.source_license());
+        assertEquals(next.content_locale(), reference.content_locale());
         assertEquals(next.content_format(), reference.content_format());
     }
 
@@ -251,6 +253,148 @@ class SeedImportIntegrationTest {
         assertEquals("en", learning.reference("local-test-canonical-q").source_locale());
     }
 
+    @Test
+    void untranslatedEnglishQuestionsAreExcludedAndLaterChineseTranslationRefreshesExistingRow() throws Exception {
+        ObjectNode pack = localPack("local-test-translation");
+        ObjectNode item = question(pack);
+        item.remove("content_locale");
+        item.put("stem", "Original English question?").put("answer", "Original English answer")
+                .put("source_name", "Original source").put("content_format", "markdown");
+        loadPack(pack);
+
+        assertEquals("en", jdbc.queryForObject("SELECT content_locale FROM questions WHERE id=?", String.class,
+                "local-test-translation-q"));
+        assertThrows(ApiException.class, () -> learning.nextQuestion("local-test-translation-topic"));
+        assertThrows(ApiException.class, () -> learning.reference("local-test-translation-q"));
+        assertThrows(ApiException.class, () -> learning.submitAttempt("local-test-translation-q", "English answer", null));
+        // Simulate a record written before the Chinese-only practice constraint.
+        jdbc.update("""
+                INSERT INTO attempts(id,question_id,knowledge_point_id,answer_json,score,is_correct,rubric_hits_json,created_at,
+                                     assessment_mode,self_assessment)
+                VALUES('local-test-translation-attempt','local-test-translation-q','local-test-translation-topic',
+                       '"Original response"',1,1,'[]','2026-10-08T03:00:00Z','reference',true)
+                """);
+        String oldSchedule = "2026-10-09T03:00:00Z";
+        jdbc.update("UPDATE knowledge_points SET next_review_at=? WHERE id='local-test-translation-topic'", oldSchedule);
+        Map<String, Object> sourceMetadata = jdbc.queryForMap("""
+                SELECT source_material_id,source_name,source_url,source_path,license,attribution,revision,source_sha256,source_locale
+                FROM questions WHERE id='local-test-translation-q'
+                """);
+
+        item.put("stem", "翻译后的中文题目？").put("answer", "翻译后的中文答案")
+                .put("explanation", "中文解释").put("content_locale", "zh-CN")
+                .put("source_name", "Should not replace original source");
+        writePack(pack, false);
+        seeds.initialize();
+
+        PracticeQuestion translated = learning.nextQuestion("local-test-translation-topic");
+        assertEquals("翻译后的中文题目？", translated.stem());
+        assertEquals("zh-CN", translated.content_locale());
+        assertEquals("Original source", translated.source_name());
+        assertEquals("翻译后的中文答案", ((JsonNode) learning.reference(translated.id()).answer()).textValue());
+        assertEquals("中文解释", learning.reference(translated.id()).explanation());
+        assertEquals(sourceMetadata, jdbc.queryForMap("""
+                SELECT source_material_id,source_name,source_url,source_path,license,attribution,revision,source_sha256,source_locale
+                FROM questions WHERE id='local-test-translation-q'
+                """));
+        assertEquals(oldSchedule, jdbc.queryForObject("SELECT next_review_at FROM knowledge_points WHERE id='local-test-translation-topic'", String.class));
+        assertEquals("\"Original response\"", jdbc.queryForObject("SELECT answer_json FROM attempts WHERE id='local-test-translation-attempt'", String.class));
+        learning.submitAttempt(translated.id(), "中文回答", null, true);
+        assertEquals(2, learning.dashboard().total_attempts());
+
+        item.put("stem", "再次更新后的中文题目？").put("translation_status", "translated");
+        writePack(pack, false);
+        seeds.initialize();
+        assertEquals("再次更新后的中文题目？", learning.nextQuestion("local-test-translation-topic").stem());
+        assertEquals(2, learning.dashboard().total_attempts());
+    }
+
+    @Test
+    void explicitTranslationUpdatesMixedChineseSourceAndTopicWhileKeepingPrerequisitesAndProgress() throws Exception {
+        ObjectNode pack = localPack("local-test-mixed");
+        ObjectNode item = question(pack);
+        item.put("locale", "zh-CN").put("stem", "中文标题与 English sentence?")
+                .put("answer", "English answer in a Chinese source");
+        topic(pack).withArray("prerequisites").add("java-equals");
+        loadPack(pack);
+        learning.submitAttempt("local-test-mixed-q", "我的回答", null, false);
+        String review = jdbc.queryForObject("SELECT next_review_at FROM knowledge_points WHERE id='local-test-mixed-topic'", String.class);
+
+        item.put("stem", "中文来源中的英文段落已翻译？").put("answer", "完整中文答案")
+                .put("explanation", "中文解析").put("translation_status", "translated");
+        topic(pack).put("domain", "中文领域").put("title", "中文知识点").put("summary", "中文知识点摘要")
+                .put("translation_status", "translated");
+        topic(pack).withArray("prerequisites").removeAll();
+        loadPack(pack);
+
+        PracticeQuestion next = learning.nextQuestion("local-test-mixed-topic");
+        assertEquals("中文来源中的英文段落已翻译？", next.stem());
+        assertEquals("完整中文答案", ((JsonNode) learning.reference(next.id()).answer()).textValue());
+        assertEquals("zh-CN", next.source_locale());
+        assertEquals("中文领域", next.domain());
+        assertEquals("中文知识点", next.topic_title());
+        assertEquals("中文知识点摘要", next.topic_summary());
+        assertEquals("[\"java-equals\"]", jdbc.queryForObject("SELECT prerequisites_json FROM knowledge_points WHERE id='local-test-mixed-topic'", String.class));
+        assertEquals(review, jdbc.queryForObject("SELECT next_review_at FROM knowledge_points WHERE id='local-test-mixed-topic'", String.class));
+        assertEquals(1, learning.dashboard().total_attempts());
+
+        item.put("stem", "更正后的中文题目？");
+        loadPack(pack);
+        assertEquals("更正后的中文题目？", learning.nextQuestion("local-test-mixed-topic").stem());
+        assertEquals(1, learning.dashboard().total_attempts());
+    }
+
+    @Test
+    void pendingTranslationHidesExistingChineseSourceUntilCompletedAndPreservesStoredData() throws Exception {
+        String questionId = "local-test-pending-q";
+        String topicId = "local-test-pending-topic";
+        ObjectNode pack = localPack("local-test-pending");
+        ObjectNode item = question(pack);
+        item.put("locale", "zh-CN").put("stem", "Original English question in a Chinese source?")
+                .put("answer", "Original English answer");
+        loadPack(pack);
+        learning.submitAttempt(questionId, "已有学习回答", null, true);
+        Map<String, Object> expectedPendingQuestion = jdbc.queryForMap("SELECT * FROM questions WHERE id=?", questionId);
+        expectedPendingQuestion.put("content_locale", "und");
+        Map<String, Object> originalTopic = jdbc.queryForMap("SELECT * FROM knowledge_points WHERE id=?", topicId);
+        Map<String, Object> originalAttempt = jdbc.queryForMap("SELECT * FROM attempts WHERE question_id=?", questionId);
+
+        item.put("translation_status", "pending").put("content_locale", "und")
+                .put("stem", "Unfinished replacement question?").put("answer", "Unfinished replacement answer")
+                .put("explanation", "Unfinished replacement explanation")
+                .put("source_name", "Should not replace provenance")
+                .put("source_url", "https://example.com/changed-source.md").put("source_sha256", "b".repeat(64));
+        topic(pack).put("translation_status", "pending").put("title", "Unfinished replacement title");
+        loadPack(pack);
+        // Reimporting a partial pack keeps the question hidden without replacing its body.
+        seeds.initialize();
+        assertEquals(expectedPendingQuestion, jdbc.queryForMap("SELECT * FROM questions WHERE id=?", questionId));
+        assertEquals(originalTopic, jdbc.queryForMap("SELECT * FROM knowledge_points WHERE id=?", topicId));
+        assertEquals(originalAttempt, jdbc.queryForMap("SELECT * FROM attempts WHERE question_id=?", questionId));
+        assertThrows(ApiException.class, () -> learning.nextQuestion(topicId));
+        assertThrows(ApiException.class, () -> learning.reference(questionId));
+        assertThrows(ApiException.class, () -> learning.submitAttempt(questionId, "待翻译期间的回答", null, true));
+        assertEquals(1, learning.dashboard().total_attempts());
+
+        item.put("translation_status", "translated").put("content_locale", "zh-CN")
+                .put("stem", "中文来源中的英文题目已翻译？").put("answer", "翻译完成后的中文答案")
+                .put("explanation", "翻译完成后的中文解析");
+        loadPack(pack);
+        PracticeQuestion translated = learning.nextQuestion(topicId);
+        assertEquals("中文来源中的英文题目已翻译？", translated.stem());
+        assertEquals("zh-CN", translated.content_locale());
+        assertEquals("zh-CN", translated.source_locale());
+        assertEquals("Fixture source", translated.source_name());
+        assertEquals("https://example.com/snapshot/questions.md", translated.source_url());
+        assertEquals("a".repeat(64), translated.source_sha256());
+        assertEquals("翻译完成后的中文答案", ((JsonNode) learning.reference(questionId).answer()).textValue());
+        assertEquals("翻译完成后的中文解析", learning.reference(questionId).explanation());
+        assertEquals(originalTopic, jdbc.queryForMap("SELECT * FROM knowledge_points WHERE id=?", topicId));
+        assertEquals(originalAttempt, jdbc.queryForMap("SELECT * FROM attempts WHERE question_id=?", questionId));
+        learning.submitAttempt(questionId, "中文回答", null, true);
+        assertEquals(2, learning.dashboard().total_attempts());
+    }
+
     private int questionCount() { return jdbc.queryForObject("SELECT COUNT(*) FROM questions", Integer.class); }
     private int topicCount() { return jdbc.queryForObject("SELECT COUNT(*) FROM knowledge_points", Integer.class); }
     private ObjectNode topic(ObjectNode pack) { return (ObjectNode) pack.path("topics").get(0); }
@@ -281,7 +425,8 @@ class SeedImportIntegrationTest {
                 .put("content_format", "verbatim-html-markdown").put("source_name", "Fixture source")
                 .put("source_url", "https://example.com/snapshot/questions.md").put("source_path", "questions.md")
                 .put("source_license", "CC-BY-4.0").put("source_attribution", "Fixture contributors")
-                .put("source_revision", "fixture-revision").put("source_sha256", "a".repeat(64)).put("locale", "en");
+                 .put("source_revision", "fixture-revision").put("source_sha256", "a".repeat(64)).put("locale", "en")
+                 .put("content_locale", "zh-CN");
         question.putArray("options");
         question.putArray("rubric");
         question.putNull("source_material_id");

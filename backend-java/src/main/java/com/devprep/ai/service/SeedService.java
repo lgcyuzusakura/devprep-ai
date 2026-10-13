@@ -87,15 +87,34 @@ public class SeedService {
             materials.insertMaterial(BUILTIN_MATERIAL_ID, "java-foundations.md", "计算机学习复习资料", "内置资料", stamp, markdown);
             materials.insertChunks(BUILTIN_MATERIAL_ID, chunks);
         }
-        // Add newly shipped topics/questions without replacing the user's progress or existing content.
+        // Ordinary seeds are additive. Explicit translations refresh content while
+        // retaining source provenance, prerequisites, and the user's learning progress.
         for (TopicSeed topic : topics) {
-            if (!learning.hasKnowledgePoint(topic.id())) learning.insertTopic(topic.id(), topic.domain(), topic.title(), topic.summary(), topic.prerequisites(), stamp);
+            if (!learning.hasKnowledgePoint(topic.id())) {
+                learning.insertTopic(topic.id(), topic.domain(), topic.title(), topic.summary(), topic.prerequisites(), stamp);
+            } else if (topic.translated()) {
+                learning.updateTopicContent(topic.id(), topic.domain(), topic.title(), topic.summary());
+            }
         }
         for (QuestionSeed question : questions) {
-            if (!learning.hasQuestion(question.id())) learning.insertQuestion(question.id(), question.point(), question.type(), question.stem(),
-                    question.options(), question.answer(), question.explanation(), question.rubric(), question.sourceId(),
-                    question.sourceName(), question.sourceUrl(), question.sourcePath(), question.license(), question.attribution(),
-                    question.revision(), question.sourceSha256(), question.sourceLocale(), question.contentFormat(), question.assessmentMode(), question.status());
+            if (!learning.hasQuestion(question.id())) {
+                learning.insertQuestion(question.id(), question.point(), question.type(), question.stem(),
+                        question.options(), question.answer(), question.explanation(), question.rubric(), question.sourceId(),
+                        question.sourceName(), question.sourceUrl(), question.sourcePath(), question.license(), question.attribution(),
+                        question.revision(), question.sourceSha256(), question.sourceLocale(), question.contentLocale(),
+                        question.contentFormat(), question.assessmentMode(), question.status());
+            } else if (question.translationPending()) {
+                // Source language can be Chinese even when its question body is English.
+                // A partial translation must hide that existing row until its translation arrives.
+                learning.markQuestionTranslationPending(question.id());
+            } else if (isChineseLocale(question.contentLocale())
+                    && (question.translated() || !learning.hasChineseContent(question.id()))) {
+                // A later local translation may reuse the source question ID. Refresh only
+                // answerable content so provenance and existing attempts stay stable.
+                learning.updateQuestionContent(question.id(), question.type(), question.stem(), question.options(),
+                        question.answer(), question.explanation(), question.rubric(), question.contentLocale(),
+                        question.contentFormat(), question.assessmentMode(), question.status());
+            }
         }
     }
 
@@ -106,7 +125,7 @@ public class SeedService {
         List<TopicSeed> topics = new ArrayList<>();
         for (JsonNode item : root.get("topics")) {
             topics.add(new TopicSeed(text(item, "id"), text(item, "domain"), text(item, "title"),
-                    text(item, "summary"), strings(item, "prerequisites")));
+                    text(item, "summary"), strings(item, "prerequisites"), isTranslation(item)));
         }
         List<QuestionSeed> questions = new ArrayList<>();
         for (JsonNode item : root.get("questions")) {
@@ -144,6 +163,14 @@ public class SeedService {
             String revision = aliasedText(item, "revision", "source_revision");
             String sourceSha256 = nullableText(item, "source_sha256");
             String sourceLocale = aliasedText(item, "locale", "source_locale");
+            String contentLocale = nullableText(item, "content_locale");
+            if (contentLocale == null) contentLocale = isChineseLocale(sourceLocale) ? "zh-CN" : sourceLocale;
+            boolean translated = isTranslation(item);
+            boolean translationPending = "pending".equals(nullableText(item, "translation_status"));
+            if (translationPending) contentLocale = "und";
+            if (translated && !isChineseLocale(contentLocale)) {
+                throw invalidSeed("中文译文必须设置 content_locale=zh-CN：" + id);
+            }
             if (sourceId == null && (sourceName == null || sourceUrl == null)) {
                 throw invalidSeed("没有资料 ID 的题目必须提供 source_name 和 source_url：" + id);
             }
@@ -153,7 +180,8 @@ public class SeedService {
             }
             questions.add(new QuestionSeed(id, point, type, text(item, "stem"), options, answer.textValue(),
                     text(item, "explanation"), rubric, sourceId, sourceName, sourceUrl, sourcePath, license,
-                    attribution, revision, sourceSha256, sourceLocale, contentFormat, assessment, status));
+                    attribution, revision, sourceSha256, sourceLocale, contentLocale, contentFormat, assessment, status,
+                    translated, translationPending));
         }
         return new SeedDocument(List.copyOf(topics), List.copyOf(questions));
     }
@@ -173,6 +201,14 @@ public class SeedService {
 
     private String textOrDefault(JsonNode item, String name, String fallback) {
         return item.has(name) ? text(item, name) : fallback;
+    }
+
+    private boolean isChineseLocale(String locale) {
+        return locale != null && locale.trim().toLowerCase(java.util.Locale.ROOT).startsWith("zh");
+    }
+
+    private boolean isTranslation(JsonNode item) {
+        return "translated".equals(nullableText(item, "translation_status"));
     }
 
     private String nullableText(JsonNode item, String name) {
@@ -207,10 +243,12 @@ public class SeedService {
 
     private IllegalStateException invalidSeed(String message) { return new IllegalStateException("题库格式无效：" + message); }
     private record SeedDocument(List<TopicSeed> topics, List<QuestionSeed> questions) { }
-    private record TopicSeed(String id, String domain, String title, String summary, List<String> prerequisites) { }
+    private record TopicSeed(String id, String domain, String title, String summary,
+                             List<String> prerequisites, boolean translated) { }
     private record QuestionSeed(String id, String point, String type, String stem, List<String> options,
                                 String answer, String explanation, List<String> rubric, String sourceId,
                                 String sourceName, String sourceUrl, String sourcePath, String license,
                                 String attribution, String revision, String sourceSha256, String sourceLocale,
-                                String contentFormat, String assessmentMode, String status) { }
+                                String contentLocale, String contentFormat, String assessmentMode, String status,
+                                boolean translated, boolean translationPending) { }
 }

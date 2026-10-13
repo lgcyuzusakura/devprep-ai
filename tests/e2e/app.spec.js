@@ -53,7 +53,7 @@ test("imported material is searchable, readable, and removable", async ({ page }
   await page.goto("/#/materials");
   await page.getByLabel("选择 Markdown 或 TXT 资料").setInputFiles({ name: "CacheNotes.md", mimeType: "text/markdown", buffer: Buffer.from("# 缓存策略\nNovelCacheMarker 使用 LRU 淘汰旧数据。") });
   await expect(page.getByRole("heading", { name: "缓存策略", exact: true })).toBeVisible();
-  await page.goto("/#/questions");
+  await page.goto("/#/sourceqa");
   await page.getByLabel("你的问题").fill("NovelCacheMarker");
   await page.getByRole("button", { name: "提问", exact: true }).click();
   await expect(page.getByText("NovelCacheMarker 使用 LRU 淘汰旧数据。", { exact: true })).toBeVisible();
@@ -91,7 +91,7 @@ test("provider save discovers models and a selected model answers with citations
   await expect(page.getByLabel("TOML 模型配置")).toHaveValue(/model = "study-test"/);
   await page.getByRole("button", { name: "解析并切换到表单" }).click();
   await expect(page.getByLabel("API Base URL", { exact: true })).toHaveValue(gatewayURL);
-  await page.goto("/#/questions");
+  await page.goto("/#/sourceqa");
   await page.getByLabel("你的问题").fill("volatile 能保证 count++ 原子性吗？");
   await page.getByRole("button", { name: "提问", exact: true }).click();
   await expect(page.getByText("volatile 保证可见性，但 count++ 是复合读改写操作，仍然需要原子性保护。[1]")).toBeVisible();

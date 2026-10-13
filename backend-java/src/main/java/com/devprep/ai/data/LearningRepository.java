@@ -124,12 +124,14 @@ public class LearningRepository {
                     SELECT q.id,q.knowledge_point_id,q.question_type,q.stem,q.options_json,q.status,
                            kp.title AS topic_title,kp.domain,kp.summary AS topic_summary,kp.next_review_at,
                            q.source_material_id,q.source_name,q.source_url,q.source_path,q.license,
-                           q.attribution,q.revision,q.source_sha256,q.source_locale,q.content_format,q.assessment_mode,
+                           q.attribution,q.revision,q.source_sha256,q.source_locale,q.content_locale,
+                           q.content_format,q.assessment_mode,
                            COALESCE(NULLIF(m.source_type,''),NULLIF(q.source_name,''),'本地题库') AS source_type
                     FROM questions q
                     JOIN knowledge_points kp ON kp.id=q.knowledge_point_id
                     LEFT JOIN materials m ON m.id=q.source_material_id
-                    """ + pointFilter + """
+                    """ + pointFilter + (pointId == null ? "WHERE " : " AND ") + """
+                           LOWER(COALESCE(q.content_locale,q.source_locale,'')) LIKE 'zh%'
                 ), question_attempts AS (
                     SELECT a.question_id, COUNT(*) AS question_attempts
                     FROM attempts a JOIN candidate_questions cq ON cq.id=a.question_id
@@ -151,7 +153,7 @@ public class LearningRepository {
                 SELECT cq.id,cq.knowledge_point_id,cq.question_type,cq.stem,cq.options_json,cq.status,
                        cq.topic_title,cq.domain,cq.topic_summary,cq.source_material_id,cq.source_name,
                        cq.source_url,cq.source_path,cq.license,cq.attribution,cq.revision,cq.source_sha256,
-                       cq.source_locale,cq.content_format,cq.assessment_mode,cq.source_type,
+                       cq.source_locale,cq.content_locale,cq.content_format,cq.assessment_mode,cq.source_type,
                        CASE
                          WHEN (cq.next_review_at IS NULL AND lpa.is_correct IS NOT NULL
                                OR cq.next_review_at<=?) THEN 0
@@ -183,7 +185,8 @@ public class LearningRepository {
                 rs.getString("source_type"), rs.getString("source_material_id"), rs.getString("source_name"),
                 rs.getString("source_url"), rs.getString("source_path"), rs.getString("license"),
                 rs.getString("attribution"), rs.getString("revision"), rs.getString("source_sha256"),
-                rs.getString("source_locale"), rs.getString("content_format"), rs.getString("assessment_mode"), rs.getString("status"),
+                rs.getString("source_locale"), rs.getString("content_locale"), rs.getString("content_format"),
+                rs.getString("assessment_mode"), rs.getString("status"),
                 reasons[rs.getInt("review_priority")]);
     }
 
@@ -192,8 +195,11 @@ public class LearningRepository {
                 SELECT q.id,q.knowledge_point_id,q.question_type,q.stem,q.options_json,q.answer_json,
                        q.explanation,q.rubric_json,q.status,kp.title AS topic_title,
                        kp.domain,kp.summary AS topic_summary,q.source_material_id,q.source_name,q.source_url,
-                       q.source_path,q.license,q.attribution,q.revision,q.source_sha256,q.source_locale,q.content_format,q.assessment_mode
-                FROM questions q JOIN knowledge_points kp ON kp.id=q.knowledge_point_id WHERE q.id=?
+                       q.source_path,q.license,q.attribution,q.revision,q.source_sha256,q.source_locale,q.content_locale,
+                       q.content_format,q.assessment_mode
+                FROM questions q JOIN knowledge_points kp ON kp.id=q.knowledge_point_id
+                WHERE q.id=?
+                  AND LOWER(COALESCE(q.content_locale,q.source_locale,'')) LIKE 'zh%'
                 """, (rs, row) -> new QuestionData(rs.getString("id"), rs.getString("knowledge_point_id"),
                 rs.getString("question_type"), rs.getString("stem"), json.strings(rs.getString("options_json")),
                 json.readTree(rs.getString("answer_json")), rs.getString("explanation"),
@@ -201,7 +207,8 @@ public class LearningRepository {
                 rs.getString("topic_title"), rs.getString("domain"), rs.getString("topic_summary"),
                 rs.getString("source_material_id"), rs.getString("source_name"), rs.getString("source_url"),
                 rs.getString("source_path"), rs.getString("license"), rs.getString("attribution"),
-                rs.getString("revision"), rs.getString("source_sha256"), rs.getString("source_locale"), rs.getString("content_format"),
+                rs.getString("revision"), rs.getString("source_sha256"), rs.getString("source_locale"),
+                rs.getString("content_locale"), rs.getString("content_format"),
                 rs.getString("assessment_mode")), questionId);
         return result.stream().findFirst().orElse(null);
     }
@@ -211,7 +218,7 @@ public class LearningRepository {
         return new QuestionReference(question.answer(), question.explanation(), question.rubric(), question.topic_title(),
                 question.assessment_mode(), selfPrompt, question.source_material_id(), question.source_name(), question.source_url(),
                 question.source_path(), question.license(), question.attribution(), question.revision(),
-                question.source_sha256(), question.source_locale(), question.content_format());
+                question.source_sha256(), question.source_locale(), question.content_locale(), question.content_format());
     }
 
     public void lockKnowledgePoint(String pointId) {
@@ -257,24 +264,58 @@ public class LearningRepository {
                 id, domain, title, summary, json.write(prerequisites), createdAt);
     }
 
+    public void updateTopicContent(String id, String domain, String title, String summary) {
+        jdbc.update("UPDATE knowledge_points SET domain=?,title=?,summary=? WHERE id=?", domain, title, summary, id);
+    }
+
     public void insertQuestion(String id, String pointId, String type, String stem, List<String> options,
                                Object answer, String explanation, List<String> rubric, String materialId,
                                String sourceName, String sourceUrl, String sourcePath, String license,
                                String attribution, String revision, String sourceSha256,
-                               String sourceLocale, String contentFormat, String assessmentMode, String status) {
+                               String sourceLocale, String contentLocale, String contentFormat, String assessmentMode, String status) {
         jdbc.update("""
                 INSERT INTO questions(id,knowledge_point_id,question_type,stem,options_json,answer_json,
                                       explanation,rubric_json,source_material_id,source_name,source_url,
-                                      source_path,license,attribution,revision,source_sha256,source_locale,content_format,
+                                      source_path,license,attribution,revision,source_sha256,source_locale,content_locale,content_format,
                                       assessment_mode,status)
-                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 """, id, pointId, type, stem, json.write(options), json.write(answer), explanation,
                 json.write(rubric), materialId, sourceName, sourceUrl, sourcePath, license, attribution,
-                revision, sourceSha256, sourceLocale, contentFormat, assessmentMode, status);
+                revision, sourceSha256, sourceLocale, contentLocale, contentFormat, assessmentMode, status);
+    }
+
+    /**
+     * Refresh translated content for a question that already exists in a persistent database.
+     * Source provenance and attempts intentionally remain untouched.
+     */
+    public void updateQuestionContent(String id, String type, String stem, List<String> options,
+                                      Object answer, String explanation, List<String> rubric,
+                                      String contentLocale, String contentFormat, String assessmentMode,
+                                      String status) {
+        jdbc.update("""
+                UPDATE questions
+                   SET question_type=?,stem=?,options_json=?,answer_json=?,explanation=?,rubric_json=?,
+                       content_locale=?,content_format=?,assessment_mode=?,status=?
+                 WHERE id=?
+                """, type, stem, json.write(options), json.write(answer), explanation, json.write(rubric),
+                contentLocale, contentFormat, assessmentMode, status, id);
+    }
+
+    public void markQuestionTranslationPending(String id) {
+        jdbc.update("UPDATE questions SET content_locale='und' WHERE id=?", id);
     }
 
     public boolean hasQuestion(String id) {
         return Boolean.TRUE.equals(jdbc.queryForObject("SELECT EXISTS(SELECT 1 FROM questions WHERE id=?)", Boolean.class, id));
+    }
+
+    public boolean hasChineseContent(String id) {
+        return Boolean.TRUE.equals(jdbc.queryForObject("""
+                SELECT EXISTS(
+                    SELECT 1 FROM questions
+                    WHERE id=? AND LOWER(COALESCE(content_locale,source_locale,'')) LIKE 'zh%'
+                )
+                """, Boolean.class, id));
     }
 
     private String now() {

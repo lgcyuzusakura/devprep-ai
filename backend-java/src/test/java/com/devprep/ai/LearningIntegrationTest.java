@@ -204,8 +204,8 @@ class LearningIntegrationTest {
         try {
             jdbc.batchUpdate("""
                     INSERT INTO questions(id,knowledge_point_id,question_type,stem,options_json,answer_json,
-                                          explanation,rubric_json,source_material_id,status)
-                    VALUES(?,?,?,?,?,?,?,?,?,'reviewed')
+                                          explanation,rubric_json,source_material_id,content_locale,status)
+                    VALUES(?,?,?,?,?,?,?,?,?,'zh-CN','reviewed')
                     """, questions);
             assertEquals("scale-q-0000", learning.nextQuestion(pointId).id());
             assertEquals(questionCountBefore + 2500, learning.dashboard().question_count());

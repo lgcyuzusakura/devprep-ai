@@ -166,10 +166,13 @@ async function main() {
     await maven(["-B", "-DskipTests", "package"]);
   }
   const env = { ...process.env, DEVPREP_ROOT: root };
+  if (!env.DEVPREP_ALGORITHM_FILE && existsSync(join(root, ".cache/content/leetcode.learning.json"))) {
+    env.DEVPREP_ALGORITHM_FILE = join(root, ".cache/content/leetcode.learning.json");
+  }
   if (values["builtin-only"]) {
     env.DEVPREP_LOCAL_LEARNING_FILE = "";
   } else if (env.DEVPREP_LOCAL_LEARNING_FILE === undefined) {
-    const localPack = ["local.learning.json", "devops.learning.json"]
+    const localPack = ["local.learning.zh-CN.json", "local.learning.json", "devops.learning.json"]
       .map((filename) => join(root, ".cache", "content", filename))
       .find(existsSync);
     if (localPack) env.DEVPREP_LOCAL_LEARNING_FILE = localPack;

@@ -21,6 +21,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.LinkedHashMap;
+import java.util.function.Consumer;
 import java.util.TreeSet;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -165,6 +167,215 @@ public class HttpModelGateway implements ModelGateway {
                 .POST(HttpRequest.BodyPublishers.ofByteArray(encoded)).build();
         return parseGeneration(exchange(request, provider.timeoutSeconds(), false), responses);
     }
+
+    @Override
+    public AgentReply agentTurn(ModelConfiguration configuration, String instructions,
+                               List<Map<String, Object>> messages, List<Map<String, Object>> tools) {
+        return agentRequest(configuration, instructions, messages, tools, null);
+    }
+
+    @Override
+    public AgentReply agentStream(ModelConfiguration configuration, String instructions,
+                                 List<Map<String, Object>> messages, List<Map<String, Object>> tools, Consumer<String> delta) {
+        return agentRequest(configuration, instructions, messages, tools, delta);
+    }
+
+    private AgentReply agentRequest(ModelConfiguration configuration, String instructions,
+                                   List<Map<String, Object>> messages, List<Map<String, Object>> tools, Consumer<String> delta) {
+        ModelProvider provider = configuration.providers().get(configuration.modelProvider());
+        if (provider == null || configuration.model().isBlank()) {
+            throw ApiException.badRequest("model_not_configured", "先在模型设置中配置 Provider 和模型。");
+        }
+        boolean responses = provider.wireApi().equals("responses");
+        Map<String, Object> body = new java.util.LinkedHashMap<>();
+        body.put("model", configuration.model());
+        if (responses) {
+            body.put("instructions", instructions);
+            body.put("store", false);
+            List<Map<String, Object>> input = new ArrayList<>();
+            for (Map<String, Object> message : messages) {
+                if ("tool".equals(message.get("role"))) {
+                    input.add(Map.of("type", "function_call_output", "call_id", message.get("tool_call_id"), "output", message.get("content")));
+                } else {
+                    if (message.get("content") instanceof String content && !content.isBlank()) {
+                        input.add(Map.of("role", message.get("role"), "content", content));
+                    }
+                    if (message.get("tool_calls") instanceof List<?> calls) for (Object raw : calls) {
+                        Map<?, ?> call = (Map<?, ?>) raw;
+                        Map<?, ?> function = (Map<?, ?>) call.get("function");
+                        input.add(Map.of("type", "function_call", "call_id", call.get("id"),
+                                "name", function.get("name"), "arguments", function.get("arguments")));
+                    }
+                }
+            }
+            body.put("input", input);
+            body.put("tools", tools.stream().map(tool -> {
+                Map<?, ?> function = (Map<?, ?>) tool.get("function");
+                return Map.of("type", "function", "name", function.get("name"),
+                        "description", function.get("description"), "parameters", function.get("parameters"));
+            }).toList());
+        } else {
+            List<Map<String, Object>> input = new ArrayList<>();
+            input.add(Map.of("role", "system", "content", instructions));
+            input.addAll(messages);
+            body.put("messages", input);
+            body.put("tools", tools);
+        }
+        body.put("stream", delta != null);
+        body.put("parallel_tool_calls", false);
+        byte[] encoded;
+        try { encoded = mapper.writeValueAsBytes(body); }
+        catch (JsonProcessingException ex) { throw ApiException.badRequest("invalid_message", "对话无法编码。"); }
+        HttpRequest request = request(provider, responses ? "/responses" : "/chat/completions")
+                .header("Content-Type", "application/json").POST(HttpRequest.BodyPublishers.ofByteArray(encoded)).build();
+        if (delta != null) return exchangeAgentStream(request, provider.timeoutSeconds(), responses, delta);
+        JsonNode result = exchange(request, provider.timeoutSeconds(), false);
+        return parseAgent(result, responses);
+    }
+
+    private static AgentReply parseAgent(JsonNode result, boolean responses) {
+        checkGenerationStatus(result);
+        List<AgentReply.ToolCall> calls = new ArrayList<>();
+        if (responses) {
+            for (JsonNode output : result.path("output")) if ("function_call".equals(output.path("type").asText())) {
+                calls.add(new AgentReply.ToolCall(output.path("call_id").asText(), output.path("name").asText(), output.path("arguments").asText()));
+            }
+        } else {
+            for (JsonNode call : result.path("choices").path(0).path("message").path("tool_calls")) {
+                calls.add(new AgentReply.ToolCall(call.path("id").asText(), call.path("function").path("name").asText(), call.path("function").path("arguments").asText()));
+            }
+        }
+        if (calls.size() > 4 || calls.stream().anyMatch(call -> call.id().isBlank() || call.name().isBlank() || call.arguments().length() > 4000)) {
+            throw invalidResponse("模型返回的工具调用无效。");
+        }
+        String text="";
+        if (calls.isEmpty()) text=parseGeneration(result, responses);
+        else if (!responses) {
+            JsonNode message=result.path("choices").path(0).path("message");
+            if (truthy(message.get("refusal"))) throw refusal();
+            if ("length".equals(result.path("choices").path(0).path("finish_reason").asText())) throw upstream("incomplete_response", "模型回复被截断，请重试。");
+            text=message.path("content").asText("");
+        }
+        return new AgentReply(text, List.copyOf(calls));
+    }
+
+    private AgentReply exchangeAgentStream(HttpRequest request, int timeoutSeconds, boolean responses, Consumer<String> delta) {
+        CompletableFuture<HttpResponse<AgentReply>> pending=client.sendAsync(request, info -> {
+            checkStatus(info.statusCode(),false);
+            return new AgentSubscriber(info.headers().firstValue("Content-Type").orElse("").contains("text/event-stream"), responses, delta);
+        });
+        try { return pending.get(timeoutSeconds, TimeUnit.SECONDS).body(); }
+        catch (InterruptedException ex) { pending.cancel(true); Thread.currentThread().interrupt(); throw upstream("agent_interrupted", "本轮回答已中断。"); }
+        catch (TimeoutException ex) { pending.cancel(true); throw upstream("provider_unavailable", "模型网关请求超时，请重试。"); }
+        catch (ExecutionException ex) {
+            for (Throwable cause=ex;cause!=null;cause=cause.getCause()) if (cause instanceof ApiException api) throw api;
+            throw upstream("provider_unavailable", "无法连接模型网关，请检查地址和网络。");
+        }
+    }
+
+    /** Decode complete SSE frames, even when UTF-8 characters cross transport chunks. */
+    private final class AgentSubscriber implements HttpResponse.BodySubscriber<AgentReply> {
+        private final CompletableFuture<AgentReply> body=new CompletableFuture<>();
+        private final boolean sse, responses;
+        private final Consumer<String> delta;
+        private final ByteArrayOutputStream line=new ByteArrayOutputStream(), jsonBytes=new ByteArrayOutputStream();
+        private final StringBuilder frame=new StringBuilder(), text=new StringBuilder();
+        private final Map<Integer, ToolParts> calls=new LinkedHashMap<>();
+        private JsonNode completed;
+        private Flow.Subscription subscription;
+        private int bytes;
+        private boolean terminal;
+        AgentSubscriber(boolean sse, boolean responses, Consumer<String> delta) { this.sse=sse;this.responses=responses;this.delta=delta; }
+        @Override public CompletionStage<AgentReply> getBody() { return body; }
+        @Override public void onSubscribe(Flow.Subscription value) {
+            subscription=value;
+            body.whenComplete((result,error) -> { if (body.isCancelled()) value.cancel(); });
+            value.request(1);
+        }
+        @Override public void onNext(List<ByteBuffer> buffers) {
+            if (body.isDone()) return;
+            try {
+                for (ByteBuffer buffer:buffers) {
+                    if (buffer.remaining()>MAX_RESPONSE_BYTES-bytes) throw upstream("response_too_large", "模型回复超过允许大小。");
+                    bytes+=buffer.remaining();
+                    while (buffer.hasRemaining()) {
+                        byte value=buffer.get();
+                        if (!sse) { jsonBytes.write(value); continue; }
+                        if (value!='\n') { line.write(value); continue; }
+                        String row=ModelText.decode(line.toByteArray()); line.reset();
+                        if (row.endsWith("\r")) row=row.substring(0,row.length()-1);
+                        if (row.isEmpty()) { event(frame.toString()); frame.setLength(0); }
+                        else frame.append(row).append('\n');
+                    }
+                }
+                subscription.request(1);
+            } catch (Exception ex) { body.completeExceptionally(ex); subscription.cancel(); }
+        }
+        private void emit(String value) { if (!value.isEmpty()) { text.append(value); delta.accept(value); } }
+        private void event(String raw) throws JsonProcessingException {
+            StringBuilder data=new StringBuilder();
+            for (String row:raw.split("\n")) if (row.startsWith("data:")) { if (!data.isEmpty()) data.append('\n'); data.append(row.substring(5).stripLeading()); }
+            if (data.isEmpty()) return;
+            if ("[DONE]".contentEquals(data)) { terminal=true; return; }
+            JsonNode value=mapper.readTree(data.toString());
+            if (value==null || !value.isObject()) throw invalidResponse("模型流事件格式无效。");
+            if (truthy(value.get("error"))) throw upstream("provider_generation_failed", "模型生成未成功，请重试。");
+            if (responses) {
+                String type=value.path("type").asText();
+                if ("response.output_text.delta".equals(type)) emit(value.path("delta").asText());
+                if ("response.refusal.delta".equals(type)) throw refusal();
+                if ("response.completed".equals(type)) { completed=value.path("response"); checkGenerationStatus(completed); terminal=true; }
+                if (List.of("response.failed","response.incomplete","error").contains(type)) throw upstream("incomplete_response", "模型回复未完成，请重试。");
+            } else {
+                JsonNode choice=value.path("choices").path(0), part=choice.path("delta");
+                if (truthy(part.get("refusal"))) throw refusal();
+                emit(part.path("content").asText(""));
+                for (JsonNode call:part.path("tool_calls")) {
+                    int index=call.path("index").asInt(-1);
+                    if (index<0 || index>3) throw invalidResponse("模型返回的工具调用无效。");
+                    ToolParts parts=calls.computeIfAbsent(index, ignored -> new ToolParts());
+                    parts.id.append(call.path("id").asText(""));
+                    parts.name.append(call.path("function").path("name").asText(""));
+                    parts.arguments.append(call.path("function").path("arguments").asText(""));
+                    if (parts.arguments.length()>4000) throw invalidResponse("工具参数过长。");
+                }
+                String finish=choice.path("finish_reason").asText("");
+                if ("length".equals(finish)) throw upstream("incomplete_response", "模型回复被截断，请重试。");
+                if ("content_filter".equals(finish)) throw refusal();
+                if ("stop".equals(finish) || "tool_calls".equals(finish)) terminal=true;
+            }
+        }
+        @Override public void onError(Throwable error) { body.completeExceptionally(error); }
+        @Override public void onComplete() {
+            if (body.isDone()) return;
+            try {
+                AgentReply reply;
+                if (!sse) {
+                    reply=parseAgent(mapper.readTree(ModelText.decode(jsonBytes.toByteArray())),responses);
+                    emit(reply.text());
+                } else {
+                    if (line.size()>0) frame.append(ModelText.decode(line.toByteArray())).append('\n');
+                    if (!frame.isEmpty()) event(frame.toString());
+                    if (!terminal || (responses && completed==null)) throw upstream("incomplete_response", "连接结束前回答尚未完成，请重试。");
+                    if (responses) {
+                        reply=parseAgent(completed,true);
+                        if (text.isEmpty()) emit(reply.text());
+                        reply=new AgentReply(text.toString(),reply.calls());
+                    } else {
+                        List<AgentReply.ToolCall> tools=new ArrayList<>();
+                        for (ToolParts parts:calls.values()) {
+                            if (parts.id.isEmpty() || parts.name.isEmpty()) throw invalidResponse("模型返回的工具调用无效。");
+                            tools.add(new AgentReply.ToolCall(parts.id.toString(),parts.name.toString(),parts.arguments.toString()));
+                        }
+                        if (tools.isEmpty() && text.toString().isBlank()) throw upstream("empty_response", "模型没有返回可显示的文本。");
+                        reply=new AgentReply(text.toString(),List.copyOf(tools));
+                    }
+                }
+                body.complete(reply);
+            } catch (Exception ex) { body.completeExceptionally(ex); }
+        }
+    }
+    private static class ToolParts { final StringBuilder id=new StringBuilder(), name=new StringBuilder(), arguments=new StringBuilder(); }
 
     private HttpRequest.Builder request(ModelProvider provider, String path) {
         String apiKey = settings.apiKey(provider);

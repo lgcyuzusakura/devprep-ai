@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { LayoutDashboard, ListChecks, Network, Library, MessagesSquare, History, Settings2, PanelLeftClose, Menu, X, ArrowUpRight, SquareTerminal } from "lucide-react";
 import { api, getRoute, navigate } from "./lib/api.js";
 import { IconButton, Badge } from "./components/UI.jsx";
@@ -6,16 +6,19 @@ import Today from "./pages/Today.jsx";
 import Practice from "./pages/Practice.jsx";
 import Knowledge from "./pages/Knowledge.jsx";
 import Materials from "./pages/Materials.jsx";
-import Questions from "./pages/Questions.jsx";
+import Questions from "./pages/StudyChat.jsx";
+import SourceQuestions from "./pages/Questions.jsx";
+const Algorithms = lazy(() => import("./pages/Algorithms.jsx"));
 import Records from "./pages/Records.jsx";
 import ModelSettings from "./pages/ModelSettings.jsx";
 
 const navigation = [
   { id: "today", label: "今日复习", icon: LayoutDashboard },
   { id: "practice", label: "练习", icon: ListChecks },
+  { id: "algorithms", label: "算法练习", icon: SquareTerminal },
   { id: "knowledge", label: "知识点", icon: Network },
   { id: "materials", label: "资料库", icon: Library },
-  { id: "questions", label: "知识问答", icon: MessagesSquare },
+  { id: "questions", label: "学习教练", icon: MessagesSquare },
   { id: "records", label: "学习记录", icon: History },
 ];
 
@@ -39,7 +42,7 @@ export default function App() {
     try { localStorage.setItem("devprep.target", String(value)); } catch { /* Storage can be disabled. */ }
   };
   const changed = () => setRevision((value) => value + 1);
-  const section = navigation.find((item) => item.id === route.page)?.label || "模型设置";
+  const section = navigation.find((item) => item.id === route.page)?.label || (route.page === "sourceqa" ? "资料问答" : "模型设置");
   let page;
   const common = { revision, changed };
   switch (route.page) {
@@ -47,6 +50,8 @@ export default function App() {
     case "knowledge": page = <Knowledge {...common} />; break;
     case "materials": page = <Materials params={route.params} {...common} />; break;
     case "questions": page = <Questions params={route.params} settings={settings} />; break;
+    case "sourceqa": page = <SourceQuestions params={route.params} settings={settings} />; break;
+    case "algorithms": page = <Algorithms params={route.params} />; break;
     case "records": page = <Records {...common} />; break;
     case "settings": page = <ModelSettings changed={changed} />; break;
     default: page = <Today target={target} setTarget={updateTarget} {...common} />;
@@ -63,7 +68,7 @@ export default function App() {
     </aside>
     <div className="workspace">
       <header className="topbar"><div className="breadcrumb"><span className="mobile-menu"><IconButton icon={Menu} label="打开导航" onClick={() => setMenuOpen(true)} /></span><PanelLeftClose size={17} className="desktop-nav-icon" /><span className="breadcrumb-root">工作区</span><span className="breadcrumb-divider">/</span><span>{section}</span></div><button className="model-status" onClick={() => navigate("settings")} title="打开模型设置"><span className={`status-dot ${settings?.model ? "" : "status-dot-muted"}`} /><span>{settings?.model || "模型未配置"}</span><ArrowUpRight size={14} /></button></header>
-      <main className="main-content">{page}</main>
+      <main className="main-content"><Suspense fallback={<div className="loading-state">正在读取页面…</div>}>{page}</Suspense></main>
       <footer className="app-footer"><span>DevPrep <Badge>v0.1</Badge></span><span>计算机学习 · 考试与面试</span></footer>
     </div>
   </div>;

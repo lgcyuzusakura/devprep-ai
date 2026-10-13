@@ -7,7 +7,7 @@ const question = {
   topic_summary: "理解任务调度、微任务与渲染时机。",
   domain: "前端",
   question_type: "short_answer",
-  stem: "<b>Explain the event loop</b>\n\nDescribe scheduling order.\n\n" +
+  stem: "<b>解释事件循环</b>\n\n描述调度顺序。\n\n" +
     "~~~js\nconst sample = '<b>keep literal</b>';\n~~~\n\n" +
     "<script>window.practiceUnsafe = true</script>",
   options: [],
@@ -21,6 +21,7 @@ const question = {
   source_revision: "pinned-revision",
   source_sha256: "a".repeat(64),
   source_locale: "en",
+  content_locale: "zh-CN",
   content_format: "verbatim-html-markdown",
   assessment_mode: "reference",
   status: "new",
@@ -28,13 +29,14 @@ const question = {
 };
 
 const reference = {
-  answer: "<p>保留的原文段落：<code>git reset</code> 与回滚不同。</p>\n\n### Scheduling\n\n- A task runs first.\n- Microtasks run before rendering.\n\n" +
+  answer: "<p>参考答案：<code>git reset</code> 与回滚不同。</p>\n\n### 任务调度\n\n- 首先执行任务。\n- 渲染前执行微任务。\n\n" +
     "~~~js\nqueueMicrotask(() => console.log('microtask'));\n~~~\n\n" +
     "![调度示意图](https://images.example.invalid/scheduling.png)\n\n" +
-    "[Specification](./event-loop.md)\n\n[Unsafe link](javascript:alert(1))\n\n" +
+    "[规范](./event-loop.md)\n\n[不安全链接](javascript:alert(1))\n\n" +
     "<img src=\"https://images.example.invalid/unsafe.png\" onerror=\"window.practiceUnsafe = true\">",
-  explanation: "对照原文补充遗漏的调度规则。",
+  explanation: "对照参考答案补充遗漏的调度规则。",
   rubric: [],
+  content_locale: "zh-CN",
   content_format: "verbatim-html-markdown",
   assessment_mode: "reference",
 };
@@ -68,8 +70,8 @@ test("original Markdown questions render safely and save an independent needs-re
   const submissions = await mockPractice(page);
   await page.goto("/#/practice?topic=frontend-event-loop");
 
-  await expect(page.locator(".question-stem")).toContainText("Explain the event loop");
-  await expect(page.getByRole("heading", { name: /Explain the event loop/ })).toBeVisible();
+  await expect(page.locator(".question-stem")).toContainText("解释事件循环");
+  await expect(page.getByRole("heading", { name: /解释事件循环/ })).toBeVisible();
   await expect(page.locator(".question-stem pre code")).toContainText("<b>keep literal</b>");
   await expect(page.locator(".question-stem b")).toHaveCount(0);
   await expect(page.locator("main script, main img")).toHaveCount(0);
@@ -80,6 +82,8 @@ test("original Markdown questions render safely and save an independent needs-re
   await expect(source).toContainText("Handbook contributors");
   await expect(source).toContainText("docs/questions.md");
   await expect(source).toContainText("英文");
+  await expect(source).toContainText("题目语言");
+  await expect(source).toContainText("中文");
   await source.locator("summary").click();
   await expect(source).toContainText(question.source_sha256);
   await expect(page.locator("footer")).toContainText("计算机学习 · 考试与面试");
@@ -88,11 +92,11 @@ test("original Markdown questions render safely and save an independent needs-re
   await page.getByRole("button", { name: "查看参考答案", exact: true }).click();
   await expect(page.locator(".reference-panel li")).toHaveCount(2);
   await expect(page.locator(".reference-panel pre code")).toContainText("queueMicrotask");
-  await expect(page.locator(".reference-panel")).toContainText("保留的原文段落");
+  await expect(page.locator(".reference-panel")).toContainText("首先执行任务");
   await expect(page.locator(".reference-panel code").filter({ hasText: "git reset" })).toBeVisible();
   await expect(page.getByRole("link", { name: "查看原图" })).toHaveAttribute("href", "https://images.example.invalid/scheduling.png");
-  await expect(page.getByRole("link", { name: "Specification" })).toHaveAttribute("href", "https://github.com/example/handbook/blob/pinned-revision/docs/event-loop.md");
-  await expect(page.getByRole("link", { name: "Unsafe link" })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "规范" })).toHaveAttribute("href", "https://github.com/example/handbook/blob/pinned-revision/docs/event-loop.md");
+  await expect(page.getByRole("link", { name: "不安全链接" })).toHaveCount(0);
   await expect(page.getByRole("checkbox")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "保存自评" })).toBeDisabled();
   expect(await page.evaluate(() => window.practiceUnsafe)).toBeUndefined();
@@ -100,7 +104,7 @@ test("original Markdown questions render safely and save an independent needs-re
   await page.getByRole("radio", { name: /需复习/ }).check();
   await page.getByRole("button", { name: "保存自评" }).click();
   await expect(page.getByText("自评：需复习", { exact: true })).toBeVisible();
-  await expect(page.locator(".feedback-heading")).toContainText("对照原文自评");
+  await expect(page.locator(".feedback-heading")).toContainText("对照答案自评");
   await expect(page.locator(".feedback-heading")).not.toContainText("分");
   expect(submissions).toEqual([{
     question_id: question.id, answer: "我记得任务执行后需要清空微任务队列，但还不清楚渲染时机。",

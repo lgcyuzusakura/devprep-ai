@@ -75,6 +75,70 @@ class HttpModelGatewayTest {
         executor.shutdownNow();
     }
 
+    @Test
+    void agentChatToolCallsRoundTripWithToolResults() {
+        configure("chat_completions", "");
+        json("{\"choices\":[{\"message\":{\"content\":null,\"tool_calls\":[{\"id\":\"c1\",\"type\":\"function\",\"function\":{\"name\":\"list_topics\",\"arguments\":\"{}\"}}]}}]}");
+        AgentReply reply = gateway.agentTurn(settings.load(), "教练", List.of(Map.of("role","user","content","给我出题")), List.of());
+        assertEquals("list_topics",reply.calls().get(0).name());
+        json("{\"choices\":[{\"message\":{\"content\":\"请回答这道题\"},\"finish_reason\":\"stop\"}]}");
+        var transcript=List.<Map<String,Object>>of(Map.of("role","user","content","给我出题"),
+                Map.of("role","assistant","content","","tool_calls",List.of(Map.of("id","c1","type","function","function",Map.of("name","list_topics","arguments","{}")))),
+                Map.of("role","tool","tool_call_id","c1","content","[]"));
+        assertEquals("请回答这道题",gateway.agentTurn(settings.load(),"教练",transcript,List.of()).text());
+        assertEquals("tool",requests.get(1).body().path("messages").path(3).path("role").asText());
+    }
+
+    @Test void chatStreamDecodesSplitUtf8AndAssemblesToolArguments() {
+        configure("chat_completions", "");
+        json("data: {\"choices\":[{\"delta\":{\"content\":\"先查资料。\",\"tool_calls\":[{\"index\":0,\"id\":\"c1\",\"function\":{\"name\":\"search_questions\",\"arguments\":\"{\\\"query\\\":\"}}]}}]}\n\n"
+                + "data: {\"choices\":[{\"delta\":{\"tool_calls\":[{\"index\":0,\"function\":{\"arguments\":\"\\\"TCP\\\"}\"}}]},\"finish_reason\":\"tool_calls\"}]}\n\n"
+                + "data: [DONE]\n\n");
+        List<String> deltas=new ArrayList<>();
+        var reply=gateway.agentStream(settings.load(),"学习",List.of(Map.of("role","user","content","TCP")),List.of(),deltas::add);
+        assertEquals("先查资料。",String.join("",deltas));
+        assertEquals("{\"query\":\"TCP\"}",reply.calls().get(0).arguments());
+        assertTrue(requests.get(0).body().path("stream").asBoolean());
+        assertFalse(requests.get(0).body().path("parallel_tool_calls").asBoolean());
+    }
+
+    @Test void responsesStreamEmitsDeltasAndKeepsNativeToolCalls() {
+        json("event: response.output_text.delta\ndata: {\"type\":\"response.output_text.delta\",\"delta\":\"你好，\"}\n\n"
+                + "data: {\"type\":\"response.output_text.delta\",\"delta\":\"一起学习。\"}\n\n"
+                + "data: {\"type\":\"response.completed\",\"response\":{\"status\":\"completed\",\"output\":[{\"type\":\"message\",\"content\":[{\"type\":\"output_text\",\"text\":\"你好，一起学习。\"}]}]}}\n\n");
+        List<String> deltas=new ArrayList<>();
+        assertEquals("你好，一起学习。",gateway.agentStream(settings.load(),"学习",List.of(Map.of("role","user","content","你好")),List.of(),deltas::add).text());
+        assertEquals(2,deltas.size());
+        json("data: {\"type\":\"response.completed\",\"response\":{\"status\":\"completed\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"c1\",\"name\":\"list_topics\",\"arguments\":\"{}\"}]}}\n\n");
+        assertEquals("c1",gateway.agentStream(settings.load(),"学习",List.of(Map.of("role","user","content","出题")),List.of(),ignored->{}).calls().get(0).id());
+    }
+
+    @Test void interruptedStreamKeepsPartialDeltaButRejectsIncompleteSuccess() {
+        json("data: {\"type\":\"response.output_text.delta\",\"delta\":\"未完成\"}\n\n");
+        List<String> deltas=new ArrayList<>();
+        assertCode("incomplete_response",()->gateway.agentStream(settings.load(),"学习",List.of(Map.of("role","user","content","你好")),List.of(),deltas::add));
+        assertEquals(List.of("未完成"),deltas);
+    }
+
+    @Test void streamFallsBackToGatewayJsonWithoutSecondRequest() {
+        json("{\"output_text\":\"完整回答\"}");
+        List<String> deltas=new ArrayList<>();
+        assertEquals("完整回答",gateway.agentStream(settings.load(),"学习",List.of(Map.of("role","user","content","你好")),List.of(),deltas::add).text());
+        assertEquals(List.of("完整回答"),deltas); assertEquals(1,requests.size());
+    }
+
+    @Test
+    void agentResponsesUsesNativeFunctionOutputs() {
+        json("{\"output\":[{\"type\":\"function_call\",\"call_id\":\"c1\",\"name\":\"list_topics\",\"arguments\":\"{}\"}]}");
+        assertEquals("c1",gateway.agentTurn(settings.load(),"教练",List.of(Map.of("role","user","content","出题")),List.of()).calls().get(0).id());
+        json("{\"output_text\":\"下一题\"}");
+        var transcript=List.<Map<String,Object>>of(Map.of("role","assistant","content","","tool_calls",List.of(Map.of("id","c1","function",Map.of("name","list_topics","arguments","{}")))),
+                Map.of("role","tool","tool_call_id","c1","content","[]"));
+        assertEquals("下一题",gateway.agentTurn(settings.load(),"教练",transcript,List.of()).text());
+        assertEquals("function_call_output",requests.get(1).body().path("input").path(1).path("type").asText());
+        assertEquals("c1",requests.get(1).body().path("input").path(1).path("call_id").asText());
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {
             "{\"data\":[{\"id\":\"z-model\"},{\"id\":\"a-model\"},{\"id\":\"a-model\"}]}",
@@ -320,14 +384,18 @@ class HttpModelGatewayTest {
             requests.add(new ObservedRequest(exchange.getRequestMethod(), exchange.getRequestURI().getPath(),
                     exchange.getRequestHeaders().getFirst("Authorization"), body.length == 0 ? null : mapper.readTree(body)));
             StubResponse stub = response.get();
-            exchange.getResponseHeaders().set("Content-Type", "application/json");
+            boolean sse=new String(stub.body(),StandardCharsets.UTF_8).startsWith("data:") || new String(stub.body(),StandardCharsets.UTF_8).startsWith("event:");
+            exchange.getResponseHeaders().set("Content-Type", sse ? "text/event-stream" : "application/json");
             if (stub.location() != null) exchange.getResponseHeaders().set("Location", stub.location());
             exchange.sendResponseHeaders(stub.status(), stub.body().length == 0 ? -1 : stub.body().length);
             if (stub.delayMillis() > 0) {
                 try { Thread.sleep(stub.delayMillis()); }
                 catch (InterruptedException ex) { Thread.currentThread().interrupt(); return; }
             }
-            if (stub.body().length > 0) exchange.getResponseBody().write(stub.body());
+            if (sse) {
+                // Force tiny chunks through the transport, including inside Chinese UTF-8 bytes.
+                for (byte value:stub.body()) { exchange.getResponseBody().write(value); exchange.getResponseBody().flush(); }
+            } else if (stub.body().length > 0) exchange.getResponseBody().write(stub.body());
         } finally {
             exchange.close();
         }

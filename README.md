@@ -20,6 +20,13 @@
 
 ## 功能
 
+- Docker Compose 部署、数据持久化，以及隔离容器中的多语言算法样例运行。
+- 学习教练：持久会话、连续追问、资料检索、互动出题、模拟面试和学习进度工具。
+- 独立算法页面：LeetCode Hot 100、题号前100、LeetCode 75、面试经典150及编程基础/动态规划/图论/二分专项；Java/Go/Python/JavaScript 编辑器和代码草稿。
+- 学习对话 Agent：连续追问、流式回答、停止与重新回答、工具检索、互动出题与点评；支持会话搜索/重命名、草稿、代码复制和手机布局。详见 [Docker 与学习 Agent](docs/docker-and-learning-agent.md)。
+
+部署和交互说明见 [Docker 与学习 Agent](docs/docker-and-learning-agent.md)。LeetCode 原题正文仅导入本地，公开仓库保留题单元数据和导入器。
+
 - 内置知识点、示例题和学习资料，支持单选练习与简答要点自评。
 - 本地多来源题库导入、出处与版本追踪；原文问答支持独立掌握自评。
 - 学习概览、前置知识、选题理由、待复习主题和答题历史。
@@ -123,7 +130,7 @@ python scripts/content-import/multi_source.py
 npm start
 ```
 
-Node 启动器优先读取 `.cache/content/local.learning.json`，其次读取 `devops.learning.json`，并与内置种子一起增量导入数据库。首页显示数据库中实际的题目数量。设置 `DEVPREP_LOCAL_LEARNING_FILE` 可指定其他题库；直接运行 Java 或 Maven 时也应设置这个变量。
+Node 启动器优先读取 `.cache/content/local.learning.zh-CN.json` 中文翻译包，其次读取 `local.learning.json` 和 `devops.learning.json`，并与内置种子一起导入数据库。练习接口只提供中文展示内容，题目仍保留来源的原始语言与出处；同 ID 的译文会更新题面和参考答案并保留学习记录。翻译方法见 [本地题库中文翻译](docs/content-import/translation.md)。首页显示数据库中实际的题目数量。设置 `DEVPREP_LOCAL_LEARNING_FILE` 可指定其他题库；直接运行 Java 或 Maven 时也应设置这个变量。
 
 每题保留来源 URL、许可证声明、署名、语言、版本和文件摘要。原文简答没有人工评分要点时，使用“掌握 / 需复习”自评；该结果会单独标记在练习记录中，不声称是客观评分。题目未经过逐题事实审核，可打开原始来源核对。
 

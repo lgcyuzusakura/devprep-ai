@@ -1,0 +1,1038 @@
+{
+  "problems": [
+    {
+      "id": "two-sum",
+      "title": "两数之和",
+      "tag": "哈希表",
+      "difficulty": "简单",
+      "description": "给定整数数组 nums 和整数 target，返回和为 target 的两个不同元素的下标，按升序输出。保证恰有一组解。\n\n2 ≤ nums.length ≤ 10000，元素与 target 的绝对值不超过 100000。",
+      "examples": [
+        {
+          "input": {
+            "nums": [
+              2,
+              7,
+              11,
+              15
+            ],
+            "target": 9
+          },
+          "expected": [
+            0,
+            1
+          ],
+          "explanation": "2 + 7 = 9。"
+        },
+        {
+          "input": {
+            "nums": [
+              3,
+              2,
+              4
+            ],
+            "target": 6
+          },
+          "expected": [
+            1,
+            2
+          ],
+          "explanation": "使用两个不同位置。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "nums": [
+              3,
+              3
+            ],
+            "target": 6
+          },
+          "expected": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              -3,
+              4,
+              3,
+              90
+            ],
+            "target": 0
+          },
+          "expected": [
+            0,
+            2
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              0,
+              4,
+              3,
+              0
+            ],
+            "target": 0
+          },
+          "expected": [
+            0,
+            3
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3,
+              4,
+              8
+            ],
+            "target": 12
+          },
+          "expected": [
+            3,
+            4
+          ]
+        }
+      ],
+      "hints": [
+        "对每个值 x，找 target - x。",
+        "用哈希表记住已遍历元素的下标。"
+      ],
+      "editorial": "哈希表保存值到下标的映射。每次先找补数，再记录当前值，避免重复使用同一位置。时间 O(n)，空间 O(n)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "max-subarray",
+      "title": "最大连续子数组和",
+      "tag": "动态规划",
+      "difficulty": "简单",
+      "description": "给定非空整数数组 nums，返回连续非空子数组的最大和。\n\n1 ≤ nums.length ≤ 10000，|nums[i]| ≤ 10000。",
+      "examples": [
+        {
+          "input": {
+            "nums": [
+              -2,
+              1,
+              -3,
+              4,
+              -1,
+              2,
+              1,
+              -5,
+              4
+            ]
+          },
+          "expected": 6,
+          "explanation": "[4,-1,2,1] 的和为6。"
+        },
+        {
+          "input": {
+            "nums": [
+              -3,
+              -1,
+              -2
+            ]
+          },
+          "expected": -1,
+          "explanation": "子数组必须非空。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "nums": [
+              1
+            ]
+          },
+          "expected": 1
+        },
+        {
+          "input": {
+            "nums": [
+              5,
+              4,
+              -1,
+              7,
+              8
+            ]
+          },
+          "expected": 23
+        },
+        {
+          "input": {
+            "nums": [
+              -5
+            ]
+          },
+          "expected": -5
+        },
+        {
+          "input": {
+            "nums": [
+              0,
+              0,
+              0
+            ]
+          },
+          "expected": 0
+        }
+      ],
+      "hints": [
+        "当前元素结尾的最优子数组是否需要前缀？",
+        "维护 ending=max(x,ending+x)。"
+      ],
+      "editorial": "维护以当前位置结尾的最大和和全局最大和。初始值为首元素，处理全负情况。时间 O(n)，额外空间 O(1)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "move-zeroes",
+      "title": "移动零",
+      "tag": "双指针",
+      "difficulty": "简单",
+      "description": "给定 nums，把所有0移到末尾，非零元素相对顺序不变。返回处理后的数组。\n\n0 ≤ nums.length ≤ 10000。",
+      "examples": [
+        {
+          "input": {
+            "nums": [
+              0,
+              1,
+              0,
+              3,
+              12
+            ]
+          },
+          "expected": [
+            1,
+            3,
+            12,
+            0,
+            0
+          ],
+          "explanation": "保持1、3、12的顺序。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "nums": []
+          },
+          "expected": []
+        },
+        {
+          "input": {
+            "nums": [
+              0,
+              0
+            ]
+          },
+          "expected": [
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2
+            ]
+          },
+          "expected": [
+            1,
+            2
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              0,
+              2,
+              0,
+              3
+            ]
+          },
+          "expected": [
+            1,
+            2,
+            3,
+            0,
+            0
+          ]
+        }
+      ],
+      "hints": [
+        "用写指针记录下一个非零位置。"
+      ],
+      "editorial": "从左到右把非零元素写到前方，再把剩余位置填0。时间 O(n)，原地实现额外空间 O(1)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "binary-search",
+      "title": "有序数组查找",
+      "tag": "二分查找",
+      "difficulty": "简单",
+      "description": "nums 是严格递增数组。查找 target，下标从0开始，找不到返回-1。要求 O(log n) 时间。\n\n0 ≤ nums.length ≤ 10000。",
+      "examples": [
+        {
+          "input": {
+            "nums": [
+              -1,
+              0,
+              3,
+              5,
+              9,
+              12
+            ],
+            "target": 9
+          },
+          "expected": 4,
+          "explanation": "nums[4] = 9。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "nums": [],
+            "target": 1
+          },
+          "expected": -1
+        },
+        {
+          "input": {
+            "nums": [
+              1
+            ],
+            "target": 1
+          },
+          "expected": 0
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              3,
+              5
+            ],
+            "target": 4
+          },
+          "expected": -1
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "target": 1
+          },
+          "expected": 0
+        },
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "target": 4
+          },
+          "expected": 3
+        }
+      ],
+      "hints": [
+        "每轮维护答案可能存在的区间。"
+      ],
+      "editorial": "在闭区间[left,right]内比较中间值，严格缩小区间。时间 O(log n)，空间 O(1)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "valid-brackets",
+      "title": "有效括号",
+      "tag": "栈",
+      "difficulty": "简单",
+      "description": "字符串 s 仅由 ()[]{} 六种字符组成，判断括号是否正确闭合。空串有效。返回布尔值。\n\n0 ≤ s.length ≤ 10000。",
+      "examples": [
+        {
+          "input": {
+            "s": "([]){}"
+          },
+          "expected": true,
+          "explanation": "嵌套与顺序都正确。"
+        },
+        {
+          "input": {
+            "s": "([)]"
+          },
+          "expected": false,
+          "explanation": "闭合顺序错误。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "s": ""
+          },
+          "expected": true
+        },
+        {
+          "input": {
+            "s": "("
+          },
+          "expected": false
+        },
+        {
+          "input": {
+            "s": "]"
+          },
+          "expected": false
+        },
+        {
+          "input": {
+            "s": "{{[()]}}"
+          },
+          "expected": true
+        },
+        {
+          "input": {
+            "s": "())"
+          },
+          "expected": false
+        }
+      ],
+      "hints": [
+        "左括号入栈，右括号匹配栈顶。"
+      ],
+      "editorial": "用栈保存未闭合的左括号。遇到右括号时栈不能为空，且栈顶必须匹配。最后栈必须为空。时间 O(n)，空间 O(n)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "merge-intervals",
+      "title": "合并区间",
+      "tag": "排序",
+      "difficulty": "中等",
+      "description": "给定闭区间数组 intervals，合并所有重叠区间，按左端点升序输出。端点相同也算重叠。空输入返回空数组。\n\n0 ≤ intervals.length ≤ 10000，每个区间为[start,end]且start ≤ end。",
+      "examples": [
+        {
+          "input": {
+            "intervals": [
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                6
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                15,
+                18
+              ]
+            ]
+          },
+          "expected": [
+            [
+              1,
+              6
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              15,
+              18
+            ]
+          ],
+          "explanation": "前两个区间重叠。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "intervals": []
+          },
+          "expected": []
+        },
+        {
+          "input": {
+            "intervals": [
+              [
+                1,
+                4
+              ],
+              [
+                4,
+                5
+              ]
+            ]
+          },
+          "expected": [
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        {
+          "input": {
+            "intervals": [
+              [
+                2,
+                3
+              ],
+              [
+                1,
+                10
+              ],
+              [
+                5,
+                8
+              ]
+            ]
+          },
+          "expected": [
+            [
+              1,
+              10
+            ]
+          ]
+        },
+        {
+          "input": {
+            "intervals": [
+              [
+                5,
+                6
+              ],
+              [
+                1,
+                2
+              ]
+            ]
+          },
+          "expected": [
+            [
+              1,
+              2
+            ],
+            [
+              5,
+              6
+            ]
+          ]
+        }
+      ],
+      "hints": [
+        "先按起点排序。",
+        "维护最后一个合并区间的终点。"
+      ],
+      "editorial": "排序后扫描，下一段起点不大于当前终点则扩展终点，否则开始新段。时间 O(n log n)，空间取决于排序与输出。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "longest-unique",
+      "title": "最长不重复子串",
+      "tag": "滑动窗口",
+      "difficulty": "中等",
+      "description": "给定仅含ASCII字符的字符串 s，返回不含重复字符的最长连续子串长度。\n\n0 ≤ s.length ≤ 10000。",
+      "examples": [
+        {
+          "input": {
+            "s": "abcabcbb"
+          },
+          "expected": 3,
+          "explanation": "abc 的长度为3。"
+        },
+        {
+          "input": {
+            "s": "bbbbb"
+          },
+          "expected": 1,
+          "explanation": "最长为b。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "s": ""
+          },
+          "expected": 0
+        },
+        {
+          "input": {
+            "s": "pwwkew"
+          },
+          "expected": 3
+        },
+        {
+          "input": {
+            "s": "abba"
+          },
+          "expected": 2
+        },
+        {
+          "input": {
+            "s": "a b a"
+          },
+          "expected": 3
+        },
+        {
+          "input": {
+            "s": "dvdf"
+          },
+          "expected": 3
+        }
+      ],
+      "hints": [
+        "窗口左端只向右移动。"
+      ],
+      "editorial": "记录每个字符最后出现的位置，遇到重复时left=max(left,last+1)。时间 O(n)，ASCII字符表空间 O(1)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "climbing-stairs",
+      "title": "爬楼梯",
+      "tag": "动态规划",
+      "difficulty": "简单",
+      "description": "每次可以上1级或2级台阶。返回爬到 n 级台阶的方法数。n=0时空走法计为1。\n\n0 ≤ n ≤ 35。",
+      "examples": [
+        {
+          "input": {
+            "n": 3
+          },
+          "expected": 3,
+          "explanation": "1+1+1、1+2、2+1。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "n": 0
+          },
+          "expected": 1
+        },
+        {
+          "input": {
+            "n": 1
+          },
+          "expected": 1
+        },
+        {
+          "input": {
+            "n": 2
+          },
+          "expected": 2
+        },
+        {
+          "input": {
+            "n": 10
+          },
+          "expected": 89
+        },
+        {
+          "input": {
+            "n": 35
+          },
+          "expected": 14930352
+        }
+      ],
+      "hints": [
+        "最后一步来自n-1或n-2。"
+      ],
+      "editorial": "递推f(n)=f(n-1)+f(n-2)，初始f(0)=f(1)=1。时间 O(n)，滚动变量空间 O(1)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "coin-change",
+      "title": "最少硬币数",
+      "tag": "动态规划",
+      "difficulty": "中等",
+      "description": "coins 是不同正整数面额，可无限使用。返回组成 amount 的最少硬币数，无解返回-1。\n\n0 ≤ amount ≤ 1000，1 ≤ coins.length ≤ 20。",
+      "examples": [
+        {
+          "input": {
+            "coins": [
+              1,
+              2,
+              5
+            ],
+            "amount": 11
+          },
+          "expected": 3,
+          "explanation": "5+5+1。"
+        },
+        {
+          "input": {
+            "coins": [
+              2
+            ],
+            "amount": 3
+          },
+          "expected": -1,
+          "explanation": "不能组成3。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "coins": [
+              1
+            ],
+            "amount": 0
+          },
+          "expected": 0
+        },
+        {
+          "input": {
+            "coins": [
+              2,
+              5
+            ],
+            "amount": 10
+          },
+          "expected": 2
+        },
+        {
+          "input": {
+            "coins": [
+              3,
+              4
+            ],
+            "amount": 6
+          },
+          "expected": 2
+        },
+        {
+          "input": {
+            "coins": [
+              2
+            ],
+            "amount": 1
+          },
+          "expected": -1
+        }
+      ],
+      "hints": [
+        "dp[x]表示组成金额x的最少硬币数。"
+      ],
+      "editorial": "dp[0]=0，其余初始化不可达。对金额从小到大枚举硬币转移，最终不可达返回-1。时间 O(amount × 硬币数)，空间 O(amount)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "product-except-self",
+      "title": "除自身外的乘积",
+      "tag": "前缀和",
+      "difficulty": "中等",
+      "description": "给定 nums，输出每个位置除自身外其他元素的乘积。不得使用除法。保证所有前后缀乘积在32位有符号整数范围内。\n\n2 ≤ nums.length ≤ 10000。",
+      "examples": [
+        {
+          "input": {
+            "nums": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "expected": [
+            24,
+            12,
+            8,
+            6
+          ],
+          "explanation": "例如第0个结果是2×3×4。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "nums": [
+              -1,
+              1,
+              0,
+              -3,
+              3
+            ]
+          },
+          "expected": [
+            0,
+            0,
+            9,
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              0,
+              0
+            ]
+          },
+          "expected": [
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              2,
+              3
+            ]
+          },
+          "expected": [
+            3,
+            2
+          ]
+        },
+        {
+          "input": {
+            "nums": [
+              -1,
+              -2,
+              -3
+            ]
+          },
+          "expected": [
+            6,
+            3,
+            2
+          ]
+        }
+      ],
+      "hints": [
+        "每个结果等于左边乘积乘右边乘积。"
+      ],
+      "editorial": "第一遍记录前缀乘积，第二遍乘以滚动后缀乘积。时间 O(n)，输出之外空间 O(1)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "daily-temperatures",
+      "title": "每日温度",
+      "tag": "单调栈",
+      "difficulty": "中等",
+      "description": "给定每日温度 temperatures，返回每一天要等多少天才遇到严格更高的温度。未来没有则为0。\n\n0 ≤ temperatures.length ≤ 10000。",
+      "examples": [
+        {
+          "input": {
+            "temperatures": [
+              73,
+              74,
+              75,
+              71,
+              69,
+              72,
+              76,
+              73
+            ]
+          },
+          "expected": [
+            1,
+            1,
+            4,
+            2,
+            1,
+            1,
+            0,
+            0
+          ],
+          "explanation": "第2天要等4天。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "temperatures": []
+          },
+          "expected": []
+        },
+        {
+          "input": {
+            "temperatures": [
+              30,
+              30,
+              30
+            ]
+          },
+          "expected": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "temperatures": [
+              40,
+              30,
+              20
+            ]
+          },
+          "expected": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "temperatures": [
+              20,
+              30,
+              40
+            ]
+          },
+          "expected": [
+            1,
+            1,
+            0
+          ]
+        }
+      ],
+      "hints": [
+        "维护尚未找到更高温度的下标栈。"
+      ],
+      "editorial": "维护温度单调不增的下标栈。遇到更高温度时弹出并记录下标差。每个位置入栈出栈一次，时间 O(n)，空间 O(n)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    },
+    {
+      "id": "grid-paths",
+      "title": "网格路径",
+      "tag": "动态规划",
+      "difficulty": "中等",
+      "description": "m行n列的网格，从左上角到右下角，每次只能向右或向下移动。返回路径总数。\n\n1 ≤ m,n ≤ 10。",
+      "examples": [
+        {
+          "input": {
+            "m": 3,
+            "n": 7
+          },
+          "expected": 28,
+          "explanation": "不同移动顺序对应不同路径。"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "m": 1,
+            "n": 1
+          },
+          "expected": 1
+        },
+        {
+          "input": {
+            "m": 1,
+            "n": 9
+          },
+          "expected": 1
+        },
+        {
+          "input": {
+            "m": 3,
+            "n": 2
+          },
+          "expected": 3
+        },
+        {
+          "input": {
+            "m": 5,
+            "n": 5
+          },
+          "expected": 70
+        }
+      ],
+      "hints": [
+        "每个格子的路径数来自上方与左方。"
+      ],
+      "editorial": "首行首列路径数为1，其余dp[r][c]=dp[r-1][c]+dp[r][c-1]。时间 O(mn)，滚动数组空间 O(n)。",
+      "source": "DevPrep 原创练习 / AI 辅助整理",
+      "language_notes": {
+        "java": "实现 solve(Map<String, Object> input)，使用 Json.parse 和 Json.stringify 处理输入输出。整数数组可用 numbers(input.get(\"nums\")) 转换。",
+        "go": "实现 solve(map[string]interface{}) interface{}，JSON 数字默认是 float64，使用 int(...) 转为整数。",
+        "python": "实现 solve(input: dict)，返回可 JSON 序列化的值。",
+        "javascript": "实现 solve(input)，输入为普通对象，返回数组、数字、布尔值或字符串。"
+      }
+    }
+  ]
+}

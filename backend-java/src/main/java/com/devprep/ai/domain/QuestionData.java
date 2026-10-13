@@ -8,4 +8,5 @@ public record QuestionData(String id, String knowledge_point_id, String question
                            String domain, String topic_summary, String source_material_id,
                            String source_name, String source_url, String source_path,
                            String license, String attribution, String revision,
-                           String source_sha256, String source_locale, String content_format, String assessment_mode) { }
+                           String source_sha256, String source_locale, String content_locale,
+                           String content_format, String assessment_mode) { }

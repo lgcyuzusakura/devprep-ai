@@ -1,0 +1,4802 @@
+{
+  "collections": [
+    {
+      "id": "hot100",
+      "title": "LeetCode Hot 100",
+      "source_url": "https://leetcode.cn/studyplan/top-100-liked/",
+      "count": 100
+    },
+    {
+      "id": "leetcode75",
+      "title": "LeetCode 75",
+      "source_url": "https://leetcode.cn/studyplan/leetcode-75/",
+      "count": 75
+    },
+    {
+      "id": "interview150",
+      "title": "面试经典 150",
+      "source_url": "https://leetcode.cn/studyplan/top-interview-150/",
+      "count": 150
+    },
+    {
+      "id": "programming",
+      "title": "编程基础",
+      "source_url": "https://leetcode.cn/studyplan/programming-skills/",
+      "count": 33
+    },
+    {
+      "id": "dp",
+      "title": "动态规划",
+      "source_url": "https://leetcode.cn/studyplan/dynamic-programming/",
+      "count": 46
+    },
+    {
+      "id": "graph",
+      "title": "图论",
+      "source_url": "https://leetcode.cn/studyplan/graph-theory/",
+      "count": 36
+    },
+    {
+      "id": "binary",
+      "title": "二分查找",
+      "source_url": "https://leetcode.cn/studyplan/binary-search/",
+      "count": 32
+    },
+    {
+      "id": "first100",
+      "title": "题号 1–100",
+      "source_url": "https://leetcode.cn/problemset/",
+      "count": 100
+    }
+  ],
+  "problems": [
+    {
+      "id": "lc-001-two-sum",
+      "number": 1,
+      "title": "两数之和",
+      "slug": "two-sum",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/two-sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-002-add-two-numbers",
+      "number": 2,
+      "title": "两数相加",
+      "slug": "add-two-numbers",
+      "difficulty": "中等",
+      "tag": "递归",
+      "collections": [
+        "hot100",
+        "interview150",
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/add-two-numbers/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-003-longest-substring-without-repeating-characters",
+      "number": 3,
+      "title": "无重复字符的最长子串",
+      "slug": "longest-substring-without-repeating-characters",
+      "difficulty": "中等",
+      "tag": "哈希表",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-substring-without-repeating-characters/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-004-median-of-two-sorted-arrays",
+      "number": 4,
+      "title": "寻找两个正序数组的中位数",
+      "slug": "median-of-two-sorted-arrays",
+      "difficulty": "困难",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "binary",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/median-of-two-sorted-arrays/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-005-longest-palindromic-substring",
+      "number": 5,
+      "title": "最长回文子串",
+      "slug": "longest-palindromic-substring",
+      "difficulty": "中等",
+      "tag": "双指针",
+      "collections": [
+        "hot100",
+        "interview150",
+        "dp",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-palindromic-substring/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-006-zigzag-conversion",
+      "number": 6,
+      "title": "Z 字形变换",
+      "slug": "zigzag-conversion",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/zigzag-conversion/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-007-reverse-integer",
+      "number": 7,
+      "title": "整数反转",
+      "slug": "reverse-integer",
+      "difficulty": "中等",
+      "tag": "数学",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/reverse-integer/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-008-string-to-integer-atoi",
+      "number": 8,
+      "title": "字符串转换整数 (atoi)",
+      "slug": "string-to-integer-atoi",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/string-to-integer-atoi/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-009-palindrome-number",
+      "number": 9,
+      "title": "回文数",
+      "slug": "palindrome-number",
+      "difficulty": "简单",
+      "tag": "数学",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/palindrome-number/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-010-regular-expression-matching",
+      "number": 10,
+      "title": "正则表达式匹配",
+      "slug": "regular-expression-matching",
+      "difficulty": "困难",
+      "tag": "递归",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/regular-expression-matching/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-011-container-with-most-water",
+      "number": 11,
+      "title": "盛最多水的容器",
+      "slug": "container-with-most-water",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/container-with-most-water/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-012-integer-to-roman",
+      "number": 12,
+      "title": "整数转罗马数字",
+      "slug": "integer-to-roman",
+      "difficulty": "中等",
+      "tag": "哈希表",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/integer-to-roman/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-013-roman-to-integer",
+      "number": 13,
+      "title": "罗马数字转整数",
+      "slug": "roman-to-integer",
+      "difficulty": "简单",
+      "tag": "哈希表",
+      "collections": [
+        "interview150",
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/roman-to-integer/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-014-longest-common-prefix",
+      "number": 14,
+      "title": "最长公共前缀",
+      "slug": "longest-common-prefix",
+      "difficulty": "简单",
+      "tag": "字典树",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-common-prefix/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-015-3sum",
+      "number": 15,
+      "title": "三数之和",
+      "slug": "3sum",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/3sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-016-3sum-closest",
+      "number": 16,
+      "title": "最接近的三数之和",
+      "slug": "3sum-closest",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/3sum-closest/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-017-letter-combinations-of-a-phone-number",
+      "number": 17,
+      "title": "电话号码的字母组合",
+      "slug": "letter-combinations-of-a-phone-number",
+      "difficulty": "中等",
+      "tag": "哈希表",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/letter-combinations-of-a-phone-number/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-018-4sum",
+      "number": 18,
+      "title": "四数之和",
+      "slug": "4sum",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/4sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-019-remove-nth-node-from-end-of-list",
+      "number": 19,
+      "title": "删除链表的倒数第 N 个结点",
+      "slug": "remove-nth-node-from-end-of-list",
+      "difficulty": "中等",
+      "tag": "链表",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/remove-nth-node-from-end-of-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-020-valid-parentheses",
+      "number": 20,
+      "title": "有效的括号",
+      "slug": "valid-parentheses",
+      "difficulty": "简单",
+      "tag": "栈",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/valid-parentheses/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-021-merge-two-sorted-lists",
+      "number": 21,
+      "title": "合并两个有序链表",
+      "slug": "merge-two-sorted-lists",
+      "difficulty": "简单",
+      "tag": "递归",
+      "collections": [
+        "hot100",
+        "interview150",
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/merge-two-sorted-lists/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-022-generate-parentheses",
+      "number": 22,
+      "title": "括号生成",
+      "slug": "generate-parentheses",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/generate-parentheses/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-023-merge-k-sorted-lists",
+      "number": 23,
+      "title": "合并 K 个升序链表",
+      "slug": "merge-k-sorted-lists",
+      "difficulty": "困难",
+      "tag": "链表",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/merge-k-sorted-lists/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-024-swap-nodes-in-pairs",
+      "number": 24,
+      "title": "两两交换链表中的节点",
+      "slug": "swap-nodes-in-pairs",
+      "difficulty": "中等",
+      "tag": "递归",
+      "collections": [
+        "hot100",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/swap-nodes-in-pairs/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-025-reverse-nodes-in-k-group",
+      "number": 25,
+      "title": "K 个一组翻转链表",
+      "slug": "reverse-nodes-in-k-group",
+      "difficulty": "困难",
+      "tag": "递归",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/reverse-nodes-in-k-group/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-026-remove-duplicates-from-sorted-array",
+      "number": 26,
+      "title": "删除有序数组中的重复项",
+      "slug": "remove-duplicates-from-sorted-array",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/remove-duplicates-from-sorted-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-027-remove-element",
+      "number": 27,
+      "title": "移除元素",
+      "slug": "remove-element",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/remove-element/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-028-find-the-index-of-the-first-occurrence-in-a-string",
+      "number": 28,
+      "title": "找出字符串中第一个匹配项的下标",
+      "slug": "find-the-index-of-the-first-occurrence-in-a-string",
+      "difficulty": "简单",
+      "tag": "双指针",
+      "collections": [
+        "interview150",
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-029-divide-two-integers",
+      "number": 29,
+      "title": "两数相除",
+      "slug": "divide-two-integers",
+      "difficulty": "中等",
+      "tag": "位运算",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/divide-two-integers/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-030-substring-with-concatenation-of-all-words",
+      "number": 30,
+      "title": "串联所有单词的子串",
+      "slug": "substring-with-concatenation-of-all-words",
+      "difficulty": "困难",
+      "tag": "哈希表",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/substring-with-concatenation-of-all-words/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-031-next-permutation",
+      "number": 31,
+      "title": "下一个排列",
+      "slug": "next-permutation",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/next-permutation/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-032-longest-valid-parentheses",
+      "number": 32,
+      "title": "最长有效括号",
+      "slug": "longest-valid-parentheses",
+      "difficulty": "困难",
+      "tag": "栈",
+      "collections": [
+        "hot100",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-valid-parentheses/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-033-search-in-rotated-sorted-array",
+      "number": 33,
+      "title": "搜索旋转排序数组",
+      "slug": "search-in-rotated-sorted-array",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "binary",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/search-in-rotated-sorted-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-034-find-first-and-last-position-of-element-in-sorted-array",
+      "number": 34,
+      "title": "在排序数组中查找元素的第一个和最后一个位置",
+      "slug": "find-first-and-last-position-of-element-in-sorted-array",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "binary",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-035-search-insert-position",
+      "number": 35,
+      "title": "搜索插入位置",
+      "slug": "search-insert-position",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "binary",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/search-insert-position/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-036-valid-sudoku",
+      "number": 36,
+      "title": "有效的数独",
+      "slug": "valid-sudoku",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/valid-sudoku/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-037-sudoku-solver",
+      "number": 37,
+      "title": "解数独",
+      "slug": "sudoku-solver",
+      "difficulty": "困难",
+      "tag": "数组",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/sudoku-solver/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-038-count-and-say",
+      "number": 38,
+      "title": "外观数列",
+      "slug": "count-and-say",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/count-and-say/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-039-combination-sum",
+      "number": 39,
+      "title": "组合总和",
+      "slug": "combination-sum",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/combination-sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-040-combination-sum-ii",
+      "number": 40,
+      "title": "组合总和 II",
+      "slug": "combination-sum-ii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/combination-sum-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-041-first-missing-positive",
+      "number": 41,
+      "title": "缺失的第一个正数",
+      "slug": "first-missing-positive",
+      "difficulty": "困难",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/first-missing-positive/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-042-trapping-rain-water",
+      "number": 42,
+      "title": "接雨水",
+      "slug": "trapping-rain-water",
+      "difficulty": "困难",
+      "tag": "栈",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/trapping-rain-water/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-043-multiply-strings",
+      "number": 43,
+      "title": "字符串相乘",
+      "slug": "multiply-strings",
+      "difficulty": "中等",
+      "tag": "数学",
+      "collections": [
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/multiply-strings/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-044-wildcard-matching",
+      "number": 44,
+      "title": "通配符匹配",
+      "slug": "wildcard-matching",
+      "difficulty": "困难",
+      "tag": "贪心",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/wildcard-matching/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-045-jump-game-ii",
+      "number": 45,
+      "title": "跳跃游戏 II",
+      "slug": "jump-game-ii",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/jump-game-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-046-permutations",
+      "number": 46,
+      "title": "全排列",
+      "slug": "permutations",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/permutations/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-047-permutations-ii",
+      "number": 47,
+      "title": "全排列 II",
+      "slug": "permutations-ii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/permutations-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-048-rotate-image",
+      "number": 48,
+      "title": "旋转图像",
+      "slug": "rotate-image",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/rotate-image/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-049-group-anagrams",
+      "number": 49,
+      "title": "字母异位词分组",
+      "slug": "group-anagrams",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/group-anagrams/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-050-powx-n",
+      "number": 50,
+      "title": "Pow(x, n)",
+      "slug": "powx-n",
+      "difficulty": "中等",
+      "tag": "递归",
+      "collections": [
+        "interview150",
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/powx-n/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-051-n-queens",
+      "number": 51,
+      "title": "N 皇后",
+      "slug": "n-queens",
+      "difficulty": "困难",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/n-queens/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-052-n-queens-ii",
+      "number": 52,
+      "title": "N 皇后 II",
+      "slug": "n-queens-ii",
+      "difficulty": "困难",
+      "tag": "回溯",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/n-queens-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-053-maximum-subarray",
+      "number": 53,
+      "title": "最大子数组和",
+      "slug": "maximum-subarray",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximum-subarray/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-054-spiral-matrix",
+      "number": 54,
+      "title": "螺旋矩阵",
+      "slug": "spiral-matrix",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/spiral-matrix/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-055-jump-game",
+      "number": 55,
+      "title": "跳跃游戏",
+      "slug": "jump-game",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/jump-game/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-056-merge-intervals",
+      "number": 56,
+      "title": "合并区间",
+      "slug": "merge-intervals",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/merge-intervals/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-057-insert-interval",
+      "number": 57,
+      "title": "插入区间",
+      "slug": "insert-interval",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/insert-interval/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-058-length-of-last-word",
+      "number": 58,
+      "title": "最后一个单词的长度",
+      "slug": "length-of-last-word",
+      "difficulty": "简单",
+      "tag": "字符串",
+      "collections": [
+        "interview150",
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/length-of-last-word/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-059-spiral-matrix-ii",
+      "number": 59,
+      "title": "螺旋矩阵 II",
+      "slug": "spiral-matrix-ii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/spiral-matrix-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-060-permutation-sequence",
+      "number": 60,
+      "title": "排列序列",
+      "slug": "permutation-sequence",
+      "difficulty": "困难",
+      "tag": "递归",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/permutation-sequence/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-061-rotate-list",
+      "number": 61,
+      "title": "旋转链表",
+      "slug": "rotate-list",
+      "difficulty": "中等",
+      "tag": "链表",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/rotate-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-062-unique-paths",
+      "number": 62,
+      "title": "不同路径",
+      "slug": "unique-paths",
+      "difficulty": "中等",
+      "tag": "数学",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "dp",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/unique-paths/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-063-unique-paths-ii",
+      "number": 63,
+      "title": "不同路径 II",
+      "slug": "unique-paths-ii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "dp",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/unique-paths-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-064-minimum-path-sum",
+      "number": 64,
+      "title": "最小路径和",
+      "slug": "minimum-path-sum",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "dp",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-path-sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-065-valid-number",
+      "number": 65,
+      "title": "有效数字",
+      "slug": "valid-number",
+      "difficulty": "困难",
+      "tag": "字符串",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/valid-number/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-066-plus-one",
+      "number": 66,
+      "title": "加一",
+      "slug": "plus-one",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/plus-one/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-067-add-binary",
+      "number": 67,
+      "title": "二进制求和",
+      "slug": "add-binary",
+      "difficulty": "简单",
+      "tag": "位运算",
+      "collections": [
+        "interview150",
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/add-binary/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-068-text-justification",
+      "number": 68,
+      "title": "文本左右对齐",
+      "slug": "text-justification",
+      "difficulty": "困难",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/text-justification/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-069-sqrtx",
+      "number": 69,
+      "title": "x 的平方根 ",
+      "slug": "sqrtx",
+      "difficulty": "简单",
+      "tag": "数学",
+      "collections": [
+        "interview150",
+        "binary",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/sqrtx/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-070-climbing-stairs",
+      "number": 70,
+      "title": "爬楼梯",
+      "slug": "climbing-stairs",
+      "difficulty": "简单",
+      "tag": "记忆化",
+      "collections": [
+        "hot100",
+        "interview150",
+        "dp",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/climbing-stairs/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-071-simplify-path",
+      "number": 71,
+      "title": "简化路径",
+      "slug": "simplify-path",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/simplify-path/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-072-edit-distance",
+      "number": 72,
+      "title": "编辑距离",
+      "slug": "edit-distance",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150",
+        "dp",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/edit-distance/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-073-set-matrix-zeroes",
+      "number": 73,
+      "title": "矩阵置零",
+      "slug": "set-matrix-zeroes",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "programming",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/set-matrix-zeroes/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-074-search-a-2d-matrix",
+      "number": 74,
+      "title": "搜索二维矩阵",
+      "slug": "search-a-2d-matrix",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "binary",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/search-a-2d-matrix/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-075-sort-colors",
+      "number": 75,
+      "title": "颜色分类",
+      "slug": "sort-colors",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/sort-colors/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-076-minimum-window-substring",
+      "number": 76,
+      "title": "最小覆盖子串",
+      "slug": "minimum-window-substring",
+      "difficulty": "困难",
+      "tag": "哈希表",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-window-substring/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-077-combinations",
+      "number": 77,
+      "title": "组合",
+      "slug": "combinations",
+      "difficulty": "中等",
+      "tag": "回溯",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/combinations/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-078-subsets",
+      "number": 78,
+      "title": "子集",
+      "slug": "subsets",
+      "difficulty": "中等",
+      "tag": "位运算",
+      "collections": [
+        "hot100",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/subsets/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-079-word-search",
+      "number": 79,
+      "title": "单词搜索",
+      "slug": "word-search",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/word-search/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-080-remove-duplicates-from-sorted-array-ii",
+      "number": 80,
+      "title": "删除有序数组中的重复项 II",
+      "slug": "remove-duplicates-from-sorted-array-ii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-081-search-in-rotated-sorted-array-ii",
+      "number": 81,
+      "title": "搜索旋转排序数组 II",
+      "slug": "search-in-rotated-sorted-array-ii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/search-in-rotated-sorted-array-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-082-remove-duplicates-from-sorted-list-ii",
+      "number": 82,
+      "title": "删除排序链表中的重复元素 II",
+      "slug": "remove-duplicates-from-sorted-list-ii",
+      "difficulty": "中等",
+      "tag": "链表",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-083-remove-duplicates-from-sorted-list",
+      "number": 83,
+      "title": "删除排序链表中的重复元素",
+      "slug": "remove-duplicates-from-sorted-list",
+      "difficulty": "简单",
+      "tag": "链表",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/remove-duplicates-from-sorted-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-084-largest-rectangle-in-histogram",
+      "number": 84,
+      "title": "柱状图中最大的矩形",
+      "slug": "largest-rectangle-in-histogram",
+      "difficulty": "困难",
+      "tag": "栈",
+      "collections": [
+        "hot100",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/largest-rectangle-in-histogram/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-085-maximal-rectangle",
+      "number": 85,
+      "title": "最大矩形",
+      "slug": "maximal-rectangle",
+      "difficulty": "困难",
+      "tag": "栈",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximal-rectangle/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-086-partition-list",
+      "number": 86,
+      "title": "分隔链表",
+      "slug": "partition-list",
+      "difficulty": "中等",
+      "tag": "链表",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/partition-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-087-scramble-string",
+      "number": 87,
+      "title": "扰乱字符串",
+      "slug": "scramble-string",
+      "difficulty": "困难",
+      "tag": "字符串",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/scramble-string/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-088-merge-sorted-array",
+      "number": 88,
+      "title": "合并两个有序数组",
+      "slug": "merge-sorted-array",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/merge-sorted-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-089-gray-code",
+      "number": 89,
+      "title": "格雷编码",
+      "slug": "gray-code",
+      "difficulty": "中等",
+      "tag": "位运算",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/gray-code/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-090-subsets-ii",
+      "number": 90,
+      "title": "子集 II",
+      "slug": "subsets-ii",
+      "difficulty": "中等",
+      "tag": "位运算",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/subsets-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-091-decode-ways",
+      "number": 91,
+      "title": "解码方法",
+      "slug": "decode-ways",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "dp",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/decode-ways/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-092-reverse-linked-list-ii",
+      "number": 92,
+      "title": "反转链表 II",
+      "slug": "reverse-linked-list-ii",
+      "difficulty": "中等",
+      "tag": "链表",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/reverse-linked-list-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-093-restore-ip-addresses",
+      "number": 93,
+      "title": "复原 IP 地址",
+      "slug": "restore-ip-addresses",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/restore-ip-addresses/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-094-binary-tree-inorder-traversal",
+      "number": 94,
+      "title": "二叉树的中序遍历",
+      "slug": "binary-tree-inorder-traversal",
+      "difficulty": "简单",
+      "tag": "栈",
+      "collections": [
+        "hot100",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/binary-tree-inorder-traversal/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-095-unique-binary-search-trees-ii",
+      "number": 95,
+      "title": "不同的二叉搜索树 II",
+      "slug": "unique-binary-search-trees-ii",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "dp",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/unique-binary-search-trees-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-096-unique-binary-search-trees",
+      "number": 96,
+      "title": "不同的二叉搜索树",
+      "slug": "unique-binary-search-trees",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "dp",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/unique-binary-search-trees/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-097-interleaving-string",
+      "number": 97,
+      "title": "交错字符串",
+      "slug": "interleaving-string",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/interleaving-string/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-098-validate-binary-search-tree",
+      "number": 98,
+      "title": "验证二叉搜索树",
+      "slug": "validate-binary-search-tree",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/validate-binary-search-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-099-recover-binary-search-tree",
+      "number": 99,
+      "title": "恢复二叉搜索树",
+      "slug": "recover-binary-search-tree",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/recover-binary-search-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-100-same-tree",
+      "number": 100,
+      "title": "相同的树",
+      "slug": "same-tree",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "interview150",
+        "first100"
+      ],
+      "source_url": "https://leetcode.cn/problems/same-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-101-symmetric-tree",
+      "number": 101,
+      "title": "对称二叉树",
+      "slug": "symmetric-tree",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/symmetric-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-102-binary-tree-level-order-traversal",
+      "number": 102,
+      "title": "二叉树的层序遍历",
+      "slug": "binary-tree-level-order-traversal",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/binary-tree-level-order-traversal/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-103-binary-tree-zigzag-level-order-traversal",
+      "number": 103,
+      "title": "二叉树的锯齿形层序遍历",
+      "slug": "binary-tree-zigzag-level-order-traversal",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-104-maximum-depth-of-binary-tree",
+      "number": 104,
+      "title": "二叉树的最大深度",
+      "slug": "maximum-depth-of-binary-tree",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximum-depth-of-binary-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-105-construct-binary-tree-from-preorder-and-inorder-traversal",
+      "number": 105,
+      "title": "从前序与中序遍历序列构造二叉树",
+      "slug": "construct-binary-tree-from-preorder-and-inorder-traversal",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-106-construct-binary-tree-from-inorder-and-postorder-traversal",
+      "number": 106,
+      "title": "从中序与后序遍历序列构造二叉树",
+      "slug": "construct-binary-tree-from-inorder-and-postorder-traversal",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-108-convert-sorted-array-to-binary-search-tree",
+      "number": 108,
+      "title": "将有序数组转换为二叉搜索树",
+      "slug": "convert-sorted-array-to-binary-search-tree",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-112-path-sum",
+      "number": 112,
+      "title": "路径总和",
+      "slug": "path-sum",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/path-sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-114-flatten-binary-tree-to-linked-list",
+      "number": 114,
+      "title": "二叉树展开为链表",
+      "slug": "flatten-binary-tree-to-linked-list",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-115-distinct-subsequences",
+      "number": 115,
+      "title": "不同的子序列",
+      "slug": "distinct-subsequences",
+      "difficulty": "困难",
+      "tag": "字符串",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/distinct-subsequences/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-117-populating-next-right-pointers-in-each-node-ii",
+      "number": 117,
+      "title": "填充每个节点的下一个右侧节点指针 II",
+      "slug": "populating-next-right-pointers-in-each-node-ii",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-118-pascals-triangle",
+      "number": 118,
+      "title": "杨辉三角",
+      "slug": "pascals-triangle",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/pascals-triangle/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-120-triangle",
+      "number": 120,
+      "title": "三角形最小路径和",
+      "slug": "triangle",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/triangle/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-121-best-time-to-buy-and-sell-stock",
+      "number": 121,
+      "title": "买卖股票的最佳时机",
+      "slug": "best-time-to-buy-and-sell-stock",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-122-best-time-to-buy-and-sell-stock-ii",
+      "number": 122,
+      "title": "买卖股票的最佳时机 II",
+      "slug": "best-time-to-buy-and-sell-stock-ii",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-123-best-time-to-buy-and-sell-stock-iii",
+      "number": 123,
+      "title": "买卖股票的最佳时机 III",
+      "slug": "best-time-to-buy-and-sell-stock-iii",
+      "difficulty": "困难",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-124-binary-tree-maximum-path-sum",
+      "number": 124,
+      "title": "二叉树中的最大路径和",
+      "slug": "binary-tree-maximum-path-sum",
+      "difficulty": "困难",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "interview150",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/binary-tree-maximum-path-sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-125-valid-palindrome",
+      "number": 125,
+      "title": "验证回文串",
+      "slug": "valid-palindrome",
+      "difficulty": "简单",
+      "tag": "双指针",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/valid-palindrome/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-127-word-ladder",
+      "number": 127,
+      "title": "单词接龙",
+      "slug": "word-ladder",
+      "difficulty": "困难",
+      "tag": "广度优先搜索",
+      "collections": [
+        "interview150",
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/word-ladder/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-128-longest-consecutive-sequence",
+      "number": 128,
+      "title": "最长连续序列",
+      "slug": "longest-consecutive-sequence",
+      "difficulty": "中等",
+      "tag": "并查集",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-consecutive-sequence/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-129-sum-root-to-leaf-numbers",
+      "number": 129,
+      "title": "求根节点到叶节点数字之和",
+      "slug": "sum-root-to-leaf-numbers",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/sum-root-to-leaf-numbers/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-130-surrounded-regions",
+      "number": 130,
+      "title": "被围绕的区域",
+      "slug": "surrounded-regions",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/surrounded-regions/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-131-palindrome-partitioning",
+      "number": 131,
+      "title": "分割回文串",
+      "slug": "palindrome-partitioning",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/palindrome-partitioning/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-133-clone-graph",
+      "number": 133,
+      "title": "克隆图",
+      "slug": "clone-graph",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/clone-graph/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-134-gas-station",
+      "number": 134,
+      "title": "加油站",
+      "slug": "gas-station",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/gas-station/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-135-candy",
+      "number": 135,
+      "title": "分发糖果",
+      "slug": "candy",
+      "difficulty": "困难",
+      "tag": "贪心",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/candy/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-136-single-number",
+      "number": 136,
+      "title": "只出现一次的数字",
+      "slug": "single-number",
+      "difficulty": "简单",
+      "tag": "位运算",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/single-number/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-137-single-number-ii",
+      "number": 137,
+      "title": "只出现一次的数字 II",
+      "slug": "single-number-ii",
+      "difficulty": "中等",
+      "tag": "位运算",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/single-number-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-138-copy-list-with-random-pointer",
+      "number": 138,
+      "title": "随机链表的复制",
+      "slug": "copy-list-with-random-pointer",
+      "difficulty": "中等",
+      "tag": "哈希表",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/copy-list-with-random-pointer/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-139-word-break",
+      "number": 139,
+      "title": "单词拆分",
+      "slug": "word-break",
+      "difficulty": "中等",
+      "tag": "字典树",
+      "collections": [
+        "hot100",
+        "interview150",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/word-break/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-141-linked-list-cycle",
+      "number": 141,
+      "title": "环形链表",
+      "slug": "linked-list-cycle",
+      "difficulty": "简单",
+      "tag": "哈希表",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/linked-list-cycle/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-142-linked-list-cycle-ii",
+      "number": 142,
+      "title": "环形链表 II",
+      "slug": "linked-list-cycle-ii",
+      "difficulty": "中等",
+      "tag": "哈希表",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/linked-list-cycle-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-146-lru-cache",
+      "number": 146,
+      "title": "LRU 缓存",
+      "slug": "lru-cache",
+      "difficulty": "中等",
+      "tag": "设计",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/lru-cache/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-148-sort-list",
+      "number": 148,
+      "title": "排序链表",
+      "slug": "sort-list",
+      "difficulty": "中等",
+      "tag": "链表",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/sort-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-149-max-points-on-a-line",
+      "number": 149,
+      "title": "直线上最多的点数",
+      "slug": "max-points-on-a-line",
+      "difficulty": "困难",
+      "tag": "几何",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/max-points-on-a-line/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-150-evaluate-reverse-polish-notation",
+      "number": 150,
+      "title": "逆波兰表达式求值",
+      "slug": "evaluate-reverse-polish-notation",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/evaluate-reverse-polish-notation/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-151-reverse-words-in-a-string",
+      "number": 151,
+      "title": "反转字符串中的单词",
+      "slug": "reverse-words-in-a-string",
+      "difficulty": "中等",
+      "tag": "双指针",
+      "collections": [
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/reverse-words-in-a-string/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-152-maximum-product-subarray",
+      "number": 152,
+      "title": "乘积最大子数组",
+      "slug": "maximum-product-subarray",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximum-product-subarray/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-153-find-minimum-in-rotated-sorted-array",
+      "number": 153,
+      "title": "寻找旋转排序数组中的最小值",
+      "slug": "find-minimum-in-rotated-sorted-array",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-154-find-minimum-in-rotated-sorted-array-ii",
+      "number": 154,
+      "title": "寻找旋转排序数组中的最小值 II",
+      "slug": "find-minimum-in-rotated-sorted-array-ii",
+      "difficulty": "困难",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-155-min-stack",
+      "number": 155,
+      "title": "最小栈",
+      "slug": "min-stack",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/min-stack/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-160-intersection-of-two-linked-lists",
+      "number": 160,
+      "title": "相交链表",
+      "slug": "intersection-of-two-linked-lists",
+      "difficulty": "简单",
+      "tag": "哈希表",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/intersection-of-two-linked-lists/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-162-find-peak-element",
+      "number": 162,
+      "title": "寻找峰值",
+      "slug": "find-peak-element",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-peak-element/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-167-two-sum-ii-input-array-is-sorted",
+      "number": 167,
+      "title": "两数之和 II - 输入有序数组",
+      "slug": "two-sum-ii-input-array-is-sorted",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-169-majority-element",
+      "number": 169,
+      "title": "多数元素",
+      "slug": "majority-element",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/majority-element/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-172-factorial-trailing-zeroes",
+      "number": 172,
+      "title": "阶乘后的零",
+      "slug": "factorial-trailing-zeroes",
+      "difficulty": "中等",
+      "tag": "数学",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/factorial-trailing-zeroes/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-173-binary-search-tree-iterator",
+      "number": 173,
+      "title": "二叉搜索树迭代器",
+      "slug": "binary-search-tree-iterator",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/binary-search-tree-iterator/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-188-best-time-to-buy-and-sell-stock-iv",
+      "number": 188,
+      "title": "买卖股票的最佳时机 IV",
+      "slug": "best-time-to-buy-and-sell-stock-iv",
+      "difficulty": "困难",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-189-rotate-array",
+      "number": 189,
+      "title": "轮转数组",
+      "slug": "rotate-array",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/rotate-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-190-reverse-bits",
+      "number": 190,
+      "title": "颠倒二进制位",
+      "slug": "reverse-bits",
+      "difficulty": "简单",
+      "tag": "位运算",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/reverse-bits/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-191-number-of-1-bits",
+      "number": 191,
+      "title": "位1的个数",
+      "slug": "number-of-1-bits",
+      "difficulty": "简单",
+      "tag": "位运算",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/number-of-1-bits/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-198-house-robber",
+      "number": 198,
+      "title": "打家劫舍",
+      "slug": "house-robber",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/house-robber/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-199-binary-tree-right-side-view",
+      "number": 199,
+      "title": "二叉树的右视图",
+      "slug": "binary-tree-right-side-view",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/binary-tree-right-side-view/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-200-number-of-islands",
+      "number": 200,
+      "title": "岛屿数量",
+      "slug": "number-of-islands",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "hot100",
+        "interview150",
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/number-of-islands/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-201-bitwise-and-of-numbers-range",
+      "number": 201,
+      "title": "数字范围按位与",
+      "slug": "bitwise-and-of-numbers-range",
+      "difficulty": "中等",
+      "tag": "位运算",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/bitwise-and-of-numbers-range/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-202-happy-number",
+      "number": 202,
+      "title": "快乐数",
+      "slug": "happy-number",
+      "difficulty": "简单",
+      "tag": "哈希表",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/happy-number/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-205-isomorphic-strings",
+      "number": 205,
+      "title": "同构字符串",
+      "slug": "isomorphic-strings",
+      "difficulty": "简单",
+      "tag": "哈希表",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/isomorphic-strings/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-206-reverse-linked-list",
+      "number": 206,
+      "title": "反转链表",
+      "slug": "reverse-linked-list",
+      "difficulty": "简单",
+      "tag": "递归",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/reverse-linked-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-207-course-schedule",
+      "number": 207,
+      "title": "课程表",
+      "slug": "course-schedule",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "hot100",
+        "interview150",
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/course-schedule/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-208-implement-trie-prefix-tree",
+      "number": 208,
+      "title": "实现 Trie (前缀树)",
+      "slug": "implement-trie-prefix-tree",
+      "difficulty": "中等",
+      "tag": "设计",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/implement-trie-prefix-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-209-minimum-size-subarray-sum",
+      "number": 209,
+      "title": "长度最小的子数组",
+      "slug": "minimum-size-subarray-sum",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-size-subarray-sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-210-course-schedule-ii",
+      "number": 210,
+      "title": "课程表 II",
+      "slug": "course-schedule-ii",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "interview150",
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/course-schedule-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-211-design-add-and-search-words-data-structure",
+      "number": 211,
+      "title": "添加与搜索单词 - 数据结构设计",
+      "slug": "design-add-and-search-words-data-structure",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/design-add-and-search-words-data-structure/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-212-word-search-ii",
+      "number": 212,
+      "title": "单词搜索 II",
+      "slug": "word-search-ii",
+      "difficulty": "困难",
+      "tag": "字典树",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/word-search-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-215-kth-largest-element-in-an-array",
+      "number": 215,
+      "title": "数组中的第K个最大元素",
+      "slug": "kth-largest-element-in-an-array",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/kth-largest-element-in-an-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-216-combination-sum-iii",
+      "number": 216,
+      "title": "组合总和 III",
+      "slug": "combination-sum-iii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/combination-sum-iii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-219-contains-duplicate-ii",
+      "number": 219,
+      "title": "存在重复元素 II",
+      "slug": "contains-duplicate-ii",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/contains-duplicate-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-221-maximal-square",
+      "number": 221,
+      "title": "最大正方形",
+      "slug": "maximal-square",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximal-square/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-222-count-complete-tree-nodes",
+      "number": 222,
+      "title": "完全二叉树的节点个数",
+      "slug": "count-complete-tree-nodes",
+      "difficulty": "中等",
+      "tag": "位运算",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/count-complete-tree-nodes/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-224-basic-calculator",
+      "number": 224,
+      "title": "基本计算器",
+      "slug": "basic-calculator",
+      "difficulty": "困难",
+      "tag": "栈",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/basic-calculator/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-226-invert-binary-tree",
+      "number": 226,
+      "title": "翻转二叉树",
+      "slug": "invert-binary-tree",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/invert-binary-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-228-summary-ranges",
+      "number": 228,
+      "title": "汇总区间",
+      "slug": "summary-ranges",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/summary-ranges/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-230-kth-smallest-element-in-a-bst",
+      "number": 230,
+      "title": "二叉搜索树中第 K 小的元素",
+      "slug": "kth-smallest-element-in-a-bst",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/kth-smallest-element-in-a-bst/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-234-palindrome-linked-list",
+      "number": 234,
+      "title": "回文链表",
+      "slug": "palindrome-linked-list",
+      "difficulty": "简单",
+      "tag": "栈",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/palindrome-linked-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-236-lowest-common-ancestor-of-a-binary-tree",
+      "number": 236,
+      "title": "二叉树的最近公共祖先",
+      "slug": "lowest-common-ancestor-of-a-binary-tree",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-238-product-of-array-except-self",
+      "number": 238,
+      "title": "除了自身以外数组的乘积",
+      "slug": "product-of-array-except-self",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/product-of-array-except-self/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-239-sliding-window-maximum",
+      "number": 239,
+      "title": "滑动窗口最大值",
+      "slug": "sliding-window-maximum",
+      "difficulty": "困难",
+      "tag": "队列",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/sliding-window-maximum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-240-search-a-2d-matrix-ii",
+      "number": 240,
+      "title": "搜索二维矩阵 II",
+      "slug": "search-a-2d-matrix-ii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/search-a-2d-matrix-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-242-valid-anagram",
+      "number": 242,
+      "title": "有效的字母异位词",
+      "slug": "valid-anagram",
+      "difficulty": "简单",
+      "tag": "哈希表",
+      "collections": [
+        "interview150",
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/valid-anagram/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-261-graph-valid-tree",
+      "number": 261,
+      "title": "以图判树",
+      "slug": "graph-valid-tree",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/graph-valid-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-269-alien-dictionary",
+      "number": 269,
+      "title": "火星词典",
+      "slug": "alien-dictionary",
+      "difficulty": "困难",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/alien-dictionary/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-274-h-index",
+      "number": 274,
+      "title": "H 指数",
+      "slug": "h-index",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/h-index/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-275-h-index-ii",
+      "number": 275,
+      "title": "H 指数 II",
+      "slug": "h-index-ii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/h-index-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-278-first-bad-version",
+      "number": 278,
+      "title": "第一个错误的版本",
+      "slug": "first-bad-version",
+      "difficulty": "简单",
+      "tag": "二分查找",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/first-bad-version/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-279-perfect-squares",
+      "number": 279,
+      "title": "完全平方数",
+      "slug": "perfect-squares",
+      "difficulty": "中等",
+      "tag": "广度优先搜索",
+      "collections": [
+        "hot100",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/perfect-squares/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-283-move-zeroes",
+      "number": 283,
+      "title": "移动零",
+      "slug": "move-zeroes",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/move-zeroes/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-287-find-the-duplicate-number",
+      "number": 287,
+      "title": "寻找重复数",
+      "slug": "find-the-duplicate-number",
+      "difficulty": "中等",
+      "tag": "位运算",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-the-duplicate-number/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-289-game-of-life",
+      "number": 289,
+      "title": "生命游戏",
+      "slug": "game-of-life",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/game-of-life/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-290-word-pattern",
+      "number": 290,
+      "title": "单词规律",
+      "slug": "word-pattern",
+      "difficulty": "简单",
+      "tag": "哈希表",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/word-pattern/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-295-find-median-from-data-stream",
+      "number": 295,
+      "title": "数据流的中位数",
+      "slug": "find-median-from-data-stream",
+      "difficulty": "困难",
+      "tag": "设计",
+      "collections": [
+        "hot100",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-median-from-data-stream/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-300-longest-increasing-subsequence",
+      "number": 300,
+      "title": "最长递增子序列",
+      "slug": "longest-increasing-subsequence",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100",
+        "interview150",
+        "dp",
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-increasing-subsequence/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-309-best-time-to-buy-and-sell-stock-with-cooldown",
+      "number": 309,
+      "title": "买卖股票的最佳时机含冷冻期",
+      "slug": "best-time-to-buy-and-sell-stock-with-cooldown",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-322-coin-change",
+      "number": 322,
+      "title": "零钱兑换",
+      "slug": "coin-change",
+      "difficulty": "中等",
+      "tag": "广度优先搜索",
+      "collections": [
+        "hot100",
+        "interview150",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/coin-change/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-328-odd-even-linked-list",
+      "number": 328,
+      "title": "奇偶链表",
+      "slug": "odd-even-linked-list",
+      "difficulty": "中等",
+      "tag": "链表",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/odd-even-linked-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-334-increasing-triplet-subsequence",
+      "number": 334,
+      "title": "递增的三元子序列",
+      "slug": "increasing-triplet-subsequence",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/increasing-triplet-subsequence/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-337-house-robber-iii",
+      "number": 337,
+      "title": "打家劫舍 III",
+      "slug": "house-robber-iii",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/house-robber-iii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-338-counting-bits",
+      "number": 338,
+      "title": "比特位计数",
+      "slug": "counting-bits",
+      "difficulty": "简单",
+      "tag": "位运算",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/counting-bits/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-345-reverse-vowels-of-a-string",
+      "number": 345,
+      "title": "反转字符串中的元音字母",
+      "slug": "reverse-vowels-of-a-string",
+      "difficulty": "简单",
+      "tag": "双指针",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/reverse-vowels-of-a-string/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-347-top-k-frequent-elements",
+      "number": 347,
+      "title": "前 K 个高频元素",
+      "slug": "top-k-frequent-elements",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/top-k-frequent-elements/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-354-russian-doll-envelopes",
+      "number": 354,
+      "title": "俄罗斯套娃信封问题",
+      "slug": "russian-doll-envelopes",
+      "difficulty": "困难",
+      "tag": "数组",
+      "collections": [
+        "dp",
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/russian-doll-envelopes/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-367-valid-perfect-square",
+      "number": 367,
+      "title": "有效的完全平方数",
+      "slug": "valid-perfect-square",
+      "difficulty": "简单",
+      "tag": "数学",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/valid-perfect-square/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-373-find-k-pairs-with-smallest-sums",
+      "number": 373,
+      "title": "查找和最小的 K 对数字",
+      "slug": "find-k-pairs-with-smallest-sums",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-k-pairs-with-smallest-sums/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-374-guess-number-higher-or-lower",
+      "number": 374,
+      "title": "猜数字大小",
+      "slug": "guess-number-higher-or-lower",
+      "difficulty": "简单",
+      "tag": "二分查找",
+      "collections": [
+        "leetcode75",
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/guess-number-higher-or-lower/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-377-combination-sum-iv",
+      "number": 377,
+      "title": "组合总和 Ⅳ",
+      "slug": "combination-sum-iv",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/combination-sum-iv/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-380-insert-delete-getrandom-o1",
+      "number": 380,
+      "title": "O(1) 时间插入、删除和获取随机元素",
+      "slug": "insert-delete-getrandom-o1",
+      "difficulty": "中等",
+      "tag": "设计",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/insert-delete-getrandom-o1/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-383-ransom-note",
+      "number": 383,
+      "title": "赎金信",
+      "slug": "ransom-note",
+      "difficulty": "简单",
+      "tag": "哈希表",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/ransom-note/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-389-find-the-difference",
+      "number": 389,
+      "title": "找不同",
+      "slug": "find-the-difference",
+      "difficulty": "简单",
+      "tag": "位运算",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-the-difference/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-392-is-subsequence",
+      "number": 392,
+      "title": "判断子序列",
+      "slug": "is-subsequence",
+      "difficulty": "简单",
+      "tag": "双指针",
+      "collections": [
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/is-subsequence/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-394-decode-string",
+      "number": 394,
+      "title": "字符串解码",
+      "slug": "decode-string",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "hot100",
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/decode-string/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-399-evaluate-division",
+      "number": 399,
+      "title": "除法求值",
+      "slug": "evaluate-division",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/evaluate-division/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-416-partition-equal-subset-sum",
+      "number": 416,
+      "title": "分割等和子集",
+      "slug": "partition-equal-subset-sum",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/partition-equal-subset-sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-417-pacific-atlantic-water-flow",
+      "number": 417,
+      "title": "太平洋大西洋水流问题",
+      "slug": "pacific-atlantic-water-flow",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/pacific-atlantic-water-flow/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-427-construct-quad-tree",
+      "number": 427,
+      "title": "建立四叉树",
+      "slug": "construct-quad-tree",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/construct-quad-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-433-minimum-genetic-mutation",
+      "number": 433,
+      "title": "最小基因变化",
+      "slug": "minimum-genetic-mutation",
+      "difficulty": "中等",
+      "tag": "广度优先搜索",
+      "collections": [
+        "interview150",
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-genetic-mutation/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-435-non-overlapping-intervals",
+      "number": 435,
+      "title": "无重叠区间",
+      "slug": "non-overlapping-intervals",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/non-overlapping-intervals/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-436-find-right-interval",
+      "number": 436,
+      "title": "寻找右区间",
+      "slug": "find-right-interval",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-right-interval/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-437-path-sum-iii",
+      "number": 437,
+      "title": "路径总和 III",
+      "slug": "path-sum-iii",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "hot100",
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/path-sum-iii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-438-find-all-anagrams-in-a-string",
+      "number": 438,
+      "title": "找到字符串中所有字母异位词",
+      "slug": "find-all-anagrams-in-a-string",
+      "difficulty": "中等",
+      "tag": "哈希表",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-all-anagrams-in-a-string/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-441-arranging-coins",
+      "number": 441,
+      "title": "排列硬币",
+      "slug": "arranging-coins",
+      "difficulty": "简单",
+      "tag": "数学",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/arranging-coins/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-443-string-compression",
+      "number": 443,
+      "title": "压缩字符串",
+      "slug": "string-compression",
+      "difficulty": "中等",
+      "tag": "双指针",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/string-compression/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-445-add-two-numbers-ii",
+      "number": 445,
+      "title": "两数相加 II",
+      "slug": "add-two-numbers-ii",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/add-two-numbers-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-450-delete-node-in-a-bst",
+      "number": 450,
+      "title": "删除二叉搜索树中的节点",
+      "slug": "delete-node-in-a-bst",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/delete-node-in-a-bst/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-452-minimum-number-of-arrows-to-burst-balloons",
+      "number": 452,
+      "title": "用最少数量的箭引爆气球",
+      "slug": "minimum-number-of-arrows-to-burst-balloons",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "leetcode75",
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-459-repeated-substring-pattern",
+      "number": 459,
+      "title": "重复的子字符串",
+      "slug": "repeated-substring-pattern",
+      "difficulty": "简单",
+      "tag": "字符串",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/repeated-substring-pattern/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-474-ones-and-zeroes",
+      "number": 474,
+      "title": "一和零",
+      "slug": "ones-and-zeroes",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/ones-and-zeroes/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-502-ipo",
+      "number": 502,
+      "title": "IPO",
+      "slug": "ipo",
+      "difficulty": "困难",
+      "tag": "贪心",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/ipo/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-509-fibonacci-number",
+      "number": 509,
+      "title": "斐波那契数",
+      "slug": "fibonacci-number",
+      "difficulty": "简单",
+      "tag": "递归",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/fibonacci-number/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-516-longest-palindromic-subsequence",
+      "number": 516,
+      "title": "最长回文子序列",
+      "slug": "longest-palindromic-subsequence",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-palindromic-subsequence/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-518-coin-change-ii",
+      "number": 518,
+      "title": "零钱兑换 II",
+      "slug": "coin-change-ii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/coin-change-ii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-528-random-pick-with-weight",
+      "number": 528,
+      "title": "按权重随机选择",
+      "slug": "random-pick-with-weight",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/random-pick-with-weight/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-530-minimum-absolute-difference-in-bst",
+      "number": 530,
+      "title": "二叉搜索树的最小绝对差",
+      "slug": "minimum-absolute-difference-in-bst",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-absolute-difference-in-bst/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-540-single-element-in-a-sorted-array",
+      "number": 540,
+      "title": "有序数组中的单一元素",
+      "slug": "single-element-in-a-sorted-array",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/single-element-in-a-sorted-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-542-01-matrix",
+      "number": 542,
+      "title": "01 矩阵",
+      "slug": "01-matrix",
+      "difficulty": "中等",
+      "tag": "广度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/01-matrix/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-543-diameter-of-binary-tree",
+      "number": 543,
+      "title": "二叉树的直径",
+      "slug": "diameter-of-binary-tree",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/diameter-of-binary-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-547-number-of-provinces",
+      "number": 547,
+      "title": "省份数量",
+      "slug": "number-of-provinces",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "leetcode75",
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/number-of-provinces/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-560-subarray-sum-equals-k",
+      "number": 560,
+      "title": "和为 K 的子数组",
+      "slug": "subarray-sum-equals-k",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/subarray-sum-equals-k/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-605-can-place-flowers",
+      "number": 605,
+      "title": "种花问题",
+      "slug": "can-place-flowers",
+      "difficulty": "简单",
+      "tag": "贪心",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/can-place-flowers/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-611-valid-triangle-number",
+      "number": 611,
+      "title": "有效三角形的个数",
+      "slug": "valid-triangle-number",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/valid-triangle-number/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-637-average-of-levels-in-binary-tree",
+      "number": 637,
+      "title": "二叉树的层平均值",
+      "slug": "average-of-levels-in-binary-tree",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/average-of-levels-in-binary-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-643-maximum-average-subarray-i",
+      "number": 643,
+      "title": "子数组最大平均数 I",
+      "slug": "maximum-average-subarray-i",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximum-average-subarray-i/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-646-maximum-length-of-pair-chain",
+      "number": 646,
+      "title": "最长数对链",
+      "slug": "maximum-length-of-pair-chain",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximum-length-of-pair-chain/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-649-dota2-senate",
+      "number": 649,
+      "title": "Dota2 参议院",
+      "slug": "dota2-senate",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/dota2-senate/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-657-robot-return-to-origin",
+      "number": 657,
+      "title": "机器人能否返回原点",
+      "slug": "robot-return-to-origin",
+      "difficulty": "简单",
+      "tag": "字符串",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/robot-return-to-origin/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-658-find-k-closest-elements",
+      "number": 658,
+      "title": "找到 K 个最接近的元素",
+      "slug": "find-k-closest-elements",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-k-closest-elements/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-673-number-of-longest-increasing-subsequence",
+      "number": 673,
+      "title": "最长递增子序列的个数",
+      "slug": "number-of-longest-increasing-subsequence",
+      "difficulty": "中等",
+      "tag": "树状数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/number-of-longest-increasing-subsequence/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-682-baseball-game",
+      "number": 682,
+      "title": "棒球比赛",
+      "slug": "baseball-game",
+      "difficulty": "简单",
+      "tag": "栈",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/baseball-game/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-695-max-area-of-island",
+      "number": 695,
+      "title": "岛屿的最大面积",
+      "slug": "max-area-of-island",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/max-area-of-island/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-700-search-in-a-binary-search-tree",
+      "number": 700,
+      "title": "二叉搜索树中的搜索",
+      "slug": "search-in-a-binary-search-tree",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/search-in-a-binary-search-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-702-search-in-a-sorted-array-of-unknown-size",
+      "number": 702,
+      "title": "搜索长度未知的有序数组",
+      "slug": "search-in-a-sorted-array-of-unknown-size",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/search-in-a-sorted-array-of-unknown-size/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-704-binary-search",
+      "number": 704,
+      "title": "二分查找",
+      "slug": "binary-search",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/binary-search/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-709-to-lower-case",
+      "number": 709,
+      "title": "转换成小写字母",
+      "slug": "to-lower-case",
+      "difficulty": "简单",
+      "tag": "字符串",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/to-lower-case/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-712-minimum-ascii-delete-sum-for-two-strings",
+      "number": 712,
+      "title": "两个字符串的最小ASCII删除和",
+      "slug": "minimum-ascii-delete-sum-for-two-strings",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-ascii-delete-sum-for-two-strings/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-714-best-time-to-buy-and-sell-stock-with-transaction-fee",
+      "number": 714,
+      "title": "买卖股票的最佳时机含手续费",
+      "slug": "best-time-to-buy-and-sell-stock-with-transaction-fee",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "leetcode75",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-721-accounts-merge",
+      "number": 721,
+      "title": "账户合并",
+      "slug": "accounts-merge",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/accounts-merge/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-724-find-pivot-index",
+      "number": 724,
+      "title": "寻找数组的中心下标",
+      "slug": "find-pivot-index",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-pivot-index/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-735-asteroid-collision",
+      "number": 735,
+      "title": "小行星碰撞",
+      "slug": "asteroid-collision",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/asteroid-collision/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-739-daily-temperatures",
+      "number": 739,
+      "title": "每日温度",
+      "slug": "daily-temperatures",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "hot100",
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/daily-temperatures/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-740-delete-and-earn",
+      "number": 740,
+      "title": "删除并获得点数",
+      "slug": "delete-and-earn",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/delete-and-earn/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-744-find-smallest-letter-greater-than-target",
+      "number": 744,
+      "title": "寻找比目标字母大的最小字母",
+      "slug": "find-smallest-letter-greater-than-target",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-smallest-letter-greater-than-target/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-746-min-cost-climbing-stairs",
+      "number": 746,
+      "title": "使用最小花费爬楼梯",
+      "slug": "min-cost-climbing-stairs",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "leetcode75",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/min-cost-climbing-stairs/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-763-partition-labels",
+      "number": 763,
+      "title": "划分字母区间",
+      "slug": "partition-labels",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "hot100"
+      ],
+      "source_url": "https://leetcode.cn/problems/partition-labels/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-785-is-graph-bipartite",
+      "number": 785,
+      "title": "判断二分图",
+      "slug": "is-graph-bipartite",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/is-graph-bipartite/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-790-domino-and-tromino-tiling",
+      "number": 790,
+      "title": "多米诺和托米诺平铺",
+      "slug": "domino-and-tromino-tiling",
+      "difficulty": "中等",
+      "tag": "动态规划",
+      "collections": [
+        "leetcode75",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/domino-and-tromino-tiling/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-797-all-paths-from-source-to-target",
+      "number": 797,
+      "title": "所有可能的路径",
+      "slug": "all-paths-from-source-to-target",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/all-paths-from-source-to-target/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-802-find-eventual-safe-states",
+      "number": 802,
+      "title": "找到最终的安全状态",
+      "slug": "find-eventual-safe-states",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-eventual-safe-states/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-839-similar-string-groups",
+      "number": 839,
+      "title": "相似字符串组",
+      "slug": "similar-string-groups",
+      "difficulty": "困难",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/similar-string-groups/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-841-keys-and-rooms",
+      "number": 841,
+      "title": "钥匙和房间",
+      "slug": "keys-and-rooms",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "leetcode75",
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/keys-and-rooms/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-852-peak-index-in-a-mountain-array",
+      "number": 852,
+      "title": "山脉数组的峰顶索引",
+      "slug": "peak-index-in-a-mountain-array",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/peak-index-in-a-mountain-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-860-lemonade-change",
+      "number": 860,
+      "title": "柠檬水找零",
+      "slug": "lemonade-change",
+      "difficulty": "简单",
+      "tag": "贪心",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/lemonade-change/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-863-all-nodes-distance-k-in-binary-tree",
+      "number": 863,
+      "title": "二叉树中所有距离为 K 的结点",
+      "slug": "all-nodes-distance-k-in-binary-tree",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/all-nodes-distance-k-in-binary-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-864-shortest-path-to-get-all-keys",
+      "number": 864,
+      "title": "获取所有钥匙的最短路径",
+      "slug": "shortest-path-to-get-all-keys",
+      "difficulty": "困难",
+      "tag": "位运算",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/shortest-path-to-get-all-keys/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-872-leaf-similar-trees",
+      "number": 872,
+      "title": "叶子相似的树",
+      "slug": "leaf-similar-trees",
+      "difficulty": "简单",
+      "tag": "树",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/leaf-similar-trees/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-875-koko-eating-bananas",
+      "number": 875,
+      "title": "爱吃香蕉的珂珂",
+      "slug": "koko-eating-bananas",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/koko-eating-bananas/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-896-monotonic-array",
+      "number": 896,
+      "title": "单调数列",
+      "slug": "monotonic-array",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/monotonic-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-901-online-stock-span",
+      "number": 901,
+      "title": "股票价格跨度",
+      "slug": "online-stock-span",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/online-stock-span/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-909-snakes-and-ladders",
+      "number": 909,
+      "title": "蛇梯棋",
+      "slug": "snakes-and-ladders",
+      "difficulty": "中等",
+      "tag": "广度优先搜索",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/snakes-and-ladders/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-918-maximum-sum-circular-subarray",
+      "number": 918,
+      "title": "环形子数组的最大和",
+      "slug": "maximum-sum-circular-subarray",
+      "difficulty": "中等",
+      "tag": "队列",
+      "collections": [
+        "interview150"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximum-sum-circular-subarray/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-931-minimum-falling-path-sum",
+      "number": 931,
+      "title": "下降路径最小和",
+      "slug": "minimum-falling-path-sum",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-falling-path-sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-933-number-of-recent-calls",
+      "number": 933,
+      "title": "最近的请求次数",
+      "slug": "number-of-recent-calls",
+      "difficulty": "简单",
+      "tag": "设计",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/number-of-recent-calls/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-934-shortest-bridge",
+      "number": 934,
+      "title": "最短的桥",
+      "slug": "shortest-bridge",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/shortest-bridge/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-976-largest-perimeter-triangle",
+      "number": 976,
+      "title": "三角形的最大周长",
+      "slug": "largest-perimeter-triangle",
+      "difficulty": "简单",
+      "tag": "贪心",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/largest-perimeter-triangle/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-981-time-based-key-value-store",
+      "number": 981,
+      "title": "基于时间的键值存储",
+      "slug": "time-based-key-value-store",
+      "difficulty": "中等",
+      "tag": "设计",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/time-based-key-value-store/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-983-minimum-cost-for-tickets",
+      "number": 983,
+      "title": "最低票价",
+      "slug": "minimum-cost-for-tickets",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-cost-for-tickets/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-990-satisfiability-of-equality-equations",
+      "number": 990,
+      "title": "等式方程的可满足性",
+      "slug": "satisfiability-of-equality-equations",
+      "difficulty": "中等",
+      "tag": "并查集",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/satisfiability-of-equality-equations/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-994-rotting-oranges",
+      "number": 994,
+      "title": "腐烂的橘子",
+      "slug": "rotting-oranges",
+      "difficulty": "中等",
+      "tag": "广度优先搜索",
+      "collections": [
+        "hot100",
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/rotting-oranges/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-997-find-the-town-judge",
+      "number": 997,
+      "title": "找到小镇的法官",
+      "slug": "find-the-town-judge",
+      "difficulty": "简单",
+      "tag": "图",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-the-town-judge/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1004-max-consecutive-ones-iii",
+      "number": 1004,
+      "title": "最大连续1的个数 III",
+      "slug": "max-consecutive-ones-iii",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/max-consecutive-ones-iii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1020-number-of-enclaves",
+      "number": 1020,
+      "title": "飞地的数量",
+      "slug": "number-of-enclaves",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/number-of-enclaves/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1027-longest-arithmetic-subsequence",
+      "number": 1027,
+      "title": "最长等差数列",
+      "slug": "longest-arithmetic-subsequence",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-arithmetic-subsequence/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1035-uncrossed-lines",
+      "number": 1035,
+      "title": "不相交的线",
+      "slug": "uncrossed-lines",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/uncrossed-lines/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1041-robot-bounded-in-circle",
+      "number": 1041,
+      "title": "困于环中的机器人",
+      "slug": "robot-bounded-in-circle",
+      "difficulty": "中等",
+      "tag": "数学",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/robot-bounded-in-circle/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1061-lexicographically-smallest-equivalent-string",
+      "number": 1061,
+      "title": "按字典序排列最小的等效字符串",
+      "slug": "lexicographically-smallest-equivalent-string",
+      "difficulty": "中等",
+      "tag": "并查集",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/lexicographically-smallest-equivalent-string/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1071-greatest-common-divisor-of-strings",
+      "number": 1071,
+      "title": "字符串的最大公因子",
+      "slug": "greatest-common-divisor-of-strings",
+      "difficulty": "简单",
+      "tag": "数学",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/greatest-common-divisor-of-strings/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1091-shortest-path-in-binary-matrix",
+      "number": 1091,
+      "title": "二进制矩阵中的最短路径",
+      "slug": "shortest-path-in-binary-matrix",
+      "difficulty": "中等",
+      "tag": "广度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/shortest-path-in-binary-matrix/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1099-two-sum-less-than-k",
+      "number": 1099,
+      "title": "小于 K 的两数之和",
+      "slug": "two-sum-less-than-k",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/two-sum-less-than-k/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1129-shortest-path-with-alternating-colors",
+      "number": 1129,
+      "title": "颜色交替的最短路径",
+      "slug": "shortest-path-with-alternating-colors",
+      "difficulty": "中等",
+      "tag": "广度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/shortest-path-with-alternating-colors/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1137-n-th-tribonacci-number",
+      "number": 1137,
+      "title": "第 N 个泰波那契数",
+      "slug": "n-th-tribonacci-number",
+      "difficulty": "简单",
+      "tag": "记忆化",
+      "collections": [
+        "leetcode75",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/n-th-tribonacci-number/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1143-longest-common-subsequence",
+      "number": 1143,
+      "title": "最长公共子序列",
+      "slug": "longest-common-subsequence",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "hot100",
+        "leetcode75",
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-common-subsequence/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1146-snapshot-array",
+      "number": 1146,
+      "title": "快照数组",
+      "slug": "snapshot-array",
+      "difficulty": "中等",
+      "tag": "设计",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/snapshot-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1161-maximum-level-sum-of-a-binary-tree",
+      "number": 1161,
+      "title": "最大层内元素和",
+      "slug": "maximum-level-sum-of-a-binary-tree",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximum-level-sum-of-a-binary-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1192-critical-connections-in-a-network",
+      "number": 1192,
+      "title": "查找集群内的关键连接",
+      "slug": "critical-connections-in-a-network",
+      "difficulty": "困难",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/critical-connections-in-a-network/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1203-sort-items-by-groups-respecting-dependencies",
+      "number": 1203,
+      "title": "项目管理",
+      "slug": "sort-items-by-groups-respecting-dependencies",
+      "difficulty": "困难",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/sort-items-by-groups-respecting-dependencies/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1207-unique-number-of-occurrences",
+      "number": 1207,
+      "title": "独一无二的出现次数",
+      "slug": "unique-number-of-occurrences",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/unique-number-of-occurrences/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1218-longest-arithmetic-subsequence-of-given-difference",
+      "number": 1218,
+      "title": "最长定差子序列",
+      "slug": "longest-arithmetic-subsequence-of-given-difference",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-arithmetic-subsequence-of-given-difference/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1232-check-if-it-is-a-straight-line",
+      "number": 1232,
+      "title": "缀点成线",
+      "slug": "check-if-it-is-a-straight-line",
+      "difficulty": "简单",
+      "tag": "几何",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/check-if-it-is-a-straight-line/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1254-number-of-closed-islands",
+      "number": 1254,
+      "title": "统计封闭岛屿的数目",
+      "slug": "number-of-closed-islands",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/number-of-closed-islands/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1268-search-suggestions-system",
+      "number": 1268,
+      "title": "搜索推荐系统",
+      "slug": "search-suggestions-system",
+      "difficulty": "中等",
+      "tag": "字典树",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/search-suggestions-system/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1275-find-winner-on-a-tic-tac-toe-game",
+      "number": 1275,
+      "title": "找出井字棋的获胜者",
+      "slug": "find-winner-on-a-tic-tac-toe-game",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-winner-on-a-tic-tac-toe-game/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1306-jump-game-iii",
+      "number": 1306,
+      "title": "跳跃游戏 III",
+      "slug": "jump-game-iii",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/jump-game-iii/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1312-minimum-insertion-steps-to-make-a-string-palindrome",
+      "number": 1312,
+      "title": "让字符串成为回文串的最少插入次数",
+      "slug": "minimum-insertion-steps-to-make-a-string-palindrome",
+      "difficulty": "困难",
+      "tag": "字符串",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-insertion-steps-to-make-a-string-palindrome/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1318-minimum-flips-to-make-a-or-b-equal-to-c",
+      "number": 1318,
+      "title": "或运算的最小翻转次数",
+      "slug": "minimum-flips-to-make-a-or-b-equal-to-c",
+      "difficulty": "中等",
+      "tag": "位运算",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-flips-to-make-a-or-b-equal-to-c/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1351-count-negative-numbers-in-a-sorted-matrix",
+      "number": 1351,
+      "title": "统计有序矩阵中的负数",
+      "slug": "count-negative-numbers-in-a-sorted-matrix",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/count-negative-numbers-in-a-sorted-matrix/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1372-longest-zigzag-path-in-a-binary-tree",
+      "number": 1372,
+      "title": "二叉树中的最长交错路径",
+      "slug": "longest-zigzag-path-in-a-binary-tree",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-zigzag-path-in-a-binary-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1376-time-needed-to-inform-all-employees",
+      "number": 1376,
+      "title": "通知所有员工所需的时间",
+      "slug": "time-needed-to-inform-all-employees",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/time-needed-to-inform-all-employees/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1431-kids-with-the-greatest-number-of-candies",
+      "number": 1431,
+      "title": "拥有最多糖果的孩子",
+      "slug": "kids-with-the-greatest-number-of-candies",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/kids-with-the-greatest-number-of-candies/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1448-count-good-nodes-in-binary-tree",
+      "number": 1448,
+      "title": "统计二叉树中好节点的数目",
+      "slug": "count-good-nodes-in-binary-tree",
+      "difficulty": "中等",
+      "tag": "树",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/count-good-nodes-in-binary-tree/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1456-maximum-number-of-vowels-in-a-substring-of-given-length",
+      "number": 1456,
+      "title": "定长子串中元音的最大数目",
+      "slug": "maximum-number-of-vowels-in-a-substring-of-given-length",
+      "difficulty": "中等",
+      "tag": "字符串",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximum-number-of-vowels-in-a-substring-of-given-length/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1466-reorder-routes-to-make-all-paths-lead-to-the-city-zero",
+      "number": 1466,
+      "title": "重新规划路线",
+      "slug": "reorder-routes-to-make-all-paths-lead-to-the-city-zero",
+      "difficulty": "中等",
+      "tag": "深度优先搜索",
+      "collections": [
+        "leetcode75",
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1491-average-salary-excluding-the-minimum-and-maximum-salary",
+      "number": 1491,
+      "title": "去掉最低工资和最高工资后的工资平均值",
+      "slug": "average-salary-excluding-the-minimum-and-maximum-salary",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/average-salary-excluding-the-minimum-and-maximum-salary/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1493-longest-subarray-of-1s-after-deleting-one-element",
+      "number": 1493,
+      "title": "删掉一个元素以后全为 1 的最长子数组",
+      "slug": "longest-subarray-of-1s-after-deleting-one-element",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/longest-subarray-of-1s-after-deleting-one-element/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1498-number-of-subsequences-that-satisfy-the-given-sum-condition",
+      "number": 1498,
+      "title": "满足条件的子序列数目",
+      "slug": "number-of-subsequences-that-satisfy-the-given-sum-condition",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1502-can-make-arithmetic-progression-from-sequence",
+      "number": 1502,
+      "title": "判断能否形成等差数列",
+      "slug": "can-make-arithmetic-progression-from-sequence",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/can-make-arithmetic-progression-from-sequence/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1523-count-odd-numbers-in-an-interval-range",
+      "number": 1523,
+      "title": "在区间范围内统计奇数数目",
+      "slug": "count-odd-numbers-in-an-interval-range",
+      "difficulty": "简单",
+      "tag": "数学",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/count-odd-numbers-in-an-interval-range/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1533-find-the-index-of-the-large-integer",
+      "number": 1533,
+      "title": "找到最大整数的索引",
+      "slug": "find-the-index-of-the-large-integer",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-the-index-of-the-large-integer/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1539-kth-missing-positive-number",
+      "number": 1539,
+      "title": "第 k 个缺失的正整数",
+      "slug": "kth-missing-positive-number",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/kth-missing-positive-number/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1557-minimum-number-of-vertices-to-reach-all-nodes",
+      "number": 1557,
+      "title": "可以到达所有点的最少点数目",
+      "slug": "minimum-number-of-vertices-to-reach-all-nodes",
+      "difficulty": "中等",
+      "tag": "图",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/minimum-number-of-vertices-to-reach-all-nodes/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1572-matrix-diagonal-sum",
+      "number": 1572,
+      "title": "矩阵对角线元素的和",
+      "slug": "matrix-diagonal-sum",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/matrix-diagonal-sum/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1615-maximal-network-rank",
+      "number": 1615,
+      "title": "最大网络秩",
+      "slug": "maximal-network-rank",
+      "difficulty": "中等",
+      "tag": "图",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximal-network-rank/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1657-determine-if-two-strings-are-close",
+      "number": 1657,
+      "title": "确定两个字符串是否接近",
+      "slug": "determine-if-two-strings-are-close",
+      "difficulty": "中等",
+      "tag": "哈希表",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/determine-if-two-strings-are-close/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1672-richest-customer-wealth",
+      "number": 1672,
+      "title": "最富有客户的资产总量",
+      "slug": "richest-customer-wealth",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/richest-customer-wealth/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1679-max-number-of-k-sum-pairs",
+      "number": 1679,
+      "title": "K 和数对的最大数目",
+      "slug": "max-number-of-k-sum-pairs",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/max-number-of-k-sum-pairs/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1732-find-the-highest-altitude",
+      "number": 1732,
+      "title": "找到最高海拔",
+      "slug": "find-the-highest-altitude",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-the-highest-altitude/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1768-merge-strings-alternately",
+      "number": 1768,
+      "title": "交替合并字符串",
+      "slug": "merge-strings-alternately",
+      "difficulty": "简单",
+      "tag": "双指针",
+      "collections": [
+        "leetcode75",
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/merge-strings-alternately/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1822-sign-of-the-product-of-an-array",
+      "number": 1822,
+      "title": "数组元素积的符号",
+      "slug": "sign-of-the-product-of-an-array",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "programming"
+      ],
+      "source_url": "https://leetcode.cn/problems/sign-of-the-product-of-an-array/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1857-largest-color-value-in-a-directed-graph",
+      "number": 1857,
+      "title": "有向图中最大颜色值",
+      "slug": "largest-color-value-in-a-directed-graph",
+      "difficulty": "困难",
+      "tag": "图",
+      "collections": [
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1926-nearest-exit-from-entrance-in-maze",
+      "number": 1926,
+      "title": "迷宫中离入口最近的出口",
+      "slug": "nearest-exit-from-entrance-in-maze",
+      "difficulty": "中等",
+      "tag": "广度优先搜索",
+      "collections": [
+        "leetcode75",
+        "graph"
+      ],
+      "source_url": "https://leetcode.cn/problems/nearest-exit-from-entrance-in-maze/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-1964-find-the-longest-valid-obstacle-course-at-each-position",
+      "number": 1964,
+      "title": "找出到每个位置为止最长的有效障碍赛跑路线",
+      "slug": "find-the-longest-valid-obstacle-course-at-each-position",
+      "difficulty": "困难",
+      "tag": "树状数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-the-longest-valid-obstacle-course-at-each-position/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2095-delete-the-middle-node-of-a-linked-list",
+      "number": 2095,
+      "title": "删除链表的中间节点",
+      "slug": "delete-the-middle-node-of-a-linked-list",
+      "difficulty": "中等",
+      "tag": "链表",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/delete-the-middle-node-of-a-linked-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2130-maximum-twin-sum-of-a-linked-list",
+      "number": 2130,
+      "title": "链表最大孪生和",
+      "slug": "maximum-twin-sum-of-a-linked-list",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximum-twin-sum-of-a-linked-list/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2140-solving-questions-with-brainpower",
+      "number": 2140,
+      "title": "解决智力问题",
+      "slug": "solving-questions-with-brainpower",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/solving-questions-with-brainpower/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2215-find-the-difference-of-two-arrays",
+      "number": 2215,
+      "title": "找出两数组的不同",
+      "slug": "find-the-difference-of-two-arrays",
+      "difficulty": "简单",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/find-the-difference-of-two-arrays/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2300-successful-pairs-of-spells-and-potions",
+      "number": 2300,
+      "title": "咒语和药水的成功对数",
+      "slug": "successful-pairs-of-spells-and-potions",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "leetcode75",
+        "binary"
+      ],
+      "source_url": "https://leetcode.cn/problems/successful-pairs-of-spells-and-potions/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2336-smallest-number-in-infinite-set",
+      "number": 2336,
+      "title": "无限集中的最小数字",
+      "slug": "smallest-number-in-infinite-set",
+      "difficulty": "中等",
+      "tag": "设计",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/smallest-number-in-infinite-set/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2352-equal-row-and-column-pairs",
+      "number": 2352,
+      "title": "相等行列对",
+      "slug": "equal-row-and-column-pairs",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/equal-row-and-column-pairs/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2390-removing-stars-from-a-string",
+      "number": 2390,
+      "title": "从字符串中移除星号",
+      "slug": "removing-stars-from-a-string",
+      "difficulty": "中等",
+      "tag": "栈",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/removing-stars-from-a-string/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2462-total-cost-to-hire-k-workers",
+      "number": 2462,
+      "title": "雇佣 K 位工人的总代价",
+      "slug": "total-cost-to-hire-k-workers",
+      "difficulty": "中等",
+      "tag": "数组",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/total-cost-to-hire-k-workers/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2466-count-ways-to-build-good-strings",
+      "number": 2466,
+      "title": "统计构造好字符串的方案数",
+      "slug": "count-ways-to-build-good-strings",
+      "difficulty": "中等",
+      "tag": "动态规划",
+      "collections": [
+        "dp"
+      ],
+      "source_url": "https://leetcode.cn/problems/count-ways-to-build-good-strings/",
+      "source": "LeetCode 官方原题（本地快照）"
+    },
+    {
+      "id": "lc-2542-maximum-subsequence-score",
+      "number": 2542,
+      "title": "最大子序列的分数",
+      "slug": "maximum-subsequence-score",
+      "difficulty": "中等",
+      "tag": "贪心",
+      "collections": [
+        "leetcode75"
+      ],
+      "source_url": "https://leetcode.cn/problems/maximum-subsequence-score/",
+      "source": "LeetCode 官方原题（本地快照）"
+    }
+  ]
+}

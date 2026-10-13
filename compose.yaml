@@ -1,0 +1,32 @@
+name: devprep
+services:
+  app:
+    build: .
+    image: devprep-app:local
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${DEVPREP_PORT:-8765}:8765"
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      DEVPREP_RUNNER_URL: http://runner:8090
+      DEVPREP_AGENT_MIN_INTERVAL_MILLIS: "10000"
+    volumes:
+      - devprep-data:/data
+    depends_on:
+      runner:
+        condition: service_healthy
+    mem_limit: 1g
+  runner:
+    build: ./runner
+    image: devprep-runner:local
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health',timeout=3)"]
+      interval: 15s
+      timeout: 4s
+      start_period: 10s
+    mem_limit: 256m
+volumes:
+  devprep-data:
