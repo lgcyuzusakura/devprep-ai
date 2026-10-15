@@ -1,5 +1,5 @@
 import { useEffect, useState, lazy, Suspense } from "react";
-import { LayoutDashboard, ListChecks, Network, Library, MessagesSquare, History, Settings2, PanelLeftClose, Menu, X, ArrowUpRight, SquareTerminal, FilePenLine } from "lucide-react";
+import { LayoutDashboard, ListChecks, Network, Library, MessagesSquare, History, Settings2, PanelLeftClose, Menu, X, ArrowUpRight, SquareTerminal, FilePenLine, Presentation } from "lucide-react";
 import { api, getRoute, navigate } from "./lib/api.js";
 import { IconButton, Badge } from "./components/UI.jsx";
 import Today from "./pages/Today.jsx";
@@ -10,6 +10,7 @@ import Questions from "./pages/StudyChat.jsx";
 import SourceQuestions from "./pages/Questions.jsx";
 const Algorithms = lazy(() => import("./pages/Algorithms.jsx"));
 const Resume = lazy(() => import("./pages/Resume.jsx"));
+const Interview = lazy(() => import("./pages/Interview.jsx"));
 import Records from "./pages/Records.jsx";
 import ModelSettings from "./pages/ModelSettings.jsx";
 
@@ -21,6 +22,7 @@ const navigation = [
   { id: "materials", label: "资料库", icon: Library },
   { id: "questions", label: "学习教练", icon: MessagesSquare },
   { id: "resume", label: "简历修改", icon: FilePenLine },
+  { id: "interview", label: "模拟面试", icon: Presentation },
   { id: "records", label: "学习记录", icon: History },
 ];
 
@@ -55,6 +57,7 @@ export default function App() {
     case "sourceqa": page = <SourceQuestions params={route.params} settings={settings} />; break;
     case "algorithms": page = <Algorithms params={route.params} />; break;
     case "resume": page = <Resume settings={settings} />; break;
+    case "interview": page = <Interview params={route.params} settings={settings} />; break;
     case "records": page = <Records {...common} />; break;
     case "settings": page = <ModelSettings changed={changed} />; break;
     default: page = <Today target={target} setTarget={updateTarget} {...common} />;

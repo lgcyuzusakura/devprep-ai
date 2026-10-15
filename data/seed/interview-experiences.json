@@ -1,0 +1,1172 @@
+{
+  "schema_version": 1,
+  "experiences": [
+    {
+      "id": "original-interview-1-basic",
+      "title": "Java 中接口和抽象类分别适用于什么场景",
+      "prompt": "Java 中接口和抽象类分别适用于什么场景？请给一个自己的例子。",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "java",
+        "后端"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-1-intermediate",
+      "title": "解释 Java 线程池的队列、核心线程和拒绝策略如何配合；下游变慢时你会怎么调整",
+      "prompt": "解释 Java 线程池的队列、核心线程和拒绝策略如何配合；下游变慢时你会怎么调整？",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "java",
+        "后端"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-1-advanced",
+      "title": "订单服务使用线程池后延迟持续升高，如何区分排队、锁竞争、GC 和下游阻塞，并用证据验证",
+      "prompt": "订单服务使用线程池后延迟持续升高，如何区分排队、锁竞争、GC 和下游阻塞，并用证据验证？",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "java",
+        "后端"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-2-basic",
+      "title": "Go 中 slice 和数组有什么区别",
+      "prompt": "Go 中 slice 和数组有什么区别？修改或追加 slice 时需要注意什么？",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "go",
+        "后端"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-2-intermediate",
+      "title": "Go 服务如何利用 context 传播取消与超时",
+      "prompt": "Go 服务如何利用 context 传播取消与超时？goroutine 提前退出时如何避免泄漏？",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "go",
+        "后端"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-2-advanced",
+      "title": "Go 服务大量 goroutine 阻塞且内存增长，你如何结合 pprof、调度与背压定位并验证修复",
+      "prompt": "Go 服务大量 goroutine 阻塞且内存增长，你如何结合 pprof、调度与背压定位并验证修复？",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "go",
+        "后端"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-3-basic",
+      "title": "Python 的列表、元组和字典分别适合什么用途",
+      "prompt": "Python 的列表、元组和字典分别适合什么用途？请解释可变对象带来的一个风险。",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "python",
+        "后端"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-3-intermediate",
+      "title": "Python 同步函数、线程与 asyncio 在 I/O 任务中如何取舍",
+      "prompt": "Python 同步函数、线程与 asyncio 在 I/O 任务中如何取舍？阻塞调用混入事件循环会怎样？",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "python",
+        "后端"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-3-advanced",
+      "title": "Python 异步服务在突发流量下超时并放大重试，如何设计背压、连接池、隔离和可观测验证",
+      "prompt": "Python 异步服务在突发流量下超时并放大重试，如何设计背压、连接池、隔离和可观测验证？",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "python",
+        "后端"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-4-basic",
+      "title": "浏览器收到 HTML 后如何显示页面",
+      "prompt": "浏览器收到 HTML 后如何显示页面？举例说明 CSS 和 JavaScript 的基本作用。",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "前端",
+        "react",
+        "vue"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-4-intermediate",
+      "title": "前端请求可能乱序返回，如何防止旧响应覆盖新搜索结果",
+      "prompt": "前端请求可能乱序返回，如何防止旧响应覆盖新搜索结果？说明取消请求与状态更新的边界。",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "前端",
+        "react",
+        "vue"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-4-advanced",
+      "title": "大型前端应用首屏变慢，如何拆分网络、脚本执行与渲染成本，并以真实用户指标验证优化",
+      "prompt": "大型前端应用首屏变慢，如何拆分网络、脚本执行与渲染成本，并以真实用户指标验证优化？",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "前端",
+        "react",
+        "vue"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-5-basic",
+      "title": "RAG 为什么先检索再生成",
+      "prompt": "RAG 为什么先检索再生成？资料未命中时应该怎样回答，如何标注来源？",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "ai",
+        "agent"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-5-intermediate",
+      "title": "Agent 使用外部工具时如何限制权限、处理失败与避免重复副作用",
+      "prompt": "Agent 使用外部工具时如何限制权限、处理失败与避免重复副作用？举一个状态流转例子。",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "ai",
+        "agent"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-5-advanced",
+      "title": "如何为带检索与工具调用的 Agent 建立评测集、引用验证、延迟预算与回归门禁",
+      "prompt": "如何为带检索与工具调用的 Agent 建立评测集、引用验证、延迟预算与回归门禁？说明数据泄漏和失败样本处理。",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "ai",
+        "agent"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-6-basic",
+      "title": "数据库主键、索引与事务分别解决什么问题",
+      "prompt": "数据库主键、索引与事务分别解决什么问题？索引是不是越多越好？",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "数据库",
+        "后端",
+        "mysql"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-6-intermediate",
+      "title": "查询有索引仍很慢时，你如何读取执行计划并区分扫描、回表、排序和锁等待",
+      "prompt": "查询有索引仍很慢时，你如何读取执行计划并区分扫描、回表、排序和锁等待？",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "数据库",
+        "后端",
+        "mysql"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-6-advanced",
+      "title": "数据库与缓存更新无法作为同一事务提交，如何分析失败时序、选择一致性方案并验证恢复边界",
+      "prompt": "数据库与缓存更新无法作为同一事务提交，如何分析失败时序、选择一致性方案并验证恢复边界？",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "数据库",
+        "后端",
+        "mysql"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-7-basic",
+      "title": "HTTP 请求与响应包含哪些基本部分",
+      "prompt": "HTTP 请求与响应包含哪些基本部分？状态码 200、400、401、500 分别表示什么？",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "通用",
+        "网络"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-7-intermediate",
+      "title": "从输入域名到得到 HTTPS 响应有哪些阶段",
+      "prompt": "从输入域名到得到 HTTPS 响应有哪些阶段？如何区分 DNS、建连、TLS 和服务端处理延迟？",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "通用",
+        "网络"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-7-advanced",
+      "title": "长连接服务发生局部网络分区时，如何设计心跳、超时、重连、幂等和流量恢复，避免雪崩",
+      "prompt": "长连接服务发生局部网络分区时，如何设计心跳、超时、重连、幂等和流量恢复，避免雪崩？",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "通用",
+        "网络"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-8-basic",
+      "title": "进程和线程有什么区别",
+      "prompt": "进程和线程有什么区别？为什么共享变量需要考虑同步？",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "通用",
+        "原理"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-8-intermediate",
+      "title": "多个线程更新同一计数器会有哪些错误时序",
+      "prompt": "多个线程更新同一计数器会有哪些错误时序？比较互斥锁、原子操作和分片计数的取舍。",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "通用",
+        "原理"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-8-advanced",
+      "title": "读多写少的共享状态如何在正确性、内存可见性、吞吐和尾延迟之间取舍",
+      "prompt": "读多写少的共享状态如何在正确性、内存可见性、吞吐和尾延迟之间取舍？提出可复现的验证实验。",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "通用",
+        "原理"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-9-basic",
+      "title": "接口收到缺失或非法参数时应怎么处理",
+      "prompt": "接口收到缺失或非法参数时应怎么处理？写出一次请求从校验到返回的步骤。",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "通用",
+        "业务"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-9-intermediate",
+      "title": "下单接口超时后用户重试，如何避免重复扣减",
+      "prompt": "下单接口超时后用户重试，如何避免重复扣减？解释幂等键、事务与重复响应的关系。",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "通用",
+        "业务"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-9-advanced",
+      "title": "支付结果延迟与重复通知同时出现时，如何设计状态机、对账、补偿与人工处理边界",
+      "prompt": "支付结果延迟与重复通知同时出现时，如何设计状态机、对账、补偿与人工处理边界？",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "通用",
+        "业务"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-10-basic",
+      "title": "程序抛出异常时，你会记录哪些信息",
+      "prompt": "程序抛出异常时，你会记录哪些信息？如何用一个最小例子复现问题？",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "通用",
+        "排障"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-10-intermediate",
+      "title": "接口偶发超时时，如何结合日志、指标与链路定位最慢环节并排除误判",
+      "prompt": "接口偶发超时时，如何结合日志、指标与链路定位最慢环节并排除误判？",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "通用",
+        "排障"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-10-advanced",
+      "title": "一次发布后错误率与延迟同时上升，如何确定止损、回滚或降级顺序，并保留证据检验根因",
+      "prompt": "一次发布后错误率与延迟同时上升，如何确定止损、回滚或降级顺序，并保留证据检验根因？",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "通用",
+        "排障"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-11-basic",
+      "title": "单元测试与接口测试有什么区别",
+      "prompt": "单元测试与接口测试有什么区别？为登录功能列出正常和异常测试场景。",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "通用",
+        "测试"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-11-intermediate",
+      "title": "为存在数据库和外部接口的模块设计测试时，如何处理隔离、失败注入和真实依赖验证",
+      "prompt": "为存在数据库和外部接口的模块设计测试时，如何处理隔离、失败注入和真实依赖验证？",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "通用",
+        "测试"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-11-advanced",
+      "title": "如何建立覆盖竞态、重试、数据迁移和故障恢复的测试策略，并控制环境差异导致的假阳性",
+      "prompt": "如何建立覆盖竞态、重试、数据迁移和故障恢复的测试策略，并控制环境差异导致的假阳性？",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "通用",
+        "测试"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-12-basic",
+      "title": "配置文件和硬编码各有什么优缺点",
+      "prompt": "配置文件和硬编码各有什么优缺点？如何避免把密钥提交到公开仓库？",
+      "kind": "knowledge",
+      "difficulty": "basic",
+      "tags": [
+        "通用",
+        "设计"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-12-intermediate",
+      "title": "模块之间如何划分职责和接口",
+      "prompt": "模块之间如何划分职责和接口？选一个业务变更解释为什么这样划分。",
+      "kind": "knowledge",
+      "difficulty": "intermediate",
+      "tags": [
+        "通用",
+        "设计"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-12-advanced",
+      "title": "多团队共享 API 需要演进时，如何设计兼容性、灰度、数据迁移与可回滚的验收标准",
+      "prompt": "多团队共享 API 需要演进时，如何设计兼容性、灰度、数据迁移与可回滚的验收标准？",
+      "kind": "knowledge",
+      "difficulty": "advanced",
+      "tags": [
+        "通用",
+        "设计"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-13-basic",
+      "title": "选一个亲手做过的课程或个人项目，介绍用户需求、本人负责部分和一条完整业务链路。",
+      "prompt": "选一个亲手做过的课程或个人项目，介绍用户需求、本人负责部分和一条完整业务链路。",
+      "kind": "project",
+      "difficulty": "basic",
+      "tags": [
+        "通用",
+        "项目"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-13-intermediate",
+      "title": "选一个本人负责的项目模块，解释关键技术选择、备选方案、失败路径及验证方法。",
+      "prompt": "选一个本人负责的项目模块，解释关键技术选择、备选方案、失败路径及验证方法。",
+      "kind": "project",
+      "difficulty": "intermediate",
+      "tags": [
+        "通用",
+        "项目"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-13-advanced",
+      "title": "选一个最复杂的本人项目决策，说明容量假设、一致性和成本取舍、失败证据及上线验证；没有线上经验可用可复现实验。",
+      "prompt": "选一个最复杂的本人项目决策，说明容量假设、一致性和成本取舍、失败证据及上线验证；没有线上经验可用可复现实验。",
+      "kind": "project",
+      "difficulty": "advanced",
+      "tags": [
+        "通用",
+        "项目"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-14-basic",
+      "title": "项目中遇到过什么具体错误",
+      "prompt": "项目中遇到过什么具体错误？描述现象、修复步骤和确认修好的方法。",
+      "kind": "project",
+      "difficulty": "basic",
+      "tags": [
+        "通用",
+        "项目",
+        "排障"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-14-intermediate",
+      "title": "项目中最难定位的故障是什么",
+      "prompt": "项目中最难定位的故障是什么？按证据、假设、实验和根因说明排查过程。",
+      "kind": "project",
+      "difficulty": "intermediate",
+      "tags": [
+        "通用",
+        "项目",
+        "排障"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-14-advanced",
+      "title": "复盘一次方案未达到预期的经历，如何排除测量偏差、验证根因、控制修复风险并防止回归",
+      "prompt": "复盘一次方案未达到预期的经历，如何排除测量偏差、验证根因、控制修复风险并防止回归？",
+      "kind": "project",
+      "difficulty": "advanced",
+      "tags": [
+        "通用",
+        "项目",
+        "排障"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-15-basic",
+      "title": "别人如何启动和测试你的项目",
+      "prompt": "别人如何启动和测试你的项目？说明依赖、配置和一个可运行的测试案例。",
+      "kind": "project",
+      "difficulty": "basic",
+      "tags": [
+        "通用",
+        "项目",
+        "测试"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-15-intermediate",
+      "title": "你如何证明项目的关键功能正确",
+      "prompt": "你如何证明项目的关键功能正确？说明测试分层、边界、异常路径及仍然存在的盲点。",
+      "kind": "project",
+      "difficulty": "intermediate",
+      "tags": [
+        "通用",
+        "项目",
+        "测试"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-15-advanced",
+      "title": "你声称优化过的项目指标如何测量",
+      "prompt": "你声称优化过的项目指标如何测量？解释基线、负载、样本、统计窗口和因果验证；没有数据就说明下一步实验。",
+      "kind": "project",
+      "difficulty": "advanced",
+      "tags": [
+        "通用",
+        "项目",
+        "测试"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-16-basic",
+      "title": "项目里你最熟悉的一段代码做什么",
+      "prompt": "项目里你最熟悉的一段代码做什么？说明输入输出和一个边界情况。",
+      "kind": "project",
+      "difficulty": "basic",
+      "tags": [
+        "通用",
+        "项目",
+        "业务"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-16-intermediate",
+      "title": "如果需求改变，你负责的模块哪里最难改",
+      "prompt": "如果需求改变，你负责的模块哪里最难改？解释耦合、改进顺序和验收方法。",
+      "kind": "project",
+      "difficulty": "intermediate",
+      "tags": [
+        "通用",
+        "项目",
+        "业务"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    },
+    {
+      "id": "original-interview-16-advanced",
+      "title": "如果项目用户增长十倍，先测什么，再按什么顺序改进",
+      "prompt": "如果项目用户增长十倍，先测什么，再按什么顺序改进？说明瓶颈证据、降级和方案失效条件。",
+      "kind": "project",
+      "difficulty": "advanced",
+      "tags": [
+        "通用",
+        "项目",
+        "业务"
+      ],
+      "company": "",
+      "round": "",
+      "source_kind": "original",
+      "source_name": "DevPrep 原创面试演练",
+      "source_url": "",
+      "attribution": "DevPrep contributors",
+      "license": "MIT",
+      "reference": "按目标难度评估概念、理由、边界及验证；项目仅依据候选人自述，不假设未提供的履历。",
+      "rubric": [
+        "回答核心问题并说明理由",
+        "结合目标难度解释边界与验证方法"
+      ],
+      "difficulty_basis": "产品训练标准"
+    }
+  ]
+}

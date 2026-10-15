@@ -57,6 +57,18 @@ public class AlgorithmService {
             for (JsonNode problem : catalog.path("problems")) problems.put(problem.path("id").asText(), problem);
         }
     }
+    /** Chinese statements only; no submissions query and no hidden test/solution material. */
+    public List<JsonNode> interviewCandidates() {
+        return problems.values().stream().filter(p -> p.path("description").asText().matches("(?s).*[\\p{IsHan}].*")
+                && (!p.path("official").asBoolean() || !p.path("examples").isEmpty()))
+                .map(p -> {
+                    ObjectNode item = mapper.createObjectNode();
+                    for (String key : List.of("id","title","description","difficulty","tag","examples","source","source_url","runnable_languages","collections","official","language_notes"))
+                        if (p.has(key)) item.set(key,p.get(key));
+                    item.set("templates",p.has("templates")?p.get("templates"):templates);
+                    return (JsonNode)item;
+                }).toList();
+    }
     public List<Map<String, Object>> collections() {
         List<Map<String, Object>> result = new ArrayList<>();
         Map<String, String> titles = new LinkedHashMap<>();

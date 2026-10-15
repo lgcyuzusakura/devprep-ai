@@ -34,3 +34,5 @@ backend-java/target/
 *.lock.db
 *.log
 .devprep-ai/
+devprep-ai-*.zip
+devprep-ai-*.zip.sha256

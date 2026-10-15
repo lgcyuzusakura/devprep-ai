@@ -26,6 +26,7 @@ devprep:
   seed-file: ${DEVPREP_SEED_FILE:classpath:seed/java-foundations.md}
   learning-file: ${DEVPREP_LEARNING_FILE:classpath:seed/learning.json}
   local-learning-file: ${DEVPREP_LOCAL_LEARNING_FILE:}
+  interview-experience-file: ${DEVPREP_INTERVIEW_EXPERIENCE_FILE:}
   resources-file: ${DEVPREP_RESOURCES_FILE:classpath:seed/resources.json}
   config-file: ${DEVPREP_CONFIG_FILE:${DEVPREP_DATA_DIR:${user.home}/.devprep-ai}/settings.toml}
   max-body-bytes: 1000000
