@@ -159,7 +159,7 @@ public class InterviewService {
     public ObjectNode catalog() {return experiences.metadata();}
     private ObjectNode sourceView(JsonNode entry) {
         ObjectNode source=mapper.createObjectNode();
-        for(String key:List.of("id","source_name","source_url","source_kind","source_revision","company","round","license","attribution","difficulty","difficulty_basis"))
+        for(String key:List.of("id","source_name","source_url","source_kind","source_revision","source_date","source_verification","company","round","license","attribution","difficulty","difficulty_basis"))
             if(entry.has(key))source.set(key,entry.get(key));
         return source;
     }
@@ -205,7 +205,7 @@ public class InterviewService {
                 boolean preferImported=i%2==0;
                 JsonNode bank=candidates.stream().filter(e->preferImported!=e.path("source_kind").asText().equals("original")).findFirst().orElse(candidates.get(0));
                 used.add(bank.path("id").asText());used.add("prompt:"+bank.path("prompt").asText());
-                for(String key:List.of("title","prompt","reference","rubric","source_name","source_url","source_kind","company","round","license","attribution","source_revision","difficulty_basis"))
+                for(String key:List.of("title","prompt","reference","rubric","source_name","source_url","source_kind","source_date","source_verification","company","round","license","attribution","source_revision","difficulty_basis"))
                     if(bank.has(key))q.set(key,bank.get(key));
                 q.put("bank_id",bank.path("id").asText());
             }

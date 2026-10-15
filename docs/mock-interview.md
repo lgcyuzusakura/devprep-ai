@@ -46,7 +46,7 @@ JD 组卷与 AI 判分会将本场岗位、JD、项目材料及相关回答发�
 
 公开仓库提供 48 条原创演练（MIT），覆盖 Java、Go、Python、前端、AI/Agent、数据库、网络与项目。第三方正文只放本地和私人迁移包。
 
-当前私人包另含 980 条精选：398 条候选人回忆、582 条公司题合集，来自 93 份文档、54 个公司标签（含未披露标签），包括腾讯、阿里、美团、百度、京东及细分企业。公司沿用来源标签，未按市值或人数划档；轮次没有注明则保留未知。
+本地私人包另含经过整理的中文面经，保留公司、岗位、轮次、原帖或固定版本文件链接、作者署名和导入说明。当前本地私人面经包有 4,720 道问题、337 份来源记录；加上公开原创演练后运行时目录显示 4,768 条。题库包含牛客候选人逐轮回忆、博客/PDF 面经以及公司题合集；归档者补写的参考答案不作为标准答案。来源未声明许可证的内容只放在本地私人包，不上传公开仓库。候选人经历和问题未经企业核验，难度由产品按题面估计。详细来源、版本和限制见 `docs/updates/2026-10-15-domestic-interview-memories.md`。
 
 来源：[0voice/Campus_recruitment_interview_questions](https://github.com/0voice/Campus_recruitment_interview_questions)，固定版本 `8b9539fbe3b9239fd512ffb63faa705897db51b1`。上游声明 CC BY-NC-SA 4.0，原作者保留版权。每条保留文件行号链接、署名、修改说明与许可证。仅供本地个人学习，未经逐题核验，不代表企业官方题库。抽取器不导入原答案、视频或联系方式。
 
@@ -59,6 +59,8 @@ python scripts/content-import/interview_experiences.py --source .cache/content/c
 ```
 
 将 `DEVPREP_INTERVIEW_EXPERIENCE_FILE` 指向输出 JSON；Docker 需同时挂载文件。私人迁移包已配置。公开版干净启动时仅加载原创题。
+
+本地重建还可使用 `candidate_recollections.py`、`offerseed_interview_experiences.py` 与 `forum_interview_experiences.py`，分别抽取候选人文本/PDF、offerseed 社区投稿及带牛客原帖链接的面经归档。输入仓库须固定到来源说明记录的版本；PDF 导入需安装 `pypdf`。最后用 `merge_interview_experiences.py` 合并现有题库和各本地面经包，现有条目优先，按公司与规范化题面去重。整个流程不请求模型。
 
 JD 模式用本地关键词和技术标签检索：限定难度，排除明显不相关的方向，按相关性与场景侧重排序，同分随机。检索结果作为 few-shot/RAG 上下文提供给 GPT，无需向量库、embedding API 或额外模型请求。模型引用检索 ID 时，服务端拒绝编造或重复的引用；界面与导出报告展示改编来源。同场题目不重复，不足时明确提示；随机项目题使用原创题，避免照搬他人履历。
 
