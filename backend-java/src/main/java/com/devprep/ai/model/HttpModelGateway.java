@@ -48,8 +48,15 @@ public class HttpModelGateway implements ModelGateway {
     private final Duration cacheDuration;
     private final Map<ModelProvider, CachedCatalog> catalogs = new ConcurrentHashMap<>();
     private final AtomicLong cacheEpoch = new AtomicLong();
+    private final ModelRequestCoordinator requests;
 
     @Autowired
+    public HttpModelGateway(ModelSettingsService settings, DevPrepProperties properties,
+                            ObjectMapper mapper, Clock clock, ModelRequestCoordinator requests) {
+        this(settings, properties, mapper, clock, HttpClient.newBuilder()
+                .followRedirects(HttpClient.Redirect.NEVER).connectTimeout(Duration.ofSeconds(10)).build(), requests);
+    }
+
     public HttpModelGateway(ModelSettingsService settings, DevPrepProperties properties,
                             ObjectMapper mapper, Clock clock) {
         this(settings, properties, mapper, clock, HttpClient.newBuilder()
@@ -59,6 +66,11 @@ public class HttpModelGateway implements ModelGateway {
 
     public HttpModelGateway(ModelSettingsService settings, DevPrepProperties properties,
                             ObjectMapper mapper, Clock clock, HttpClient client) {
+        this(settings, properties, mapper, clock, client, new ModelRequestCoordinator(0));
+    }
+
+    private HttpModelGateway(ModelSettingsService settings, DevPrepProperties properties,
+                            ObjectMapper mapper, Clock clock, HttpClient client, ModelRequestCoordinator requests) {
         if (client.followRedirects() != HttpClient.Redirect.NEVER) {
             throw new IllegalArgumentException("Provider clients must not follow redirects");
         }
@@ -67,6 +79,7 @@ public class HttpModelGateway implements ModelGateway {
         this.clock = clock;
         this.client = client;
         this.cacheDuration = Duration.ofSeconds(Math.max(0, properties.getModelCacheSeconds()));
+        this.requests = requests;
         settings.onChange(() -> {
             cacheEpoch.incrementAndGet();
             catalogs.clear();
@@ -84,7 +97,7 @@ public class HttpModelGateway implements ModelGateway {
         }
         long epoch = cacheEpoch.get();
         HttpRequest request = request(provider, provider.modelsPath()).GET().build();
-        JsonNode decoded = exchange(request, provider.timeoutSeconds(), true);
+        JsonNode decoded = requests.call(() -> exchange(request, provider.timeoutSeconds(), true));
         JsonNode values = decoded.isObject()
                 ? (decoded.has("data") ? decoded.get("data") : decoded.get("models")) : decoded;
         if (values == null || !values.isArray()) {
@@ -165,7 +178,7 @@ public class HttpModelGateway implements ModelGateway {
         HttpRequest request = request(provider, responses ? "/responses" : "/chat/completions")
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofByteArray(encoded)).build();
-        return parseGeneration(exchange(request, provider.timeoutSeconds(), false), responses);
+        return requests.call(() -> parseGeneration(exchange(request, provider.timeoutSeconds(), false), responses));
     }
 
     @Override
@@ -228,9 +241,10 @@ public class HttpModelGateway implements ModelGateway {
         catch (JsonProcessingException ex) { throw ApiException.badRequest("invalid_message", "对话无法编码。"); }
         HttpRequest request = request(provider, responses ? "/responses" : "/chat/completions")
                 .header("Content-Type", "application/json").POST(HttpRequest.BodyPublishers.ofByteArray(encoded)).build();
-        if (delta != null) return exchangeAgentStream(request, provider.timeoutSeconds(), responses, delta);
-        JsonNode result = exchange(request, provider.timeoutSeconds(), false);
-        return parseAgent(result, responses);
+        return requests.call(() -> {
+            if (delta != null) return exchangeAgentStream(request, provider.timeoutSeconds(), responses, delta);
+            return parseAgent(exchange(request, provider.timeoutSeconds(), false), responses);
+        });
     }
 
     private static AgentReply parseAgent(JsonNode result, boolean responses) {
