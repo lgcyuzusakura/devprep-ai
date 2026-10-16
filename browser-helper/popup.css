@@ -1,0 +1,4 @@
+body { width: 360px; padding: 18px; margin: 0; font: 13px/1.7 "Microsoft YaHei", sans-serif; color: #27312e; background: #f9fbfa; box-sizing: border-box; }
+h1 { font-size: 17px; margin: 0 0 8px; } h2 { font-size: 14px; } p { font-size: 12px; color: #697c70; } label { display: block; margin: 11px 0; font-size: 12px; }
+input, textarea { width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #ccd9d0; border-radius: 4px; font: inherit; margin-top: 5px; } textarea { resize: vertical; }
+button { padding: 9px 13px; background: #fff; border: 1px solid #b8cbbf; border-radius: 4px; cursor: pointer; color: #23543f; } .primary { background: #23604d; color: #fff; } button:disabled { opacity: .5; } #status { color: #804f29; white-space: pre-wrap; margin-top: 12px; } hr { border: 0; border-top: 1px solid #dce6df; margin: 20px 0; }

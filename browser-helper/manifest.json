@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "DevPrep 求职助手",
+  "version": "0.1.0",
+  "description": "将当前岗位页面或选中的JD导入本机DevPrep；将你确认的话术填入当前输入框。",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "action": { "default_popup": "popup.html", "default_title": "DevPrep 求职助手" }
+}

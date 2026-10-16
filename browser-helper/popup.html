@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><link rel="stylesheet" href="popup.css"><title>DevPrep 求职助手</title></head>
+<body><h1>保存岗位，准备材料</h1><p>先在岗位页面选中JD，再读取；没有选中文字时读取页面正文。</p>
+<label>本机工作台地址<input id="workspace" value="http://127.0.0.1:8765" type="url"></label>
+<button id="read">读取当前页面</button>
+<label>岗位名称<input id="title" maxlength="160"></label><label>岗位链接<input id="url" maxlength="2048"></label><label>JD草稿<textarea id="jd" rows="8" maxlength="20000"></textarea></label>
+<button id="import" class="primary">导入DevPrep草稿</button><p>导入后请核对并保存。简历和话术在工作台生成。</p>
+<hr><h2>辅助填写沟通话术</h2><p>在工作台复制话术，粘贴到下方；先在招聘网页点击目标输入框，再打开助手。</p>
+<label>本次要填写的文本<textarea id="message" rows="4" maxlength="2500"></textarea></label><button id="fill">填入网页当前输入框</button><p>填写后请在网页检查，再手动发送。助手不会点击发送或投递。</p>
+<div id="status" role="status" aria-live="polite"></div><script src="popup.js"></script></body></html>

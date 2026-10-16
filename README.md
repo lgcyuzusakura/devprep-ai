@@ -2,7 +2,7 @@
 
 面向计算机基础、考试与技术面试复习的本地学习工具。支持练题、答题记录、复习提醒、个人笔记检索，以及带资料来源的模型问答。公开资料索引覆盖前端、Java、后端、Go、Python、AI、Agent、考研 408 与软考。
 
-主项目采用 **Java 17 + Spring Boot 3.4.5**，前端使用 React/Vite。学习流程和模型配置已迁移到 Java，默认启动器、测试入口和 CI 使用 Spring Boot。最近一轮验证通过 228 项 Java 测试、31 项内容导入测试和 5 项模拟面试浏览器流程。架构说明见 [ADR 0001](docs/architecture/adr-0001-backend.md)，其余项目的框架与独立仓库规划见 [27 个项目技术栈规划](docs/project-stack-plan.md)。
+主项目采用 **Java 17 + Spring Boot 3.4.5**，前端使用 React/Vite。学习流程和模型配置已迁移到 Java，默认启动器、测试入口和 CI 使用 Spring Boot。最近一轮验证通过 238 项 Java 测试，以及 14 项求职、简历和模拟面试浏览器流程；内容导入模块此前 31 项测试通过。架构说明见 [ADR 0001](docs/architecture/adr-0001-backend.md)，其余项目的框架与独立仓库规划见 [27 个项目技术栈规划](docs/project-stack-plan.md)。
 
 完整操作步骤见 **[使用指南](docs/usage.md)**，包含 Docker 部署、私人迁移包、模型网关配置、练习、算法、学习 Agent、简历和模拟面试。
 
@@ -22,6 +22,7 @@
 
 ## 功能
 
+- 求职工作台：通用简历母版按岗位 JD 生成专属简历与沟通话术，支持编辑版本、Word/Markdown/话术/ZIP 下载、独立附件、公开 ATS 岗位预览、浏览器辅助导入和实际投递记录。详见 [求职工作台](docs/job-search.md)。
 - 模拟面试：岗位随机抽题、JD + 简历组卷、三档难度、公司练习场景、离线面经检索、八股/算法/项目深挖、四维判分、逐轮追问与复盘导出。详见 [模拟面试](docs/mock-interview.md)。
 - 简历工作区：从零编写、普通修改与 JD 定向修改、局部 AI 扩写、经历诊断与增强设想、5 种版式及自定义章节顺序、8 个技术方向原创虚构示例、修改对照与历史版本，以及 Word/Markdown/PDF 导出。详见 [简历修改](docs/resume-editing.md)。
 - Docker Compose 部署、数据持久化，以及隔离容器中的多语言算法样例运行。
