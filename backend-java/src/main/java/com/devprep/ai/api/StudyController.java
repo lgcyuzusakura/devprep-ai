@@ -41,7 +41,7 @@ public class StudyController {
         emitter.onTimeout(() -> agent.stop(turn));
         emitter.onError(error -> agent.stop(turn));
         emitter.onCompletion(() -> agent.stop(turn));
-        executor.submit(() -> {
+        executor.submit(com.devprep.ai.auth.WorkspaceContext.capture(() -> {
             try {
                 var message = agent.run(turn, (name, data) -> sendEvent(emitter, name, data));
                 sendEvent(emitter, "message", message); emitter.complete();
@@ -49,7 +49,7 @@ public class StudyController {
                 try { sendEvent(emitter, "error", Map.of("message", ex instanceof ApiException api ? api.getMessage() : "本轮回答中断，请重试。")); }
                 finally { emitter.complete(); }
             }
-        });
+        }));
         return emitter;
     }
     private static void sendEvent(SseEmitter emitter, String name, Object data) {

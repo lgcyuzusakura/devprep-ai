@@ -14,6 +14,8 @@ const Interview = lazy(() => import("./pages/Interview.jsx"));
 const JobSearch = lazy(() => import("./pages/JobSearch.jsx"));
 import Records from "./pages/Records.jsx";
 import ModelSettings from "./pages/ModelSettings.jsx";
+import AccountGate from "./components/AccountGate.jsx";
+import Account from "./pages/Account.jsx";
 
 const navigation = [
   { id: "today", label: "今日复习", icon: LayoutDashboard },
@@ -29,12 +31,16 @@ const navigation = [
 ];
 
 export default function App() {
+  return <AccountGate>{auth => <Workspace key={auth.user?.username || "local"} auth={auth} />}</AccountGate>;
+}
+
+function Workspace({ auth }) {
   const [route, setRoute] = useState(getRoute);
   const [menuOpen, setMenuOpen] = useState(false);
   const [revision, setRevision] = useState(0);
   const [settings, setSettings] = useState(null);
   const [target, setTarget] = useState(() => {
-    try { return Number(localStorage.getItem("devprep.target")) || 10; } catch { return 10; }
+    try { return Number(localStorage.getItem(`devprep.target.${auth.user?.username || "local"}`)) || 10; } catch { return 10; }
   });
 
   useEffect(() => {
@@ -45,10 +51,11 @@ export default function App() {
   useEffect(() => { api("/settings").then(setSettings).catch(() => setSettings(null)); }, [revision]);
   const updateTarget = (value) => {
     setTarget(value);
-    try { localStorage.setItem("devprep.target", String(value)); } catch { /* Storage can be disabled. */ }
+    try { localStorage.setItem(`devprep.target.${auth.user?.username || "local"}`, String(value)); } catch { /* Storage can be disabled. */ }
   };
   const changed = () => setRevision((value) => value + 1);
-  const section = navigation.find((item) => item.id === route.page)?.label || (route.page === "sourceqa" ? "资料问答" : "模型设置");
+  const canConfigure = !auth.enabled || auth.user?.admin;
+  const section = navigation.find((item) => item.id === route.page)?.label || (route.page === "account" ? "我的账号" : route.page === "sourceqa" ? "资料问答" : "模型设置");
   let page;
   const common = { revision, changed };
   switch (route.page) {
@@ -62,7 +69,8 @@ export default function App() {
     case "jobs": page = <JobSearch params={route.params} settings={settings} />; break;
     case "interview": page = <Interview params={route.params} settings={settings} />; break;
     case "records": page = <Records {...common} />; break;
-    case "settings": page = <ModelSettings changed={changed} />; break;
+    case "settings": page = canConfigure ? <ModelSettings changed={changed} /> : <div className="empty-state"><p>模型由管理员配置，你可以直接使用学习教练。</p></div>; break;
+    case "account": page = auth.enabled ? <Account user={auth.user} updated={auth.updated} logout={auth.logout} /> : <div className="empty-state"><p>当前使用本机单人模式。</p></div>; break;
     default: page = <Today target={target} setTarget={updateTarget} {...common} />;
   }
 
@@ -73,10 +81,10 @@ export default function App() {
       <div className="mobile-nav-close"><IconButton icon={X} label="关闭导航" onClick={() => setMenuOpen(false)} /></div>
       <div className="sidebar-label">学习</div>
       <nav aria-label="主导航">{navigation.map(({ id, label, icon: Icon }) => <a key={id} href={`#/${id}`} className={`nav-item ${route.page === id ? "active" : ""}`} aria-current={route.page === id ? "page" : undefined}><Icon size={18} /><span>{label}</span>{route.page === id && <span className="nav-indicator" />}</a>)}</nav>
-      <div className="sidebar-bottom"><a href="#/settings" className={`nav-item ${route.page === "settings" ? "active" : ""}`}><Settings2 size={18} /><span>模型设置</span></a><div className="local-status"><span className="status-dot" />个人工作区<span>本机</span></div></div>
+      <div className="sidebar-bottom">{canConfigure && <a href="#/settings" className={`nav-item ${route.page === "settings" ? "active" : ""}`}><Settings2 size={18} /><span>模型设置</span></a>}{auth.enabled && <a href="#/account" className={`nav-item ${route.page === "account" ? "active" : ""}`}><Settings2 size={18} /><span>我的账号</span></a>}<div className="local-status"><span className="status-dot" />个人工作区<span>{auth.user?.username || "本机"}</span></div></div>
     </aside>
     <div className="workspace">
-      <header className="topbar"><div className="breadcrumb"><span className="mobile-menu"><IconButton icon={Menu} label="打开导航" onClick={() => setMenuOpen(true)} /></span><PanelLeftClose size={17} className="desktop-nav-icon" /><span className="breadcrumb-root">工作区</span><span className="breadcrumb-divider">/</span><span>{section}</span></div><button className="model-status" onClick={() => navigate("settings")} title="打开模型设置"><span className={`status-dot ${settings?.model ? "" : "status-dot-muted"}`} /><span>{settings?.model || "模型未配置"}</span><ArrowUpRight size={14} /></button></header>
+      <header className="topbar"><div className="breadcrumb"><span className="mobile-menu"><IconButton icon={Menu} label="打开导航" onClick={() => setMenuOpen(true)} /></span><PanelLeftClose size={17} className="desktop-nav-icon" /><span className="breadcrumb-root">工作区</span><span className="breadcrumb-divider">/</span><span>{section}</span></div><button className="model-status" onClick={() => navigate(canConfigure ? "settings" : "account")} title={canConfigure ? "打开模型设置" : "打开我的账号"}><span className={`status-dot ${settings?.model ? "" : "status-dot-muted"}`} /><span>{settings?.model || "模型未配置"}</span><ArrowUpRight size={14} /></button></header>
       <main className="main-content"><Suspense fallback={<div className="loading-state">正在读取页面…</div>}>{page}</Suspense></main>
       <footer className="app-footer"><span>DevPrep <Badge>v0.1</Badge></span><span>计算机学习 · 考试与面试</span></footer>
     </div>

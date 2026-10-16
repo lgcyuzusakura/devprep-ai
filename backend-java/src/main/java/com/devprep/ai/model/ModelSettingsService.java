@@ -26,6 +26,8 @@ import java.util.function.Function;
 
 @Service
 public class ModelSettingsService {
+    @org.springframework.beans.factory.annotation.Value("${devprep.member-model:gpt-6.1-sol}")
+    private String memberModel = "gpt-6.1-sol";
     private static final int MAX_CONFIG_BYTES = 100_000;
     private final Path settingsFile;
     private final Function<String, String> environment;
@@ -58,7 +60,11 @@ public class ModelSettingsService {
         } catch (IOException | IllegalArgumentException ex) {
             throw new ApiException(500, "config_unreadable", "设置文件无法读取；请在设置中修复 TOML。");
         }
-        return normalize(parsed);
+        ModelConfiguration configuration = normalize(parsed);
+        if (!com.devprep.ai.auth.WorkspaceContext.isAdmin()) {
+            return new ModelConfiguration(memberModel, configuration.modelProvider(), configuration.providers());
+        }
+        return configuration;
     }
 
     public Map<String, Object> publicSnapshot() {

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
+@org.springframework.core.annotation.Order(0)
 public class WebConfig extends OncePerRequestFilter {
     private static final Set<String> LOCAL_HOSTS = Set.of("127.0.0.1", "localhost", "[::1]", "::1");
     private static final long MAX_JSON_BYTES = 25_000_000;

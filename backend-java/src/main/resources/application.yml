@@ -22,6 +22,10 @@ spring:
     serialization:
       write-dates-as-timestamps: false
 devprep:
+  auth-enabled: ${DEVPREP_AUTH_ENABLED:false}
+  auth-bootstrap-file: ${DEVPREP_AUTH_BOOTSTRAP_FILE:}
+  auth-secure-cookie: ${DEVPREP_AUTH_SECURE_COOKIE:true}
+  member-model: ${DEVPREP_MEMBER_MODEL:gpt-6.1-sol}
   root: ${DEVPREP_ROOT:..}
   seed-file: ${DEVPREP_SEED_FILE:classpath:seed/java-foundations.md}
   learning-file: ${DEVPREP_LEARNING_FILE:classpath:seed/learning.json}

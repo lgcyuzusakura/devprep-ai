@@ -25,11 +25,16 @@ public class ModelController {
 
     @GetMapping("/settings")
     public Map<String, Object> settings() {
+        if (!com.devprep.ai.auth.WorkspaceContext.isAdmin()) {
+            var configuration = settings.load();
+            return Map.of("model", configuration.model(), "model_provider", configuration.modelProvider(), "read_only", true);
+        }
         return settings.publicSnapshot();
     }
 
     @PostMapping("/settings")
     public Map<String, Object> saveSettings(@RequestBody JsonNode payload) {
+        requireAdmin();
         JsonNode toml = payload.isObject() ? payload.get("toml") : null;
         if (toml == null || !toml.isTextual()) throw ApiException.badRequest("invalid_config", "toml 必须是文本。");
         return settings.save(toml.textValue());
@@ -37,6 +42,7 @@ public class ModelController {
 
     @PostMapping("/settings/import-codex")
     public Map<String, String> importCodex(@RequestBody JsonNode payload) {
+        requireAdmin();
         if (!payload.isObject()) throw ApiException.badRequest("invalid_json", "请求内容必须是 JSON 对象。");
         return Map.of("toml", settings.importCodexConfig());
     }
@@ -44,6 +50,10 @@ public class ModelController {
     @GetMapping("/models")
     public Map<String, Object> models(@RequestParam(defaultValue = "") String provider,
                                      @RequestParam(defaultValue = "0") String refresh) {
+        requireAdmin();
         return Map.of("provider", provider, "models", gateway.discover(provider, refresh.equals("1")));
+    }
+    private static void requireAdmin() {
+        if (!com.devprep.ai.auth.WorkspaceContext.isAdmin()) throw new ApiException(403,"admin_required","此操作仅管理员可用。");
     }
 }

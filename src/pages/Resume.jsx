@@ -1,3 +1,4 @@
+import { workspaceStorage as localStorage } from "../lib/workspaceStorage.js";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";

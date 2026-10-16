@@ -4,7 +4,10 @@ export async function api(path, options = {}) {
     headers: { "Content-Type": "application/json", ...options.headers },
   });
   const payload = await response.json();
-  if (!response.ok) throw new Error(payload.error?.message || "请求失败，请稍后重试。");
+  if (!response.ok) {
+    if (response.status === 401 && !path.startsWith("/auth/")) window.dispatchEvent(new Event("devprep:login-required"));
+    throw new Error(payload.error?.message || "请求失败，请稍后重试。");
+  }
   return payload;
 }
 

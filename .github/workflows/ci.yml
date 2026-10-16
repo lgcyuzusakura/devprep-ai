@@ -60,3 +60,6 @@ jobs:
         env:
           DEVPREP_E2E_SKIP_BUILD: '1'
         run: npm run test:e2e
+      - name: Run independent account end-to-end tests
+        if: runner.os == 'Linux'
+        run: npx playwright test --config playwright.accounts.config.js

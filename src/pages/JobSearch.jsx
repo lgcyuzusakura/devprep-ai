@@ -1,3 +1,4 @@
+import { workspaceStorage as localStorage } from "../lib/workspaceStorage.js";
 import { cloneElement, useEffect, useRef, useState } from "react";
 import { Plus, FileText, ExternalLink, Copy, Download, Save, ArrowLeft, Search, Upload, Trash2, Check, MessageSquare, Presentation } from "lucide-react";
 import ReactMarkdown from "react-markdown";

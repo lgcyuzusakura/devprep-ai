@@ -2,11 +2,11 @@
 
 面向计算机基础、考试与技术面试复习的本地学习工具。支持练题、答题记录、复习提醒、个人笔记检索，以及带资料来源的模型问答。公开资料索引覆盖前端、Java、后端、Go、Python、AI、Agent、考研 408 与软考。
 
-主项目采用 **Java 17 + Spring Boot 3.4.5**，前端使用 React/Vite。学习流程和模型配置已迁移到 Java，默认启动器、测试入口和 CI 使用 Spring Boot。最近一轮验证通过 238 项 Java 测试，以及 14 项求职、简历和模拟面试浏览器流程；内容导入模块 36 项测试通过。架构说明见 [ADR 0001](docs/architecture/adr-0001-backend.md)，其余项目的框架与独立仓库规划见 [27 个项目技术栈规划](docs/project-stack-plan.md)。
+主项目采用 **Java 17 + Spring Boot 3.4.5**，前端使用 React/Vite。学习流程和模型配置已迁移到 Java，默认启动器、测试入口和 CI 使用 Spring Boot。最近一轮验证通过 247 项 Java 测试、37 项原有浏览器流程与 2 项独立账号浏览器流程；内容导入模块此前 36 项测试通过。架构说明见 [ADR 0001](docs/architecture/adr-0001-backend.md)，其余项目的框架与独立仓库规划见 [27 个项目技术栈规划](docs/project-stack-plan.md)。
 
-完整操作步骤见 **[使用指南](docs/usage.md)**，包含 Docker 部署、私人迁移包、模型网关配置、练习、算法、学习 Agent、简历和模拟面试。
+完整操作步骤见 **[使用指南](docs/usage.md)**，包含 Docker 部署、私人迁移包、模型网关配置、练习、算法、学习 Agent、简历和模拟面试。多人体验支持独立账号、数据隔离与改密，见 [账号部署说明](docs/accounts.md)。
 
-学校电脑持续运行、家里通过公网网址访问的方案与现有限制，见 [公网访问调研](docs/research/2026-10-16-public-url-and-xiaolin.md)。本文是部署前调研，未开通公网入口。
+学校电脑持续运行、家里通过公网网址访问的方案与现有限制，见 [公网访问调研](docs/research/2026-10-16-public-url-and-xiaolin.md)。该文记录部署前调研，实际入口与凭据保存在部署机器的私有文件中。
 
 ## 技术架构
 

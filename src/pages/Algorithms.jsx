@@ -1,3 +1,4 @@
+import { workspaceStorage as localStorage } from "../lib/workspaceStorage.js";
 import { useEffect, useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { java } from "@codemirror/lang-java";
