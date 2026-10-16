@@ -2,9 +2,11 @@
 
 面向计算机基础、考试与技术面试复习的本地学习工具。支持练题、答题记录、复习提醒、个人笔记检索，以及带资料来源的模型问答。公开资料索引覆盖前端、Java、后端、Go、Python、AI、Agent、考研 408 与软考。
 
-主项目采用 **Java 17 + Spring Boot 3.4.5**，前端使用 React/Vite。学习流程和模型配置已迁移到 Java，默认启动器、测试入口和 CI 使用 Spring Boot。最近一轮验证通过 238 项 Java 测试，以及 14 项求职、简历和模拟面试浏览器流程；内容导入模块此前 31 项测试通过。架构说明见 [ADR 0001](docs/architecture/adr-0001-backend.md)，其余项目的框架与独立仓库规划见 [27 个项目技术栈规划](docs/project-stack-plan.md)。
+主项目采用 **Java 17 + Spring Boot 3.4.5**，前端使用 React/Vite。学习流程和模型配置已迁移到 Java，默认启动器、测试入口和 CI 使用 Spring Boot。最近一轮验证通过 238 项 Java 测试，以及 14 项求职、简历和模拟面试浏览器流程；内容导入模块 36 项测试通过。架构说明见 [ADR 0001](docs/architecture/adr-0001-backend.md)，其余项目的框架与独立仓库规划见 [27 个项目技术栈规划](docs/project-stack-plan.md)。
 
 完整操作步骤见 **[使用指南](docs/usage.md)**，包含 Docker 部署、私人迁移包、模型网关配置、练习、算法、学习 Agent、简历和模拟面试。
+
+学校电脑持续运行、家里通过公网网址访问的方案与现有限制，见 [公网访问调研](docs/research/2026-10-16-public-url-and-xiaolin.md)。本文是部署前调研，未开通公网入口。
 
 ## 技术架构
 
@@ -105,6 +107,7 @@ Vite 默认把 `/api` 代理到 `127.0.0.1:8765`。更换 API 端口时应同步
 npm test
 
 # 题库导入器回归（仅使用合成样例，不下载题库）
+python -m pip install -r scripts/content-import/requirements.txt
 npm run test:imports
 
 # 前端构建与浏览器回归
@@ -128,6 +131,7 @@ GitHub Actions 在 Ubuntu 和 Windows 上执行 Java 17/Maven Wrapper 验证、�
 公开仓库提供 40 个知识点、70 道标注 AI 辅助整理来源的原创示例题，以及导入工具。本地题库可以扩充到数千道实际问答；下载快照、题目正文与审计导出全部保存在 Git 忽略的 `.cache/content/`，不会打包到 Jar 或上传仓库。
 
 - [多来源下载与导入](docs/content-import/local-learning-pack.md)：JavaGuide、JavaScript、React、Go、Python、DevOps。
+- [小林 coding 本地导入](docs/content-import/xiaolin.md)：中文公开面试问答、来源追踪和保留原译文的合并；第三方正文仅在本地保存。
 - [中文大模型问答导入](docs/content-import/llm-interview-note.md)：模型基础、微调、RAG、评估和应用。
 - [考研 408 与软考题库导入](docs/content-import/exams.md)：文本单选题、完整案例与来源审计。
 - [DevOps 导入说明](docs/content-import/devops-exercises.md)：保留原文与固定版本的来源信息。
