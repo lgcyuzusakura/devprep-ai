@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -65,6 +65,15 @@ function QuestionSource({ question }) {
 
 export default function Practice({ params, target, changed }) {
   const point = params.get("topic") || "";
+  const domain = params.get("domain") || "";
+  const bank = params.get("bank") || "";
+  const type = ["all", "short_answer"].includes(params.get("type")) ? params.get("type") : "single_choice";
+  const [banks, setBanks] = useState([]);
+  const mode = params.get("mode") === "review" ? "review" : "new";
+  const [queue, setQueue] = useState(null);
+  const [topics, setTopics] = useState([]);
+  const [roundDone, setRoundDone] = useState(false);
+  const excluded = useRef([]);
   const [question, setQuestion] = useState(null);
   const [answer, setAnswer] = useState("");
   const [reference, setReference] = useState(null);
@@ -79,11 +88,19 @@ export default function Practice({ params, target, changed }) {
 
   function load() {
     setBusy(true); setError("");
-    api("/practice/next" + (point ? "?knowledge_point_id=" + encodeURIComponent(point) : "")).then((data) => {
-      setQuestion(data); setAnswer(""); setFeedback(null); setReference(null); setHits([]); setSelfAssessment(null);
+    post("/practice/queue", { knowledge_point_id: point, domain, bank, question_type: type, mode, exclude_ids: excluded.current }).then((data) => {
+      setQueue(data); setQuestion(data.question); setAnswer(""); setFeedback(null); setReference(null); setHits([]); setSelfAssessment(null);
     }).catch((err) => setError(err.message)).finally(() => setBusy(false));
   }
-  useEffect(load, [point]);
+  useEffect(() => { load(); }, [point, domain, bank, type, mode]);
+  useEffect(() => { api("/knowledge").then(data => setTopics(data.topics)).catch(() => {}); }, []);
+  useEffect(() => { api("/practice/banks").then(data => setBanks(data.banks)).catch(() => {}); }, []);
+  const scope = point ? { topic: point } : bank ? { bank } : domain ? { domain } : {};
+  const typeParam = type === "single_choice" ? {} : { type };
+  const activeDomain = domain || question?.domain || topics.find(topic => topic.id === point)?.domain;
+  const chooseMode = value => navigate("practice", { ...scope, ...typeParam, ...(value === "review" ? { mode: value } : {}) });
+  function next() { if (completed >= target) setRoundDone(true); else load(); }
+  function anotherRound() { excluded.current = []; setCompleted(0); setRoundDone(false); load(); }
 
   async function reveal() {
     if (busy) return;
@@ -102,6 +119,8 @@ export default function Practice({ params, target, changed }) {
       const payload = { question_id: question.id, answer, rubric_hits: referenceMode ? [] : hits };
       if (referenceMode) payload.self_assessment = selfAssessment;
       const data = await post("/attempts", payload);
+      excluded.current = [...excluded.current, question.id];
+      setQueue(current => current ? { ...current, answered_questions: current.answered_questions + (mode === "new" ? 1 : 0), remaining_questions: Math.max(0, current.remaining_questions - 1) } : current);
       setFeedback(data); setCompleted((value) => value + 1); changed();
     } catch (err) { setError(err.message); }
     finally { setBusy(false); }
@@ -112,9 +131,29 @@ export default function Practice({ params, target, changed }) {
   }
 
   return <>
-    <PageHeading title={point ? "知识点练习" : "练习"} description={"本轮已完成 " + completed + " 题"} action={<Button icon={ArrowLeft} onClick={() => navigate("today")}>返回复习</Button>} />
+    <PageHeading title={point ? "知识点练习" : bank ? `${banks.find(item => item.id === bank)?.title || "题库"}练习` : domain ? `${domain}混合练习` : "练习"} description={"本轮已完成 " + completed + " 题"} action={<Button icon={ArrowLeft} onClick={() => navigate("today")}>返回复习</Button>} />
+    <div className="practice-toolbar">
+      <label>练习范围<select aria-label="练习范围" value={point ? "topic" : domain ? "domain" : bank || "recommended"} onChange={e => navigate("practice", { bank: e.target.value, ...typeParam, ...(mode === "review" ? { mode } : {}) })}>
+        {point && <option value="topic">{queue?.scope_title || "当前知识点"}</option>}{domain && <option value="domain">{domain}</option>}
+        {banks.map(item => <option key={item.id} value={item.id}>{item.title}（{type === "single_choice" ? item.choice_count : type === "short_answer" ? item.short_answer_count : item.question_count}题）</option>)}
+      </select></label>
+      <label>题型<select aria-label="题型" value={type} onChange={e => navigate("practice", { ...scope, ...(e.target.value !== "single_choice" ? { type: e.target.value } : {}), ...(mode === "review" ? { mode } : {}) })}><option value="single_choice">选择题</option><option value="short_answer">问答题</option><option value="all">全部题型</option></select></label>
+      <div className="segmented" aria-label="练习模式"><button className={mode === "new" ? "selected" : ""} aria-pressed={mode === "new"} onClick={() => chooseMode("new")}>未做新题</button><button className={mode === "review" ? "selected" : ""} aria-pressed={mode === "review"} onClick={() => chooseMode("review")}>重练已做题</button></div>
+      {queue && <p className="practice-bank-count" role="status">{queue.scope_title} · 可练 {queue.total_questions} 题 · 已做 {queue.answered_questions} 题 · {mode === "new" ? "未做" : "本轮剩余"} {queue.remaining_questions} 题</p>}
+    </div>
     <ErrorNotice message={error} retry={!question ? load : undefined} />
-    {!question ? (!error && <Loading />) : <div className="practice-layout">
+    {roundDone || (queue && !question) ? <section className="practice-finished">
+      <CheckCircle2 size={28} /><h2>{roundDone ? "本轮练习已完成" : queue.total_questions === 0 ? "这个范围暂时没有可练的当前题型" : mode === "new" ? "这个范围的新题已做完" : completed ? "本轮已做题已全部重练" : "这个范围还没有已做题"}</h2>
+      <p>{roundDone ? `本轮完成 ${completed} 题，可以休息一下，也可以继续下一轮。` : mode === "new" ? `可练 ${queue.total_questions} 题，已做 ${queue.answered_questions} 题。不会自动重复旧题。` : "重练只选择已经作答的题目，同一轮内每题只出现一次。"}</p>
+      <div className="practice-finished-actions">
+        {roundDone && <Button tone="primary" onClick={anotherRound}>开始下一轮</Button>}
+        {point && activeDomain && <Button tone={roundDone ? "default" : "primary"} onClick={() => navigate("practice", { domain: activeDomain, ...typeParam })}>练习整个{activeDomain}方向</Button>}
+        <Button onClick={() => navigate("practice", { ...(domain || bank || point ? {} : mode === "new" ? { mode: "review" } : {}) })}>{domain || bank || point ? "全部方向混合练习" : mode === "new" ? "重练已做题" : "练习未做新题"}</Button>
+        {point && mode === "new" && queue.answered_questions > 0 && <Button onClick={() => chooseMode("review")}>重练本知识点</Button>}
+        <Button onClick={() => navigate("knowledge")}>选择其他题库</Button>
+        {type === "single_choice" && queue.total_questions === 0 && <Button onClick={() => navigate("practice", { ...scope, type: "all" })}>查看这个范围的其他题型</Button>}
+      </div>
+    </section> : !question ? (!error && <Loading />) : <div className="practice-layout">
       <section className="question-surface" aria-busy={busy}>
         <div className="question-topline"><span>{question.domain}</span><Badge>{question.question_type === "single_choice" ? "单选题" : referenceMode ? "问答题" : "简答题"}</Badge></div>
         {isMarkdownContent(question.content_format) && hasSourceFormatting(question.stem) ? <><h2 className="sr-only">{sourcePlainText(question.stem) || "题目"}</h2><PracticeContent className="question-stem" value={question.stem} format={question.content_format} sourceUrl={question.source_url} /></> : <h2 className="question-stem">{isMarkdownContent(question.content_format) ? sourcePlainText(question.stem) : question.stem}</h2>}
@@ -147,7 +186,7 @@ export default function Practice({ params, target, changed }) {
           <div className="feedback-next">下次复习 <strong>{dateLabel(feedback.review_at)}</strong></div>
         </div>}
         <div className="question-actions">
-          {feedback ? <Button tone="primary" icon={ArrowRight} busy={busy} onClick={load}>{completed >= target ? "继续练习" : "下一题"}</Button> : question.question_type === "short_answer" && !reference ? <Button tone="primary" icon={Eye} busy={busy} disabled={!answer.trim()} onClick={reveal}>{referenceMode ? "查看参考答案" : "查看要点并自评"}</Button> : <Button tone="primary" icon={Check} busy={busy} disabled={!answer.trim() || (referenceMode && selfAssessment === null)} onClick={submit}>{reference ? "保存自评" : "提交答案"}</Button>}
+          {feedback ? <Button tone="primary" icon={ArrowRight} busy={busy} onClick={next}>{completed >= target ? "查看本轮结果" : "下一题"}</Button> : question.question_type === "short_answer" && !reference ? <Button tone="primary" icon={Eye} busy={busy} disabled={!answer.trim()} onClick={reveal}>{referenceMode ? "查看参考答案" : "查看要点并自评"}</Button> : <Button tone="primary" icon={Check} busy={busy} disabled={!answer.trim() || (referenceMode && selfAssessment === null)} onClick={submit}>{reference ? "保存自评" : "提交答案"}</Button>}
           {reference && !feedback && <button className="text-button" disabled={busy} onClick={editAnswer}>继续修改</button>}
         </div>
       </section>
@@ -155,6 +194,7 @@ export default function Practice({ params, target, changed }) {
         <div className="section-heading"><h2>本题知识点</h2><BookOpen size={17} /></div><h3>{question.topic_title}</h3><p>{question.topic_summary}</p>
         <div className="context-rule" /><div className="context-label">选题依据</div><p>{question.reason || "优先安排尚未练习的题目"}</p>
         <QuestionSource question={question} />
+        {point && activeDomain && <button className="text-button" onClick={() => navigate("practice", { domain: activeDomain, ...typeParam })}>练习整个{activeDomain}方向 <ArrowRight size={15} /></button>}
         <div className="context-rule" /><button className="text-button" onClick={() => navigate("questions", { q: question.topic_title })}>询问这个知识点 <ArrowRight size={15} /></button>
         {question.source_material_id && <button className="text-button" onClick={() => navigate("materials", { id: question.source_material_id })}>查看参考资料 <ArrowRight size={15} /></button>}
         <button className="text-button" onClick={() => navigate("knowledge")}>选择其他方向或知识点 <ArrowRight size={15} /></button>

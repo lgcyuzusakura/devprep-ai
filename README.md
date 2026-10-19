@@ -2,7 +2,7 @@
 
 面向计算机基础、考试与技术面试复习的本地学习工具。支持练题、答题记录、复习提醒、个人笔记检索，以及带资料来源的模型问答。公开资料索引覆盖前端、Java、后端、Go、Python、AI、Agent、考研 408 与软考。
 
-主项目采用 **Java 17 + Spring Boot 3.4.5**，前端使用 React/Vite。学习流程和模型配置已迁移到 Java，默认启动器、测试入口和 CI 使用 Spring Boot。最近一轮验证通过 247 项 Java 测试、37 项原有浏览器流程与 2 项独立账号浏览器流程；内容导入模块此前 36 项测试通过。架构说明见 [ADR 0001](docs/architecture/adr-0001-backend.md)，其余项目的框架与独立仓库规划见 [27 个项目技术栈规划](docs/project-stack-plan.md)。
+主项目采用 **Java 17 + Spring Boot 3.4.5**，前端使用 React/Vite。学习流程和模型配置已迁移到 Java，默认启动器、测试入口和 CI 使用 Spring Boot。题库分类与不重复练习的更新说明见 [专项题库更新](docs/updates/2026-10-19-practice-banks.md)。架构说明见 [ADR 0001](docs/architecture/adr-0001-backend.md)，其余项目的框架与独立仓库规划见 [27 个项目技术栈规划](docs/project-stack-plan.md)。
 
 完整操作步骤见 **[使用指南](docs/usage.md)**，包含 Docker 部署、私人迁移包、模型网关配置、练习、算法、学习 Agent、简历和模拟面试。多人体验支持独立账号、数据隔离与改密，见 [账号部署说明](docs/accounts.md)。
 
@@ -34,6 +34,7 @@
 
 部署和交互说明见 [Docker 与学习 Agent](docs/docker-and-learning-agent.md)。LeetCode 原题正文仅导入本地，公开仓库保留题单元数据和导入器。
 
+- 专项题库按 Java、网络基础、SQL、Agent 等 20 个大方向展示真实题量，默认刷中文选择题，可切换问答题；新题做完后结束，已做题需主动重练。
 - 内置知识点、示例题和学习资料，支持单选练习与简答要点自评。
 - 本地多来源题库导入、出处与版本追踪；原文问答支持独立掌握自评。
 - 学习概览、前置知识、选题理由、待复习主题和答题历史。

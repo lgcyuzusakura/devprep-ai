@@ -35,6 +35,8 @@ test("choice and rubric practice save records and survive reload", async ({ page
   await page.getByRole("button", { name: "提交答案" }).click();
   await expect(page.getByText("回答正确", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "下一题" }).click();
+  await expect(page.getByRole("heading", { name: "这个范围的新题已做完" })).toBeVisible();
+  await page.getByLabel("题型", { exact: true }).selectOption("short_answer");
   await expect(page.getByRole("heading", { name: "为什么重写 equals 时通常也要重写 hashCode？" })).toBeVisible();
   await page.getByLabel("你的回答").fill("equals 相等时 hashCode 一样。哈希集合依赖桶定位。否则查找失败。");
   await page.getByRole("button", { name: "查看要点并自评" }).click();
@@ -106,8 +108,8 @@ test("all mobile views fit within the viewport and navigation works", async ({ p
   await expect(page.getByRole("heading", { name: "今天的复习" })).toBeVisible();
   await page.screenshot({ path: "test-results/mobile-today.png", fullPage: true });
   await page.getByRole("button", { name: "打开导航" }).click();
-  await page.getByRole("link", { name: "知识点", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "知识点", exact: true })).toBeVisible();
+  await page.getByRole("link", { name: "专项题库", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "专项题库", exact: true })).toBeVisible();
   for (const route of ["today", "practice", "knowledge", "materials", "questions", "records", "settings"]) {
     await page.goto(`/#/${route}`);
     await expect(page.locator("main h1")).toBeVisible();

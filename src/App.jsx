@@ -21,7 +21,7 @@ const navigation = [
   { id: "today", label: "今日复习", icon: LayoutDashboard },
   { id: "practice", label: "练习", icon: ListChecks },
   { id: "algorithms", label: "算法练习", icon: SquareTerminal },
-  { id: "knowledge", label: "知识点", icon: Network },
+  { id: "knowledge", label: "专项题库", icon: Network },
   { id: "materials", label: "资料库", icon: Library },
   { id: "questions", label: "学习教练", icon: MessagesSquare },
   { id: "resume", label: "简历修改", icon: FilePenLine },

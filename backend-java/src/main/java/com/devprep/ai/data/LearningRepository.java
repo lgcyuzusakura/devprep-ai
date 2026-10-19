@@ -3,6 +3,7 @@ package com.devprep.ai.data;
 import com.devprep.ai.domain.Dashboard;
 import com.devprep.ai.domain.HistoryAttempt;
 import com.devprep.ai.domain.PracticeQuestion;
+import com.devprep.ai.domain.PracticeQueue;
 import com.devprep.ai.domain.QuestionData;
 import com.devprep.ai.domain.QuestionReference;
 import com.devprep.ai.domain.RecentAttempt;
@@ -40,7 +41,9 @@ public class LearningRepository {
                 rs.getString("title"), rs.getString("summary"), attempts, correct,
                 attempts == 0 ? null : Math.round((double) correct / attempts * 100.0) / 100.0,
                 rs.getString("last_practiced"), rs.getString("next_review_at"),
-                json.strings(rs.getString("prerequisites_json")));
+                json.strings(rs.getString("prerequisites_json")), rs.getInt("question_count"),
+                rs.getInt("answered_question_count"), rs.getInt("question_count") - rs.getInt("answered_question_count"),
+                rs.getInt("choice_count"),rs.getInt("answered_choice_count"));
     }
 
     private RecentAttempt recentAttempt(ResultSet rs) throws SQLException {
@@ -56,7 +59,7 @@ public class LearningRepository {
         List<TopicSummary> topics = topicSummaries();
         List<TopicSummary> due = new ArrayList<>();
         for (TopicSummary topic : topics) {
-            if (topic.next_review_at() == null || topic.next_review_at().compareTo(now) <= 0) due.add(topic);
+            if (topic.question_count() > 0 && (topic.next_review_at() == null || topic.next_review_at().compareTo(now) <= 0)) due.add(topic);
         }
         due.sort((left, right) -> {
             int byReview = compareNullFirst(left.next_review_at(), right.next_review_at());
@@ -73,18 +76,34 @@ public class LearningRepository {
         int studied = jdbc.queryForObject("SELECT COUNT(*) FROM attempts WHERE created_at >= ? AND created_at < ?",
                 Integer.class, dayStart, dayEnd);
         int total = jdbc.queryForObject("SELECT COUNT(*) FROM attempts", Integer.class);
-        int questionCount = jdbc.queryForObject("SELECT COUNT(*) FROM questions", Integer.class);
+        int questionCount = topics.stream().mapToInt(TopicSummary::question_count).sum();
         return new Dashboard(today, studied, total, due.size(), topics.size(), questionCount, due.stream().limit(6).toList(),
                 topics, recentAttempts(5));
     }
 
     public List<TopicSummary> topicSummaries() {
         return jdbc.query("""
+                WITH question_counts AS (
+                    SELECT q.knowledge_point_id,COUNT(*) AS question_count,
+                           COUNT(seen.question_id) AS answered_question_count,
+                           SUM(CASE WHEN q.question_type='single_choice' THEN 1 ELSE 0 END) AS choice_count,
+                           SUM(CASE WHEN q.question_type='single_choice' AND seen.question_id IS NOT NULL THEN 1 ELSE 0 END) AS answered_choice_count
+                    FROM questions q
+                    LEFT JOIN (SELECT DISTINCT question_id FROM attempts) seen ON seen.question_id=q.id
+                    WHERE LOWER(COALESCE(q.content_locale,q.source_locale,'')) LIKE 'zh%'
+                    GROUP BY q.knowledge_point_id
+                )
                 SELECT kp.id,kp.domain,kp.title,kp.summary,kp.prerequisites_json,kp.next_review_at,
+                       COALESCE(qc.question_count,0) AS question_count,
+                       COALESCE(qc.answered_question_count,0) AS answered_question_count,
+                       COALESCE(qc.choice_count,0) AS choice_count,
+                       COALESCE(qc.answered_choice_count,0) AS answered_choice_count,
                        COUNT(a.id) AS attempts,COALESCE(SUM(a.is_correct),0) AS correct,
                        MAX(a.created_at) AS last_practiced
                 FROM knowledge_points kp LEFT JOIN attempts a ON a.knowledge_point_id=kp.id
-                GROUP BY kp.id,kp.domain,kp.title,kp.summary,kp.prerequisites_json,kp.next_review_at
+                LEFT JOIN question_counts qc ON qc.knowledge_point_id=kp.id
+                GROUP BY kp.id,kp.domain,kp.title,kp.summary,kp.prerequisites_json,kp.next_review_at,
+                         qc.question_count,qc.answered_question_count,qc.choice_count,qc.answered_choice_count
                 ORDER BY kp.id
                 """, (rs, row) -> topicSummary(rs));
     }
@@ -114,11 +133,62 @@ public class LearningRepository {
     }
 
     public PracticeQuestion nextQuestion(String pointId) {
+        return selectQuestion(pointId, null, null, "all", "auto", List.of());
+    }
+
+    public PracticeQueue practiceQueue(String pointId, String domain, String mode, List<String> excluded) {
+        return practiceQueue(pointId, domain, null, "all", mode, excluded);
+    }
+
+    public PracticeQueue practiceQueue(String pointId, String domain, String bank, String type, String mode, List<String> excluded) {
+        var topics = topicSummaries().stream()
+                .filter(t -> pointId == null || t.id().equals(pointId))
+                .filter(t -> domain == null || t.domain().equals(domain))
+                .filter(t -> bank == null || com.devprep.ai.service.PracticeBanks.matches(bank,t)).toList();
+        int total = topics.stream().mapToInt(t -> type.equals("single_choice") ? t.choice_count() : type.equals("short_answer") ? t.question_count()-t.choice_count() : t.question_count()).sum();
+        int answered = topics.stream().mapToInt(t -> type.equals("single_choice") ? t.answered_choice_count() : type.equals("short_answer") ? t.answered_question_count()-t.answered_choice_count() : t.answered_question_count()).sum();
+        String title = pointId != null ? topics.get(0).title() : bank != null ? com.devprep.ai.service.PracticeBanks.require(bank).title() : domain != null ? domain : "全部方向";
+        // Count the same eligible set used by selection, including this round's exclusions.
+        var args = new ArrayList<Object>();
+        String scope = candidateFilter(pointId, domain, bank, type, args);
+        String exclusions = excludedFilter(excluded, args, "q.id");
+        int remaining = jdbc.queryForObject("""
+                SELECT COUNT(*) FROM questions q JOIN knowledge_points kp ON kp.id=q.knowledge_point_id
+                """ + scope + " AND " + (mode.equals("new") ? "NOT " : "")
+                + "EXISTS(SELECT 1 FROM attempts a WHERE a.question_id=q.id)" + exclusions, Integer.class, args.toArray());
+        PracticeQuestion question = remaining == 0 ? null : selectQuestion(pointId, domain, bank, type, mode, excluded);
+        return new PracticeQueue(question, title, mode, total, answered, remaining);
+    }
+
+    private String candidateFilter(String pointId, String domain, String bank, String type, List<Object> args) {
+        String sql = "WHERE LOWER(COALESCE(q.content_locale,q.source_locale,'')) LIKE 'zh%'";
+        if (pointId != null) { sql += " AND q.knowledge_point_id=?"; args.add(pointId); }
+        if (domain != null) { sql += " AND kp.domain=?"; args.add(domain); }
+        if (!type.equals("all")) { sql += " AND q.question_type=?"; args.add(type); }
+        if (bank != null && !bank.equals("recommended")) {
+            var ids = topicSummaries().stream().filter(t -> com.devprep.ai.service.PracticeBanks.matches(bank,t)).map(TopicSummary::id).toList();
+            if (ids.isEmpty()) sql += " AND 1=0";
+            else { sql += " AND kp.id IN ("+String.join(",", java.util.Collections.nCopies(ids.size(), "?"))+")"; args.addAll(ids); }
+        }
+        return sql;
+    }
+
+    private String excludedFilter(List<String> excluded, List<Object> args, String column) {
+        if (excluded.isEmpty()) return "";
+        args.addAll(excluded);
+        return " AND " + column + " NOT IN (" + String.join(",", java.util.Collections.nCopies(excluded.size(), "?")) + ")";
+    }
+
+    private PracticeQuestion selectQuestion(String pointId, String domain, String bank, String type, String mode, List<String> excluded) {
         String current = now();
         // Aggregate attempts once for the whole candidate set. The previous correlated
         // subqueries executed an attempts lookup per question, which became expensive
         // as the imported question bank grew into the thousands.
-        String pointFilter = pointId == null ? "" : "WHERE q.knowledge_point_id=?";
+        var args = new ArrayList<Object>();
+        String pointFilter = candidateFilter(pointId, domain, bank, type, args);
+        args.add(current);
+        String eligibility = mode.equals("new") ? "WHERE qa.question_id IS NULL" : mode.equals("review") ? "WHERE qa.question_id IS NOT NULL" : "WHERE 1=1";
+        eligibility += excludedFilter(excluded, args, "cq.id");
         String sql = """
                 WITH candidate_questions AS (
                     SELECT q.id,q.knowledge_point_id,q.question_type,q.stem,q.options_json,q.status,
@@ -130,10 +200,9 @@ public class LearningRepository {
                     FROM questions q
                     JOIN knowledge_points kp ON kp.id=q.knowledge_point_id
                     LEFT JOIN materials m ON m.id=q.source_material_id
-                    """ + pointFilter + (pointId == null ? "WHERE " : " AND ") + """
-                           LOWER(COALESCE(q.content_locale,q.source_locale,'')) LIKE 'zh%'
+                    """ + pointFilter + """
                 ), question_attempts AS (
-                    SELECT a.question_id, COUNT(*) AS question_attempts
+                    SELECT a.question_id, COUNT(*) AS question_attempts,MAX(a.created_at) AS last_attempt
                     FROM attempts a JOIN candidate_questions cq ON cq.id=a.question_id
                     GROUP BY a.question_id
                 ), latest_point_attempt AS (
@@ -166,18 +235,14 @@ public class LearningRepository {
                 LEFT JOIN question_attempts qa ON qa.question_id=cq.id
                 LEFT JOIN latest_point_attempt lpa
                        ON lpa.knowledge_point_id=cq.knowledge_point_id
-                ORDER BY review_priority,question_attempts,cq.id LIMIT 1
-                """;
-        List<PracticeQuestion> result;
-        if (pointId == null) {
-            result = jdbc.query(sql, (rs, row) -> practiceQuestion(rs), current);
-        } else {
-            result = jdbc.query(sql, (rs, row) -> practiceQuestion(rs), pointId, current);
-        }
+                """ + eligibility + (mode.equals("auto")
+                ? " ORDER BY review_priority,question_attempts,cq.id LIMIT 1"
+                : " ORDER BY question_attempts,qa.last_attempt,RANDOM() LIMIT 1");
+        List<PracticeQuestion> result = jdbc.query(sql, (rs, row) -> practiceQuestion(rs, mode), args.toArray());
         return result.stream().findFirst().orElse(null);
     }
 
-    private PracticeQuestion practiceQuestion(ResultSet rs) throws SQLException {
+    private PracticeQuestion practiceQuestion(ResultSet rs, String mode) throws SQLException {
         String[] reasons = {"已到复习时间", "上次回答有遗漏，建议再练", "尚未练习这个知识点", "巩固已经练习过的知识点"};
         return new PracticeQuestion(rs.getString("id"), rs.getString("knowledge_point_id"),
                 rs.getString("topic_title"), rs.getString("domain"), rs.getString("topic_summary"),
@@ -187,7 +252,8 @@ public class LearningRepository {
                 rs.getString("attribution"), rs.getString("revision"), rs.getString("source_sha256"),
                 rs.getString("source_locale"), rs.getString("content_locale"), rs.getString("content_format"),
                 rs.getString("assessment_mode"), rs.getString("status"),
-                reasons[rs.getInt("review_priority")]);
+                mode.equals("new") ? "这道题尚未作答；本轮不会自动重复已做题" : mode.equals("review")
+                        ? "主动重练已做题；同一轮内每题只出现一次" : reasons[rs.getInt("review_priority")]);
     }
 
     public QuestionData question(String questionId) {

@@ -6,6 +6,7 @@ import com.devprep.ai.domain.AttemptResult;
 import com.devprep.ai.domain.Dashboard;
 import com.devprep.ai.domain.HistoryAttempt;
 import com.devprep.ai.domain.PracticeQuestion;
+import com.devprep.ai.domain.PracticeQueue;
 import com.devprep.ai.domain.QuestionData;
 import com.devprep.ai.domain.QuestionReference;
 import com.devprep.ai.domain.TopicSummary;
@@ -44,6 +45,35 @@ public class LearningService {
         PracticeQuestion question = repository.nextQuestion(pointId == null || pointId.isEmpty() ? null : pointId);
         if (question == null) throw ApiException.notFound("question_not_found", "这个知识点暂时没有可练题目。");
         return question;
+    }
+
+    @Transactional(readOnly = true)
+    public PracticeQueue practiceQueue(String pointId, String domain, String mode, List<String> excluded) {
+        return practiceQueue(pointId, domain, null, "all", mode, excluded);
+    }
+
+    @Transactional(readOnly = true)
+    public List<com.devprep.ai.domain.PracticeBank> practiceBanks() {
+        return PracticeBanks.summarize(repository.topicSummaries());
+    }
+
+    @Transactional(readOnly = true)
+    public PracticeQueue practiceQueue(String pointId, String domain, String bankId, String type, String mode, List<String> excluded) {
+        String point = pointId == null || pointId.isBlank() ? null : pointId;
+        String scope = domain == null || domain.isBlank() ? null : domain;
+        String bank = bankId == null || bankId.isBlank() ? null : bankId;
+        if ((point == null ? 0 : 1)+(scope == null ? 0 : 1)+(bank == null ? 0 : 1) > 1)
+            throw ApiException.badRequest("invalid_scope", "请选择一个知识点或一个方向。");
+        if (bank != null) PracticeBanks.require(bank);
+        if (!List.of("all", "single_choice", "short_answer").contains(type)) throw ApiException.badRequest("invalid_question_type", "请选择选择题、问答题或全部题型。");
+        if (point != null && (point.length() > 500 || !repository.hasKnowledgePoint(point)))
+            throw ApiException.notFound("question_not_found", "找不到这个知识点。");
+        if (scope != null && (scope.length() > 100 || repository.topicSummaries().stream().noneMatch(t -> t.domain().equals(scope))))
+            throw ApiException.badRequest("invalid_domain", "找不到这个练习方向。");
+        if (!List.of("new", "review").contains(mode)) throw ApiException.badRequest("invalid_practice_mode", "请选择未做新题或重练已做题。");
+        if (excluded == null || excluded.size() > 200 || excluded.stream().anyMatch(id -> id == null || id.isBlank() || id.length() > 500))
+            throw ApiException.badRequest("invalid_exclusions", "单轮练习最多排除 200 道题。");
+        return repository.practiceQueue(point, scope, bank, type, mode, excluded.stream().distinct().toList());
     }
 
     @Transactional(readOnly = true)

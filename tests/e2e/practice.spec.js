@@ -44,7 +44,10 @@ const reference = {
 async function mockPractice(page, { questionData = question, referenceData = reference, correct = false } = {}) {
   const submissions = [];
   await page.route("**/api/settings", (route) => route.fulfill({ json: { model: "", providers: [] } }));
-  await page.route("**/api/practice/next**", (route) => route.fulfill({ json: questionData }));
+  await page.route("**/api/practice/queue", (route) => route.fulfill({ json: {
+    question: questionData, scope_title: questionData.topic_title, mode: "new",
+    total_questions: 10, answered_questions: 0, remaining_questions: 10,
+  } }));
   await page.route("**/api/practice/reference?**", (route) => route.fulfill({ json: referenceData }));
   await page.route("**/api/attempts", async (route) => {
     submissions.push(route.request().postDataJSON());

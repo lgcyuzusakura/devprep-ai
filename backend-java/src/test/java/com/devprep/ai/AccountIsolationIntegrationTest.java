@@ -109,10 +109,16 @@ class AccountIsolationIntegrationTest {
         try(var scope=WorkspaceContext.use(a)) {
             learning.submitAttempt("q-equals-01","hashCode 必须相同",null);
             assertEquals(1,learning.dashboard().total_attempts());
+            assertEquals(1,learning.practiceQueue("java-equals",null,"new",java.util.List.of()).remaining_questions());
             jdbc.update("UPDATE knowledge_points SET next_review_at=? WHERE id=?","2099-01-01T00:00:00Z","java-equals-hashcode");
         }
         for(int i=0;i<12;i++) {
-            try(var scope=WorkspaceContext.use(b)) { assertEquals(0,learning.dashboard().total_attempts()); assertFalse(study.sessions().stream().anyMatch(s->s.title().equals("owner-private-note"))); }
+            try(var scope=WorkspaceContext.use(b)) {
+                assertEquals(0,learning.dashboard().total_attempts());
+                assertEquals(2,learning.practiceQueue("java-equals",null,"new",java.util.List.of()).remaining_questions());
+                assertNull(learning.practiceQueue("java-equals",null,"review",java.util.List.of()).question());
+                assertFalse(study.sessions().stream().anyMatch(s->s.title().equals("owner-private-note")));
+            }
             try(var scope=WorkspaceContext.use(a)) { assertEquals(1,learning.dashboard().total_attempts()); }
             try(var scope=WorkspaceContext.use(owner)) { assertEquals(before,learning.dashboard().total_attempts()); }
         }

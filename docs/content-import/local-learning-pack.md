@@ -64,7 +64,21 @@ node scripts/start.mjs
 
 公开内置种子与本地包同时加载。Markdown 问答使用 `assessment_mode: "reference"`；来源正文没有经过事实审核，自评时可打开原始来源核对版本、适用条件和勘误。额外包也可以包含已有确定答案的单选题，使用 `assessment_mode: "rubric"` 并校验答案属于选项。
 
-## 来源与许可证
+## 中文 JavaScript 选择题
+
+新增导入器读取 [lydiahallie/javascript-questions 简体中文版](https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md)，保留 MIT 署名、中文解析、代码和固定提交链接。2026-10-19 核验可解析 150 道单选题；它们属于前端题库。下载串行执行，不调用模型，也不需要牛客账号。
+
+已有私人学习包时，在项目根目录运行：
+
+```sh
+python scripts/content-import/javascript_choices.py --merge .cache/content/local.learning.zh-CN.json --output .cache/content/local.learning.next.json
+```
+
+检查 `.cache/content/javascript-choices/audit.json` 的题量和跳过记录。先停止应用并备份原学习包，再用输出文件替换应用加载的学习包，按原配置启动。重复导入使用相同题目 ID，不会清除其他来源的题目或已有翻译。原始快照、MIT 许可证和输出包保存在忽略目录，不推送 GitHub。
+
+牛客的在线选择题入口是 [专项练习](https://www.nowcoder.com/exam/intelligent)。本项目提供外部入口，未将牛客题目批量复制成本地题库；其网站题量与本地题量分别统计。
+
+## 署名与分发
 
 每题附带名称、URL、相对文件路径、许可证声明、署名、版本和文件 SHA-256。导入数据不包含或复制本机的模型密钥配置。
 

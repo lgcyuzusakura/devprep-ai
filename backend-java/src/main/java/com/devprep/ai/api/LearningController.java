@@ -4,6 +4,7 @@ import com.devprep.ai.domain.AttemptResult;
 import com.devprep.ai.domain.Dashboard;
 import com.devprep.ai.domain.HistoryAttempt;
 import com.devprep.ai.domain.PracticeQuestion;
+import com.devprep.ai.domain.PracticeQueue;
 import com.devprep.ai.domain.QuestionReference;
 import com.devprep.ai.domain.TopicSummary;
 import com.devprep.ai.service.LearningService;
@@ -40,6 +41,27 @@ public class LearningController {
     public PracticeQuestion next(@RequestParam(name = "knowledge_point_id", required = false) String pointId) {
         return learning.nextQuestion(pointId);
     }
+
+    @PostMapping("/practice/queue")
+    public PracticeQueue queue(@RequestBody JsonNode body) {
+        if (!body.isObject()) throw ApiException.badRequest("invalid_json", "请求内容必须是 JSON 对象。");
+        for (String field : List.of("knowledge_point_id", "domain", "bank", "question_type", "mode"))
+            if (body.has(field) && !body.path(field).isTextual()) throw ApiException.badRequest("invalid_scope", "练习范围必须为文本。");
+        List<String> excluded = new ArrayList<>();
+        if (body.has("exclude_ids")) {
+            if (!body.path("exclude_ids").isArray() || body.path("exclude_ids").size() > 200)
+                throw ApiException.badRequest("invalid_exclusions", "单轮练习最多排除 200 道题。");
+            for (JsonNode id : body.path("exclude_ids")) {
+                if (!id.isTextual()) throw ApiException.badRequest("invalid_exclusions", "题目编号必须为文本。");
+                excluded.add(id.textValue());
+            }
+        }
+        return learning.practiceQueue(body.path("knowledge_point_id").asText(""), body.path("domain").asText(""),
+                body.path("bank").asText(""), body.path("question_type").asText("single_choice"), body.path("mode").asText("new"), excluded);
+    }
+
+    @GetMapping("/practice/banks")
+    public Object banks() { return Map.of("banks", learning.practiceBanks()); }
 
     @GetMapping("/practice/reference")
     public QuestionReference reference(@RequestParam(name = "question_id", defaultValue = "") String id) { return learning.reference(id); }

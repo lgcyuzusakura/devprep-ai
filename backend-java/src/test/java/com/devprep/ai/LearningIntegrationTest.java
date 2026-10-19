@@ -222,6 +222,111 @@ class LearningIntegrationTest {
     }
 
     @Test
+    void freshPracticeStopsAfterTheTwoUniqueQuestionsEvenIfAnswersAreWrong() {
+        var first = learning.practiceQueue("java-equals", null, "new", List.of());
+        assertEquals(2, first.total_questions());
+        assertEquals(0, first.answered_questions());
+        assertEquals(2, first.remaining_questions());
+        learning.submitAttempt("q-equals-01", "hashCode 必须不同", null);
+        var second = learning.practiceQueue("java-equals", null, "new", List.of());
+        assertEquals("q-equals-02", second.question().id());
+        assertEquals(1, second.remaining_questions());
+        learning.submitAttempt("q-equals-02", "还没掌握", List.of(false, false, false));
+        var finished = learning.practiceQueue("java-equals", null, "new", List.of());
+        assertNull(finished.question());
+        assertEquals(0, finished.remaining_questions());
+        assertEquals(2, finished.answered_questions());
+        // Reloading the page must not implicitly start the same two questions again.
+        assertNull(learning.practiceQueue("java-equals", null, "new", List.of()).question());
+        var summary = learning.knowledge().stream().filter(t -> t.id().equals("java-equals")).findFirst().orElseThrow();
+        assertEquals(2, summary.question_count());
+        assertEquals(2, summary.answered_question_count());
+        assertEquals(0, summary.new_question_count());
+    }
+
+    @Test
+    void explicitReviewUsesOnlyAnsweredQuestionsAndDoesNotRepeatWithinTheRound() {
+        assertNull(learning.practiceQueue("java-equals", null, "review", List.of()).question());
+        learning.submitAttempt("q-equals-01", "hashCode 必须相同", null);
+        var review = learning.practiceQueue("java-equals", null, "review", List.of());
+        assertEquals("q-equals-01", review.question().id());
+        learning.submitAttempt("q-equals-01", "hashCode 必须相同", null);
+        var finished = learning.practiceQueue("java-equals", null, "review", List.of("q-equals-01", "q-equals-01"));
+        assertNull(finished.question());
+        assertEquals(0, finished.remaining_questions());
+        assertEquals(1, finished.answered_questions()); // unique questions, not number of attempts
+        assertEquals(1, learning.practiceQueue("java-equals", null, "new", List.of()).remaining_questions());
+    }
+
+    @Test
+    void directionPracticeContinuesAcrossTopicsAndCountsOnlyChineseQuestions() {
+        String domain = learning.nextQuestion("java-equals").domain();
+        String language = jdbc.queryForObject("SELECT content_locale FROM questions WHERE id='q-equals-02'", String.class);
+        try {
+            jdbc.update("UPDATE questions SET content_locale='en' WHERE id='q-equals-02'");
+            var topic = learning.practiceQueue("java-equals", null, "new", List.of());
+            assertEquals(1, topic.total_questions());
+            learning.submitAttempt("q-equals-01", "hashCode 必须相同", null);
+            assertNull(learning.practiceQueue("java-equals", null, "new", List.of()).question());
+            var mixed = learning.practiceQueue(null, domain, "new", List.of());
+            assertTrue(mixed.total_questions() > 1);
+            assertNotEquals("java-equals", mixed.question().knowledge_point_id());
+            assertEquals(domain, mixed.question().domain());
+            assertEquals(learning.knowledge().stream().mapToInt(t -> t.question_count()).sum(), learning.dashboard().question_count());
+            assertFalse(mapper.valueToTree(mixed.question()).has("answer"));
+        } finally { jdbc.update("UPDATE questions SET content_locale=? WHERE id='q-equals-02'", language); }
+    }
+
+    @Test
+    void queueApiValidatesScopeAndReportsExhaustionAsACompletedQueue() throws Exception {
+        mvc.perform(post("/api/practice/queue").contentType(MediaType.APPLICATION_JSON)
+                .content("{\"knowledge_point_id\":\"java-equals\",\"mode\":\"review\",\"question_type\":\"all\"}"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.question").isEmpty())
+                .andExpect(jsonPath("$.total_questions").value(2));
+        for (String body : List.of("{\"mode\":\"random\"}", "{\"exclude_ids\":[1]}",
+                "{\"domain\":1}", "{\"knowledge_point_id\":\"java-equals\",\"domain\":\"Java\"}")) {
+            mvc.perform(post("/api/practice/queue").contentType(MediaType.APPLICATION_JSON).content(body))
+                    .andExpect(status().isBadRequest());
+        }
+    }
+
+    @Test
+    void bankGroupsMergeJavaTopicsAndDefaultHttpQueueContainsOnlyChoices() throws Exception {
+        var bank = learning.practiceBanks().stream().filter(b -> b.id().equals("java")).findFirst().orElseThrow();
+        assertTrue(bank.topic_count() > 3);
+        assertTrue(bank.choice_count() > 1);
+        assertEquals(bank.question_count(), bank.choice_count()+bank.short_answer_count());
+        var next = learning.practiceQueue(null,null,"java","single_choice","new",List.of());
+        assertEquals(bank.choice_count(),next.total_questions());
+        assertEquals("single_choice",next.question().question_type());
+        mvc.perform(post("/api/practice/queue").contentType(MediaType.APPLICATION_JSON).content("{\"bank\":\"java\"}"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.question.question_type").value("single_choice"));
+        mvc.perform(post("/api/practice/queue").contentType(MediaType.APPLICATION_JSON).content("{\"bank\":\"unknown\"}"))
+                .andExpect(status().isBadRequest());
+        mvc.perform(get("/api/practice/banks")).andExpect(status().isOk()).andExpect(jsonPath("$.banks[0].title").value("推荐"));
+        var shortAnswer = learning.practiceQueue(null,null,"java","short_answer","new",List.of());
+        assertEquals(bank.short_answer_count(),shortAnswer.total_questions());
+        assertEquals("short_answer",shortAnswer.question().question_type());
+    }
+
+    @Test
+    void networkBankIncludesNetworkQuestionsFrom408WithoutChangingOriginalTopics() {
+        int before = learning.practiceBanks().stream().filter(b -> b.id().equals("network")).findFirst().orElseThrow().choice_count();
+        int before408 = learning.practiceBanks().stream().filter(b -> b.id().equals("cs408")).findFirst().orElseThrow().choice_count();
+        jdbc.update("INSERT INTO knowledge_points(id,domain,title,summary,prerequisites_json,created_at) VALUES('bank-fixture','考研 408','计算机网络 / 传输层','fixture','[]','2026-10-08T04:00:00Z')");
+        jdbc.update("INSERT INTO questions(id,knowledge_point_id,question_type,stem,options_json,answer_json,explanation,rubric_json,content_locale,status) VALUES('bank-fixture-q','bank-fixture','single_choice','测试网络题','[\"A\",\"B\"]','\"A\"','fixture','[]','zh-CN','reviewed')");
+        try {
+            var banks = learning.practiceBanks();
+            assertEquals(before+1,banks.stream().filter(b -> b.id().equals("network")).findFirst().orElseThrow().choice_count());
+            assertEquals(before408+1,banks.stream().filter(b -> b.id().equals("cs408")).findFirst().orElseThrow().choice_count());
+            assertEquals("考研 408",learning.practiceQueue("bank-fixture",null,"new",List.of()).question().domain());
+        } finally {
+            jdbc.update("DELETE FROM questions WHERE id='bank-fixture-q'");
+            jdbc.update("DELETE FROM knowledge_points WHERE id='bank-fixture'");
+        }
+    }
+
+    @Test
     void correctStreakIsSharedByQuestionsWithinATopicAndIndependentOfOtherTopics() {
         learning.submitAttempt("q-equals-01", "hashCode 必须相同", null);
         assertEquals(2, learning.submitAttempt("q-equals-02", "Answer", List.of(true, true, true)).streak());
