@@ -80,6 +80,8 @@ python scripts/content-import/javascript_choices.py --merge .cache/content/local
 
 ## 署名与分发
 
+需要把自己编写的中文选择题合并到已有译文包时，可使用 `scripts/content-import/merge_choices.py`；题目结构、幂等规则与本机原创题包说明见 [原创选择题补充](../updates/2026-10-19-original-choice-bank.md)。该工具只合并本地文件，不会请求模型或重新生成其他来源的题目。
+
 每题附带名称、URL、相对文件路径、许可证声明、署名、版本和文件 SHA-256。导入数据不包含或复制本机的模型密钥配置。
 
 Apache-2.0、MIT 来源仍需保留相应许可证与版权通知；仓库许可证不能替代其中转载内容的具体权利。没有声明许可证的来源标记为 `LicenseRef-Unspecified`，不会据此获得公开再分发授权。DevOps 的非商业、禁止改编限制见 [DevOps 本地导入说明](devops-exercises.md)。
